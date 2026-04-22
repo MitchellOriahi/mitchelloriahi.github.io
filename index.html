@@ -179,7 +179,6 @@
             </div>
             <div class="timeline">
 
-                <!-- UPCOMING ROLE -->
                 <div class="timeline-item fade-in">
                     <div class="timeline-date">May 2026 - Aug 2026</div>
                     <div class="timeline-dot upcoming-dot"></div>
@@ -247,13 +246,8 @@
                             <li>Integrated Cosmos DB, MySQL, and Storage Queues to ensure scalable, reliable data flow across dev, staging, and production environments.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>Python</span>
-                            <span>Azure Functions</span>
-                            <span>MySQL</span>
-                            <span>Cosmos DB</span>
-                            <span>Azure Queues</span>
-                            <span>REST APIs</span>
-                            <span>Slack API</span>
+                            <span>Python</span><span>Azure Functions</span><span>MySQL</span>
+                            <span>Cosmos DB</span><span>Azure Queues</span><span>REST APIs</span><span>Slack API</span>
                         </div>
                     </div>
                 </div>
@@ -269,272 +263,136 @@
                 <span class="section-label">What I've Built</span>
                 <h2 class="section-title">Projects</h2>
             </div>
-
-            <!-- Filter Tabs -->
             <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fas fa-th"></i> All Projects
-                </button>
-                <button class="filter-btn" data-filter="hardware">
-                    <i class="fas fa-microchip"></i> Hardware &amp; Embedded
-                </button>
-                <button class="filter-btn" data-filter="software">
-                    <i class="fas fa-code"></i> Software &amp; Data
-                </button>
+                <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> All Projects</button>
+                <button class="filter-btn" data-filter="hardware"><i class="fas fa-microchip"></i> Hardware &amp; Embedded</button>
+                <button class="filter-btn" data-filter="software"><i class="fas fa-code"></i> Software &amp; Data</button>
             </div>
-
             <div class="projects-grid" id="projectsGrid">
 
-                <!-- 1. APRS GPS — Jan 2026–Present -->
                 <div class="project-card fade-in" data-category="hardware">
                     <div class="project-img-wrapper">
-                        <div class="project-img-placeholder proj-color-1">
-                            <i class="fas fa-satellite-dish"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="proj-link" title="In Development"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
+                        <div class="project-img-placeholder proj-color-1"><i class="fas fa-satellite-dish"></i></div>
+                        <div class="project-overlay"><div class="project-links"><a href="#" class="proj-link" title="In Development"><i class="fas fa-external-link-alt"></i></a></div></div>
                         <span class="proj-category-badge hw">Hardware</span>
                         <span class="proj-in-dev-badge"><i class="fas fa-circle-notch fa-spin"></i> In Development</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">ECE 3334 &bull; Team Lead</span>
-                            <span class="project-date">Jan 2026 - Present</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">ECE 3334 &bull; Team Lead</span><span class="project-date">Jan 2026 - Present</span></div>
                         <h3 class="project-title">GPS Tracking via Automatic Packet Reporting System (APRS)</h3>
-                        <p class="project-desc">
-                            An end-to-end wireless GPS tracking system using APRS over VHF/UHF radio. Designed a custom STM32 NUCLEO-G431RB Terminal Node Controller (TNC) implementing Bell 202 AFSK modulation at 1200 baud with NRZI encoding, a DAC-generated transmit waveform, and a 19.2 kHz ADC receive chain with DMA buffering and tone detection. The RF link has been established; the team is currently stabilizing connections and integrating a custom PCB to complete the full end-to-end system.
-                        </p>
-                        <div class="project-tech">
-                            <span>STM32</span><span>C</span><span>APRS</span><span>Bell 202 AFSK</span><span>GPS</span><span>RF/VHF</span><span>DAC/ADC</span><span>DMA</span>
-                        </div>
+                        <p class="project-desc">An end-to-end wireless GPS tracking system using APRS over VHF/UHF radio. Designed a custom STM32 NUCLEO-G431RB Terminal Node Controller (TNC) implementing Bell 202 AFSK modulation at 1200 baud with NRZI encoding, a DAC-generated transmit waveform, and a 19.2 kHz ADC receive chain with DMA buffering and tone detection.</p>
+                        <div class="project-tech"><span>STM32</span><span>C</span><span>APRS</span><span>Bell 202 AFSK</span><span>GPS</span><span>RF/VHF</span><span>DAC/ADC</span><span>DMA</span></div>
                     </div>
                 </div>
 
-                <!-- 2. Portfolio Website — 2026 -->
                 <div class="project-card fade-in" data-category="software" id="portfolioCard">
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/portfolio-card.jpg" alt="Portfolio Website — mitchelloriahi.com"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder proj-color-6" style="display:none">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="project-overlay portfolio-overlay">
-                            <div class="portfolio-self-msg">
-                                <i class="fas fa-hand-pointer"></i>
-                                <span>You're looking at it</span>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/portfolio-card.jpg" alt="Portfolio Website" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder proj-color-6" style="display:none"><i class="fas fa-laptop-code"></i></div>
+                        <div class="project-overlay portfolio-overlay"><div class="portfolio-self-msg"><i class="fas fa-hand-pointer"></i><span>You're looking at it</span></div></div>
                         <span class="proj-category-badge sw">Software</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">Personal Project &bull; Solo</span>
-                            <span class="project-date">2026</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">Personal Project &bull; Solo</span><span class="project-date">2026</span></div>
                         <h3 class="project-title">Personal Portfolio Website</h3>
-                        <p class="project-desc">
-                            This portfolio website, built entirely from scratch using HTML, CSS, and vanilla JavaScript with no frameworks or templates. Features scroll-triggered animations, a project filter system, a responsive mobile layout, a lightbox gallery, and smooth interactive design across all sections.
-                        </p>
-                        <div class="project-tech">
-                            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span><span>CSS Animations</span>
-                        </div>
+                        <p class="project-desc">This portfolio website, built entirely from scratch using HTML, CSS, and vanilla JavaScript with no frameworks or templates. Features scroll-triggered animations, a project filter system, a responsive mobile layout, a lightbox gallery, and smooth interactive design across all sections.</p>
+                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span><span>CSS Animations</span></div>
                     </div>
                 </div>
 
-                <!-- 3. Combat Robot — Aug–Dec 2025 -->
-                <div class="project-card fade-in" data-category="hardware"
-                     data-gallery='["assets/images/projects/combat-robot.JPG","assets/images/projects/combat-robot-team.JPG"]'
-                     data-video="assets/images/projects/Combat-robot-vid.MOV">
+                <div class="project-card fade-in" data-category="hardware" data-gallery='["assets/images/projects/combat-robot.JPG","assets/images/projects/combat-robot-team.JPG"]' data-video="assets/images/projects/Combat-robot-vid.MOV">
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/combat-robot.JPG" alt="MSP430 Combat Robot"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder proj-color-2" style="display:none">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <button class="proj-link gallery-trigger" title="View Gallery"><i class="fas fa-images"></i></button>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/combat-robot.JPG" alt="MSP430 Combat Robot" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder proj-color-2" style="display:none"><i class="fas fa-robot"></i></div>
+                        <div class="project-overlay"><div class="project-links"><button class="proj-link gallery-trigger" title="View Gallery"><i class="fas fa-images"></i></button></div></div>
                         <span class="proj-category-badge hw">Hardware</span>
                         <span class="proj-photo-count"><i class="fas fa-images"></i> 2 photos + video</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">ECE 3331 &bull; Team Lead</span>
-                            <span class="project-date">Aug 2025 - Dec 2025</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">ECE 3331 &bull; Team Lead</span><span class="project-date">Aug 2025 - Dec 2025</span></div>
                         <h3 class="project-title">Red Raider Battle Bot</h3>
-                        <p class="project-desc">
-                            A 10-lb combat robot built on an MSP430 microcontroller using PWM motor control and a UART-style IR remote command link programmed in C. Designed and assembled custom PCB protection circuitry, MOSFET-driven weapon control, overcurrent protection, and 3D-printed armor and chassis components.
-                        </p>
-                        <div class="project-tech">
-                            <span>MSP430</span><span>C</span><span>PWM</span><span>PCB Design</span><span>IR Comm</span><span>MOSFET</span>
-                        </div>
+                        <p class="project-desc">A 10-lb combat robot built on an MSP430 microcontroller using PWM motor control and a UART-style IR remote command link programmed in C. Designed and assembled custom PCB protection circuitry, MOSFET-driven weapon control, overcurrent protection, and 3D-printed armor and chassis components.</p>
+                        <div class="project-tech"><span>MSP430</span><span>C</span><span>PWM</span><span>PCB Design</span><span>IR Comm</span><span>MOSFET</span></div>
                     </div>
                 </div>
 
-                <!-- 4. Audio Amplifier — Nov 2025 -->
-                <div class="project-card fade-in" data-category="hardware"
-                     data-gallery='["assets/images/projects/amplifier.jpg"]'>
+                <div class="project-card fade-in" data-category="hardware" data-gallery='["assets/images/projects/amplifier.jpg"]'>
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/amplifier.jpg" alt="Audio Power Amplifier"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder proj-color-3" style="display:none">
-                            <i class="fas fa-wave-square"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <button class="proj-link gallery-trigger" title="Inspect Photo"><i class="fas fa-search-plus"></i></button>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/amplifier.jpg" alt="Audio Power Amplifier" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder proj-color-3" style="display:none"><i class="fas fa-wave-square"></i></div>
+                        <div class="project-overlay"><div class="project-links"><button class="proj-link gallery-trigger" title="Inspect Photo"><i class="fas fa-search-plus"></i></button></div></div>
                         <span class="proj-category-badge hw">Hardware</span>
                         <span class="proj-photo-count"><i class="fas fa-search-plus"></i> Click to inspect</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">ECE 3311 &bull; Circuit Design</span>
-                            <span class="project-date">Nov 2025</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">ECE 3311 &bull; Circuit Design</span><span class="project-date">Nov 2025</span></div>
                         <h3 class="project-title">Audio Power Amplifier Design</h3>
-                        <p class="project-desc">
-                            A 3-stage discrete BJT amplifier designed and simulated in LTspice that amplifies a 5mV input signal to over 10W of output across a 4-ohm speaker. Features a Darlington Class-AB push-pull output stage with adjustable biasing and audio band filters spanning 20 Hz to 20 kHz.
-                        </p>
-                        <div class="project-tech">
-                            <span>LTspice</span><span>BJT</span><span>Class-AB</span><span>Filter Design</span><span>Circuit Simulation</span>
-                        </div>
+                        <p class="project-desc">A 3-stage discrete BJT amplifier designed and simulated in LTspice that amplifies a 5mV input signal to over 10W of output across a 4-ohm speaker. Features a Darlington Class-AB push-pull output stage with adjustable biasing and audio band filters spanning 20 Hz to 20 kHz.</p>
+                        <div class="project-tech"><span>LTspice</span><span>BJT</span><span>Class-AB</span><span>Filter Design</span><span>Circuit Simulation</span></div>
                     </div>
                 </div>
 
-                <!-- 5. Customer Order System — May 2026 -->
-                <div class="project-card fade-in" data-category="software"
-                     data-gallery='["assets/images/projects/cos-uml.png"]'>
+                <div class="project-card fade-in" data-category="software" data-gallery='["assets/images/projects/cos-uml.png"]'>
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/cos-uml.png" alt="Customer Order System UML Diagram"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#1e3a5f,#7c3aed);display:none">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <button class="proj-link gallery-trigger" title="View UML Diagram"><i class="fas fa-search-plus"></i></button>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/cos-uml.png" alt="Customer Order System UML" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder" style="background:linear-gradient(135deg,#1e3a5f,#7c3aed);display:none"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="project-overlay"><div class="project-links"><button class="proj-link gallery-trigger" title="View UML Diagram"><i class="fas fa-search-plus"></i></button></div></div>
                         <span class="proj-category-badge sw">Software</span>
                         <span class="proj-photo-count"><i class="fas fa-search-plus"></i> UML diagram</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">CS2365 OOP &bull; TTU</span>
-                            <span class="project-date">May 2026</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">CS2365 OOP &bull; TTU</span><span class="project-date">May 2026</span></div>
                         <h3 class="project-title">Customer Order System (COS)</h3>
-                        <p class="project-desc">
-                            A full Java application built around a customer-facing retail system. Implemented secure login with multi-factor authentication, a browsable product catalog, shopping cart, and complete order processing with credit card handling. Architected using multi-class OOP design documented with UML diagrams, delivered as both a console and a GUI application.
-                        </p>
-                        <div class="project-tech">
-                            <span>Java</span><span>OOP</span><span>Swing GUI</span><span>UML</span><span>Authentication</span><span>Data Structures</span>
-                        </div>
+                        <p class="project-desc">A full Java application built around a customer-facing retail system. Implemented secure login with multi-factor authentication, a browsable product catalog, shopping cart, and complete order processing with credit card handling. Architected using multi-class OOP design documented with UML diagrams, delivered as both a console and a GUI application.</p>
+                        <div class="project-tech"><span>Java</span><span>OOP</span><span>Swing GUI</span><span>UML</span><span>Authentication</span><span>Data Structures</span></div>
                     </div>
                 </div>
 
-                <!-- 6. LED Sprite Matrix — April 2025 -->
-                <div class="project-card fade-in" data-category="hardware"
-                     data-video="assets/images/projects/LEDSpriteVideo.MOV">
+                <div class="project-card fade-in" data-category="hardware" data-video="assets/images/projects/LEDSpriteVideo.MOV">
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/led-sprite-thumb.jpg" alt="LED Sprite Matrix"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#065f46,#06b6d4);display:none">
-                            <i class="fas fa-th"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <button class="proj-link gallery-trigger" title="Watch Demo Video"><i class="fas fa-play-circle"></i></button>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/led-sprite-thumb.jpg" alt="LED Sprite Matrix" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder" style="background:linear-gradient(135deg,#065f46,#06b6d4);display:none"><i class="fas fa-th"></i></div>
+                        <div class="project-overlay"><div class="project-links"><button class="proj-link gallery-trigger" title="Watch Demo Video"><i class="fas fa-play-circle"></i></button></div></div>
                         <span class="proj-category-badge hw">Hardware</span>
                         <span class="proj-photo-count"><i class="fas fa-video"></i> Video demo</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">Microcontrollers &bull; TTU</span>
-                            <span class="project-date">April 2025</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">Microcontrollers &bull; TTU</span><span class="project-date">April 2025</span></div>
                         <h3 class="project-title">LED Sprite Matrix Display</h3>
-                        <p class="project-desc">
-                            Programmed an ATmega328P microcontroller in AVR Assembly to drive a MAX7219 LED Dot Matrix display over SPI. Wrote custom sprite data for 3+ pixel art images and implemented pushbutton input with debounce logic to cycle between them in real-time.
-                        </p>
-                        <div class="project-tech">
-                            <span>ATmega328P</span><span>AVR Assembly</span><span>SPI</span><span>MAX7219</span><span>LED Matrix</span><span>Embedded C</span>
-                        </div>
+                        <p class="project-desc">Programmed an ATmega328P microcontroller in AVR Assembly to drive a MAX7219 LED Dot Matrix display over SPI. Wrote custom sprite data for 3+ pixel art images and implemented pushbutton input with debounce logic to cycle between them in real-time.</p>
+                        <div class="project-tech"><span>ATmega328P</span><span>AVR Assembly</span><span>SPI</span><span>MAX7219</span><span>LED Matrix</span><span>Embedded C</span></div>
                     </div>
                 </div>
 
-                <!-- 7. ROBOWARS 2024 — Nov 2024 -->
-                <div class="project-card fade-in" data-category="hardware"
-                     data-gallery='["assets/images/projects/Robowars2.JPG","assets/images/projects/robowars.jpg"]'>
+                <div class="project-card fade-in" data-category="hardware" data-gallery='["assets/images/projects/Robowars2.JPG","assets/images/projects/robowars.jpg"]'>
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/Robowars2.JPG" alt="ROBOWARS 2024"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder proj-color-4" style="display:none">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <button class="proj-link gallery-trigger" title="View Gallery"><i class="fas fa-images"></i></button>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/Robowars2.JPG" alt="ROBOWARS 2024" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder proj-color-4" style="display:none"><i class="fas fa-trophy"></i></div>
+                        <div class="project-overlay"><div class="project-links"><button class="proj-link gallery-trigger" title="View Gallery"><i class="fas fa-images"></i></button></div></div>
                         <span class="proj-category-badge hw">Hardware</span>
                         <span class="proj-photo-count"><i class="fas fa-images"></i> 2 photos</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">ROBOWARS 2024 &bull; 4th Place</span>
-                            <span class="project-date">Nov 2024</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">ROBOWARS 2024 &bull; 4th Place</span><span class="project-date">Nov 2024</span></div>
                         <h3 class="project-title">Competitive Robot Design &amp; Engineering</h3>
-                        <p class="project-desc">
-                            Competed in ROBOWARS 2024, a 10-hour intensive robotics challenge, securing 4th place among multiple competing teams. Designed and built a fully functional robot in a team of six leveraging Arduino programming, 3D printing, and rapid prototyping under strict time and resource constraints.
-                        </p>
-                        <div class="project-tech">
-                            <span>Arduino</span><span>3D Printing</span><span>Rapid Prototyping</span><span>Embedded Systems</span><span>Teamwork</span>
-                        </div>
+                        <p class="project-desc">Competed in ROBOWARS 2024, a 10-hour intensive robotics challenge, securing 4th place among multiple competing teams. Designed and built a fully functional robot in a team of six leveraging Arduino programming, 3D printing, and rapid prototyping under strict time and resource constraints.</p>
+                        <div class="project-tech"><span>Arduino</span><span>3D Printing</span><span>Rapid Prototyping</span><span>Embedded Systems</span><span>Teamwork</span></div>
                     </div>
                 </div>
 
-                <!-- 8. Power Forecasting — Dec 2023 -->
-                <div class="project-card fade-in" data-category="software"
-                     data-gallery='["assets/images/projects/power-analysis.jpg"]'>
+                <div class="project-card fade-in" data-category="software" data-gallery='["assets/images/projects/power-analysis.jpg"]'>
                     <div class="project-img-wrapper">
-                        <img src="assets/images/projects/power-analysis.jpg" alt="Power Consumption Analysis"
-                             class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <div class="project-img-placeholder proj-color-5" style="display:none">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <button class="proj-link gallery-trigger" title="Inspect Chart"><i class="fas fa-search-plus"></i></button>
-                            </div>
-                        </div>
+                        <img src="assets/images/projects/power-analysis.jpg" alt="Power Consumption Analysis" class="project-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-img-placeholder proj-color-5" style="display:none"><i class="fas fa-chart-line"></i></div>
+                        <div class="project-overlay"><div class="project-links"><button class="proj-link gallery-trigger" title="Inspect Chart"><i class="fas fa-search-plus"></i></button></div></div>
                         <span class="proj-category-badge sw">Software</span>
                         <span class="proj-photo-count"><i class="fas fa-search-plus"></i> Click to inspect</span>
                     </div>
                     <div class="project-content">
-                        <div class="project-top">
-                            <span class="project-label">Data Science &bull; TTU</span>
-                            <span class="project-date">Dec 2023</span>
-                        </div>
+                        <div class="project-top"><span class="project-label">Data Science &bull; TTU</span><span class="project-date">Dec 2023</span></div>
                         <h3 class="project-title">Data-Driven Power Consumption Analysis &amp; Forecasting</h3>
-                        <p class="project-desc">
-                            Analyzed power consumption trends across three urban zones using real-world data from Tetuan, Morocco. Built predictive regression models using weather parameters to estimate energy demand, and designed an interactive forecasting tool with automated data updates and real-time user input.
-                        </p>
-                        <div class="project-tech">
-                            <span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>Seaborn</span><span>Matplotlib</span><span>Regression</span>
-                        </div>
+                        <p class="project-desc">Analyzed power consumption trends across three urban zones using real-world data from Tetuan, Morocco. Built predictive regression models using weather parameters to estimate energy demand, and designed an interactive forecasting tool with automated data updates and real-time user input.</p>
+                        <div class="project-tech"><span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>Seaborn</span><span>Matplotlib</span><span>Regression</span></div>
                     </div>
                 </div>
 
@@ -547,62 +405,43 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">What I Know</span>
-                <h2 class="section-title">Skills & Technologies</h2>
+                <h2 class="section-title">Skills &amp; Technologies</h2>
             </div>
             <div class="skills-grid">
                 <div class="skill-category fade-in">
                     <div class="skill-cat-icon"><i class="fas fa-code"></i></div>
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Embedded C</span>
-                        <span class="skill-tag">HTML / CSS / JS</span>
+                        <span class="skill-tag">Python</span><span class="skill-tag">C</span><span class="skill-tag">Java</span>
+                        <span class="skill-tag">Embedded C</span><span class="skill-tag">HTML / CSS / JS</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
                     <div class="skill-cat-icon"><i class="fas fa-microchip"></i></div>
                     <h3>Hardware &amp; Embedded</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">STM32</span>
-                        <span class="skill-tag">MSP430</span>
-                        <span class="skill-tag">ATmega328P</span>
-                        <span class="skill-tag">PCB Design</span>
-                        <span class="skill-tag">CAD</span>
-                        <span class="skill-tag">UART / SPI / I2C</span>
-                        <span class="skill-tag">PWM Control</span>
-                        <span class="skill-tag">BJT / MOSFET / Op-Amp</span>
-                        <span class="skill-tag">Soldering</span>
-                        <span class="skill-tag">Oscilloscope Debugging</span>
-                        <span class="skill-tag">RF Communication</span>
+                        <span class="skill-tag">STM32</span><span class="skill-tag">MSP430</span><span class="skill-tag">ATmega328P</span>
+                        <span class="skill-tag">PCB Design</span><span class="skill-tag">CAD</span><span class="skill-tag">UART / SPI / I2C</span>
+                        <span class="skill-tag">PWM Control</span><span class="skill-tag">BJT / MOSFET / Op-Amp</span>
+                        <span class="skill-tag">Soldering</span><span class="skill-tag">Oscilloscope Debugging</span><span class="skill-tag">RF Communication</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
                     <div class="skill-cat-icon"><i class="fas fa-cloud"></i></div>
                     <h3>Tools &amp; Platforms</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Azure Functions</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Azure Cosmos DB</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">LTspice</span>
-                        <span class="skill-tag">MATLAB</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Profilm3D</span>
-                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Azure Functions</span><span class="skill-tag">MySQL</span><span class="skill-tag">Azure Cosmos DB</span>
+                        <span class="skill-tag">REST APIs</span><span class="skill-tag">LTspice</span><span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Git</span><span class="skill-tag">Profilm3D</span><span class="skill-tag">VS Code</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
                     <div class="skill-cat-icon"><i class="fas fa-atom"></i></div>
                     <h3>Engineering Concepts</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Digital Signal Processing</span>
-                        <span class="skill-tag">AFSK Modulation</span>
-                        <span class="skill-tag">Microfabrication</span>
-                        <span class="skill-tag">Optical Profilometry</span>
-                        <span class="skill-tag">Lithography / Etching</span>
-                        <span class="skill-tag">Control Systems</span>
+                        <span class="skill-tag">Digital Signal Processing</span><span class="skill-tag">AFSK Modulation</span>
+                        <span class="skill-tag">Microfabrication</span><span class="skill-tag">Optical Profilometry</span>
+                        <span class="skill-tag">Lithography / Etching</span><span class="skill-tag">Control Systems</span>
                         <span class="skill-tag">Data Structures &amp; Algorithms</span>
                     </div>
                 </div>
@@ -619,9 +458,7 @@
             </div>
             <div class="education-card fade-in">
                 <div class="edu-left">
-                    <div class="edu-logo">
-                        <img src="assets/images/Texas_Tech_Athletics_logo.svg.png" alt="Texas Tech University" class="edu-logo-img">
-                    </div>
+                    <div class="edu-logo"><img src="assets/images/Texas_Tech_Athletics_logo.svg.png" alt="Texas Tech University" class="edu-logo-img"></div>
                     <div class="edu-line"></div>
                 </div>
                 <div class="edu-right">
@@ -633,20 +470,8 @@
                         <span class="edu-gpa">GPA: 3.47 / 4.00</span>
                     </div>
                     <div class="edu-degrees">
-                        <div class="edu-degree">
-                            <i class="fas fa-circle-dot"></i>
-                            <div>
-                                <strong>B.S. Computer Engineering</strong>
-                                <span>Expected Graduation: May 2027</span>
-                            </div>
-                        </div>
-                        <div class="edu-degree">
-                            <i class="fas fa-circle-dot"></i>
-                            <div>
-                                <strong>Accelerated M.S. Electrical Engineering</strong>
-                                <span>Concurrent Enrollment</span>
-                            </div>
-                        </div>
+                        <div class="edu-degree"><i class="fas fa-circle-dot"></i><div><strong>B.S. Computer Engineering</strong><span>Expected Graduation: May 2027</span></div></div>
+                        <div class="edu-degree"><i class="fas fa-circle-dot"></i><div><strong>Accelerated M.S. Electrical Engineering</strong><span>Concurrent Enrollment</span></div></div>
                     </div>
                     <div class="edu-honors">
                         <span class="honor-badge"><i class="fas fa-star"></i> President's Honor List, Spring 2025</span>
@@ -655,34 +480,22 @@
                     <div class="edu-coursework">
                         <h4>Relevant Coursework</h4>
                         <div class="course-tags">
-                            <span>Embedded Systems</span>
-                            <span>Electronics</span>
-                            <span>Signals &amp; Systems</span>
-                            <span>Microcontrollers</span>
-                            <span>Circuits</span>
-                            <span>Object-Oriented Programming</span>
-                            <span>Data Structures &amp; Algorithms</span>
-                            <span>Digital Communications (Project Lab)</span>
+                            <span>Embedded Systems</span><span>Electronics</span><span>Signals &amp; Systems</span>
+                            <span>Microcontrollers</span><span>Circuits</span><span>Object-Oriented Programming</span>
+                            <span>Data Structures &amp; Algorithms</span><span>Digital Communications (Project Lab)</span>
                             <span>Robotics Project Lab</span>
                         </div>
                     </div>
-
                     <div class="edu-certs">
                         <h4>Certifications</h4>
                         <div class="cert-list">
                             <div class="cert-item">
                                 <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                                <div>
-                                    <p class="cert-name">MATLAB Onramp</p>
-                                    <p class="cert-issuer">MathWorks &bull; Jan 2025</p>
-                                </div>
+                                <div><p class="cert-name">MATLAB Onramp</p><p class="cert-issuer">MathWorks &bull; Jan 2025</p></div>
                             </div>
                             <div class="cert-item">
                                 <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                                <div>
-                                    <p class="cert-name">Machine Learning Onramp</p>
-                                    <p class="cert-issuer">MathWorks &bull; Mar 2025</p>
-                                </div>
+                                <div><p class="cert-name">Machine Learning Onramp</p><p class="cert-issuer">MathWorks &bull; Mar 2025</p></div>
                             </div>
                         </div>
                     </div>
@@ -699,8 +512,6 @@
                 <h2 class="section-title">Beyond Engineering</h2>
             </div>
             <div class="beyond-sections">
-
-                <!-- Fitness -->
                 <div class="beyond-section-card fade-in">
                     <div class="beyond-photos-pair" data-beyond-gallery='["assets/images/GymPhoto.PNG","assets/images/MMATeamPhoto.jpg"]'>
                         <img src="assets/images/GymPhoto.PNG" alt="At the gym" class="beyond-clickable" data-idx="0">
@@ -711,8 +522,6 @@
                         <p>The gym is a regular part of my week, and I also train Muay Thai and BJJ. It keeps me sharp.</p>
                     </div>
                 </div>
-
-                <!-- Cooking -->
                 <div class="beyond-section-card fade-in">
                     <div class="beyond-photos-pair" data-beyond-gallery='["assets/images/Cooking1.JPG","assets/images/Cooking2.JPG"]'>
                         <img src="assets/images/Cooking1.JPG" alt="Cooking" class="beyond-clickable" data-idx="0">
@@ -723,8 +532,6 @@
                         <p>I cook a lot. It is relaxing, experimental, and honestly just a good time in the kitchen.</p>
                     </div>
                 </div>
-
-                <!-- Hiking -->
                 <div class="beyond-section-card fade-in">
                     <div class="beyond-photos-pair" data-beyond-gallery='["assets/images/HikingBackPose.JPG","assets/images/HikingSittingPose.JPG"]'>
                         <img src="assets/images/HikingBackPose.JPG" alt="Hiking" class="beyond-clickable" data-idx="0">
@@ -735,7 +542,6 @@
                         <p>Good trails, good views. Getting outside and off a screen is the best way to reset.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -752,27 +558,22 @@
                 <div class="contact-info fade-in">
                     <a href="mailto:mitchelokuezeoriahi@gmail.com" class="contact-card">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <p class="contact-type">Email</p>
-                            <p class="contact-value">mitchelokuezeoriahi@gmail.com</p>
-                        </div>
+                        <div><p class="contact-type">Email</p><p class="contact-value">mitchelokuezeoriahi@gmail.com</p></div>
                     </a>
                     <a href="https://www.linkedin.com/in/mitchell-oriahi-ce" target="_blank" class="contact-card">
                         <div class="contact-icon linkedin-icon"><i class="fab fa-linkedin"></i></div>
-                        <div>
-                            <p class="contact-type">LinkedIn</p>
-                            <p class="contact-value">linkedin.com/in/mitchell-oriahi-ce</p>
-                        </div>
+                        <div><p class="contact-type">LinkedIn</p><p class="contact-value">linkedin.com/in/mitchell-oriahi-ce</p></div>
                     </a>
                     <a href="assets/resume.pdf" target="_blank" class="contact-card">
                         <div class="contact-icon resume-icon"><i class="fas fa-file-alt"></i></div>
-                        <div>
-                            <p class="contact-type">Resume</p>
-                            <p class="contact-value">View / Download PDF</p>
-                        </div>
+                        <div><p class="contact-type">Resume</p><p class="contact-value">View / Download PDF</p></div>
                     </a>
                 </div>
                 <form class="contact-form fade-in" id="contactForm">
+                    <!-- Web3Forms: replace YOUR_ACCESS_KEY with key from app.web3forms.com -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="New Portfolio Message">
+                    <input type="hidden" name="from_name" value="Mitchell's Portfolio">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
@@ -780,7 +581,7 @@
                         <input type="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject">
+                        <input type="text" name="subject_line" placeholder="Subject">
                     </div>
                     <div class="form-group">
                         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
