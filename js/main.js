@@ -75,7 +75,7 @@ if (carouselSlides.length > 0) {
 }
 
 // ============================================
-// HERO DUAL TAG — subtle entrance pulse
+// HERO DUAL TAG - subtle entrance pulse
 // ============================================
 document.querySelectorAll('.dual-tag').forEach((tag, i) => {
     tag.style.animationDelay = `${0.8 + i * 0.15}s`;
@@ -87,21 +87,12 @@ document.querySelectorAll('.dual-tag').forEach((tag, i) => {
 const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-
-        // Find siblings in the same parent and stagger them
         const siblings = Array.from(entry.target.parentElement.querySelectorAll('.fade-in:not(.visible)'));
         const idx = siblings.indexOf(entry.target);
-
-        setTimeout(() => {
-            entry.target.classList.add('visible');
-        }, idx * 120);
-
+        setTimeout(() => { entry.target.classList.add('visible'); }, idx * 120);
         fadeObserver.unobserve(entry.target);
     });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px',
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
@@ -113,33 +104,58 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offset = 80;
-            const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+            const top = target.getBoundingClientRect().top + window.scrollY - 80;
             window.scrollTo({ top, behavior: 'smooth' });
         }
     });
 });
 
 // ============================================
-// CONTACT FORM - fake submit feedback
+// CONTACT FORM - Web3Forms real email delivery
 // ============================================
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn          = contactForm.querySelector('button[type="submit"]');
         const originalHTML = btn.innerHTML;
 
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        btn.style.background = 'linear-gradient(135deg, #059669, #06b6d4)';
-        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled  = true;
 
-        setTimeout(() => {
-            btn.innerHTML        = originalHTML;
-            btn.style.background = '';
+        const formData = new FormData(contactForm);
+        const data     = Object.fromEntries(formData);
+
+        try {
+            const res  = await fetch('https://api.web3forms.com/submit', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body:    JSON.stringify(data)
+            });
+            const json = await res.json();
+
+            if (json.success) {
+                btn.innerHTML        = '<i class="fas fa-check"></i> Message Sent!';
+                btn.style.background = 'linear-gradient(135deg, #059669, #06b6d4)';
+                contactForm.reset();
+                setTimeout(() => {
+                    btn.innerHTML        = originalHTML;
+                    btn.style.background = '';
+                    btn.disabled         = false;
+                }, 3500);
+            } else {
+                throw new Error(json.message || 'Submission failed');
+            }
+        } catch (err) {
+            btn.innerHTML        = '<i class="fas fa-exclamation-circle"></i> Failed - try again';
+            btn.style.background = 'linear-gradient(135deg, #dc2626, #f97316)';
             btn.disabled         = false;
-            contactForm.reset();
-        }, 3200);
+            setTimeout(() => {
+                btn.innerHTML        = originalHTML;
+                btn.style.background = '';
+            }, 3500);
+            console.error('Form error:', err);
+        }
     });
 }
 
@@ -149,7 +165,6 @@ if (contactForm) {
 function animateCounter(el, target, suffix = '', decimals = 0) {
     const duration = 1400;
     const start    = performance.now();
-
     function update(now) {
         const elapsed  = Math.min((now - start) / duration, 1);
         const eased    = 1 - Math.pow(1 - elapsed, 3);
@@ -157,7 +172,6 @@ function animateCounter(el, target, suffix = '', decimals = 0) {
         el.textContent = decimals > 0 ? value.toFixed(decimals) + suffix : Math.round(value) + suffix;
         if (elapsed < 1) requestAnimationFrame(update);
     }
-
     requestAnimationFrame(update);
 }
 
@@ -165,12 +179,11 @@ const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         statsObserver.unobserve(entry.target);
-
         entry.target.querySelectorAll('.stat-number').forEach(el => {
-            const raw  = el.textContent.trim();
-            const num  = parseFloat(raw.replace(/[^0-9.]/g, ''));
+            const raw    = el.textContent.trim();
+            const num    = parseFloat(raw.replace(/[^0-9.]/g, ''));
             const suffix = raw.replace(/[0-9.]/g, '');
-            const decs = raw.includes('.') ? raw.split('.')[1].length : 0;
+            const decs   = raw.includes('.') ? raw.split('.')[1].length : 0;
             animateCounter(el, num, suffix, decs);
         });
     });
@@ -180,36 +193,28 @@ const statsBlock = document.querySelector('.about-stats');
 if (statsBlock) statsObserver.observe(statsBlock);
 
 // ============================================
-// CURSOR GLOW EFFECT ON HERO (subtle)
+// CURSOR GLOW EFFECT ON HERO
 // ============================================
 const hero = document.querySelector('.hero');
 if (hero) {
     hero.addEventListener('mousemove', (e) => {
         const rect = hero.getBoundingClientRect();
-        const x    = ((e.clientX - rect.left) / rect.width)  * 100;
-        const y    = ((e.clientY - rect.top)  / rect.height) * 100;
-        hero.style.setProperty('--mx', `${x}%`);
-        hero.style.setProperty('--my', `${y}%`);
+        hero.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+        hero.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
     });
 }
 
 // ============================================
-// PROJECT CARDS - tilt on hover (subtle 3D)
+// PROJECT CARDS - tilt on hover
 // ============================================
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
-        const rect   = card.getBoundingClientRect();
-        const x      = e.clientX - rect.left;
-        const y      = e.clientY - rect.top;
-        const centerX = rect.width  / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -4;
-        const rotateY = ((x - centerX) / centerX) *  4;
+        const rect    = card.getBoundingClientRect();
+        const rotateX = (((e.clientY - rect.top)  / rect.height) - 0.5) * -8;
+        const rotateY = (((e.clientX - rect.left) / rect.width)  - 0.5) *  8;
         card.style.transform = `translateY(-6px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
 // ============================================
@@ -225,26 +230,20 @@ document.querySelectorAll('.skill-tag').forEach(tag => {
 // ============================================
 // PROJECT FILTER TABS
 // ============================================
-const filterBtns  = document.querySelectorAll('.filter-btn');
+const filterBtns   = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card[data-category]');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Update active button
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filter = btn.getAttribute('data-filter');
-
         projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            const matches  = filter === 'all' || category === filter;
-
+            const matches = filter === 'all' || card.getAttribute('data-category') === filter;
             if (matches) {
                 card.classList.remove('hidden');
-                // Re-trigger entrance animation
                 card.classList.remove('showing');
-                void card.offsetWidth; // force reflow
+                void card.offsetWidth;
                 card.classList.add('showing');
             } else {
                 card.classList.add('hidden');
@@ -268,24 +267,16 @@ const lbThumbs   = lightbox.querySelector('.lb-thumbs');
 const lbBackdrop = lightbox.querySelector('.lb-backdrop');
 const lbClose    = lightbox.querySelector('.lb-close');
 
-let lbItems  = []; // { type: 'image'|'video', src: '...' }
-let lbIndex  = 0;
+let lbItems = [];
+let lbIndex = 0;
 
 function openLightbox(card, startIndex = 0) {
     lbItems = [];
-
     const gallery = card.getAttribute('data-gallery');
     const video   = card.getAttribute('data-video');
-
-    if (gallery) {
-        JSON.parse(gallery).forEach(src => lbItems.push({ type: 'image', src }));
-    }
-    if (video) {
-        lbItems.push({ type: 'video', src: video });
-    }
-
+    if (gallery) JSON.parse(gallery).forEach(src => lbItems.push({ type: 'image', src }));
+    if (video)   lbItems.push({ type: 'video', src: video });
     if (!lbItems.length) return;
-
     lbIndex = Math.min(startIndex, lbItems.length - 1);
     buildThumbs();
     showItem(lbIndex);
@@ -304,11 +295,9 @@ function closeLightbox() {
 function showItem(idx) {
     lbIndex = idx;
     const item = lbItems[idx];
-
     lbImg.classList.remove('active');
     lbVideo.classList.remove('active');
     lbVideo.pause();
-
     if (item.type === 'video') {
         lbVideoSrc.src = item.src;
         lbVideo.load();
@@ -317,12 +306,9 @@ function showItem(idx) {
         lbImg.src = item.src;
         lbImg.classList.add('active');
     }
-
     lbCounter.textContent = `${idx + 1} / ${lbItems.length}`;
     lbPrev.disabled = idx === 0;
     lbNext.disabled = idx === lbItems.length - 1;
-
-    // Update active thumb
     lbThumbs.querySelectorAll('.lb-thumb, .lb-thumb-video').forEach((t, i) => {
         t.classList.toggle('active', i === idx);
     });
@@ -330,14 +316,12 @@ function showItem(idx) {
 
 function buildThumbs() {
     lbThumbs.innerHTML = '';
-    // Single-item view: hide navigation chrome for a clean inspect experience
-    const singleItem = lbItems.length <= 1;
-    lbThumbs.style.display   = singleItem ? 'none' : '';
-    lbCounter.style.display  = singleItem ? 'none' : '';
-    lbPrev.style.display     = singleItem ? 'none' : '';
-    lbNext.style.display     = singleItem ? 'none' : '';
-    if (singleItem) return;
-
+    const single = lbItems.length <= 1;
+    lbThumbs.style.display  = single ? 'none' : '';
+    lbCounter.style.display = single ? 'none' : '';
+    lbPrev.style.display    = single ? 'none' : '';
+    lbNext.style.display    = single ? 'none' : '';
+    if (single) return;
     lbItems.forEach((item, i) => {
         let el;
         if (item.type === 'video') {
@@ -360,7 +344,6 @@ lbPrev.addEventListener('click', () => { if (lbIndex > 0) showItem(lbIndex - 1);
 lbNext.addEventListener('click', () => { if (lbIndex < lbItems.length - 1) showItem(lbIndex + 1); });
 lbClose.addEventListener('click', closeLightbox);
 lbBackdrop.addEventListener('click', closeLightbox);
-
 document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape')     closeLightbox();
@@ -368,37 +351,24 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') lbNext.click();
 });
 
-// Open lightbox when clicking on a project image or gallery button
 document.querySelectorAll('.project-card').forEach(card => {
     const hasGallery = card.hasAttribute('data-gallery') || card.hasAttribute('data-video');
     if (!hasGallery) return;
-
     card.querySelector('.project-img-wrapper').addEventListener('click', (e) => {
-        if (e.target.closest('.gallery-trigger')) {
-            openLightbox(card, 0);
-        } else if (!e.target.closest('.proj-link')) {
-            openLightbox(card, 0);
-        }
+        if (!e.target.closest('.proj-link')) openLightbox(card, 0);
     });
-
     const galleryBtn = card.querySelector('.gallery-trigger');
-    if (galleryBtn) {
-        galleryBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openLightbox(card, 0);
-        });
-    }
+    if (galleryBtn) galleryBtn.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(card, 0); });
 });
 
 // ============================================
-// BEYOND ENGINEERING — photo lightbox
+// BEYOND ENGINEERING - photo lightbox
 // ============================================
 document.querySelectorAll('.beyond-clickable').forEach(img => {
     img.addEventListener('click', () => {
-        const group   = img.closest('.beyond-photos-pair');
-        const srcs    = JSON.parse(group.getAttribute('data-beyond-gallery'));
+        const group    = img.closest('.beyond-photos-pair');
+        const srcs     = JSON.parse(group.getAttribute('data-beyond-gallery'));
         const startIdx = parseInt(img.getAttribute('data-idx'), 10);
-
         lbItems = srcs.map(src => ({ type: 'image', src }));
         lbIndex = startIdx;
         buildThumbs();
