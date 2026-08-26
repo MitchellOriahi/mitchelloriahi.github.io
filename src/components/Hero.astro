@@ -7,7 +7,7 @@ import Picture from './Picture.astro';
     <!-- Soft wash behind the whole hero -->
     <div
         aria-hidden="true"
-        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(70%_60%_at_78%_18%,var(--color-marigold-wash),transparent_70%)]"
+        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(70%_60%_at_78%_18%,var(--color-accent-wash),transparent_70%)]"
     ></div>
 
     <div class="shell">
@@ -80,7 +80,7 @@ import Picture from './Picture.astro';
 
             <!-- ============ portrait ============ -->
             <div class="relative mx-auto w-full max-w-[26rem] lg:max-w-[30rem]" data-parallax-scope>
-                <!-- Organic marigold shape the cutout sits in front of. Slightly
+                <!-- Organic accent shape the cutout sits in front of. Slightly
                      narrower than the portrait so his shoulders overlap its
                      edges and the composition reads as one piece. -->
                 <div
@@ -96,7 +96,7 @@ import Picture from './Picture.astro';
                 ></div>
                 <div
                     aria-hidden="true"
-                    class="absolute -left-4 top-[55%] hidden h-3 w-3 rounded-full bg-marigold-deep/60 lg:block"
+                    class="absolute -left-4 top-[55%] hidden h-3 w-3 rounded-full bg-accent-deep/60 lg:block"
                 ></div>
 
                 <Picture
@@ -107,7 +107,7 @@ import Picture from './Picture.astro';
                     ext={HERO.portrait.ext}
                     alt={HERO.portrait.alt}
                     sizes="(min-width: 1024px) 30rem, 26rem"
-                    class="relative w-full select-none [filter:drop-shadow(0_24px_40px_rgba(23,20,16,0.18))]"
+                    class="relative w-full select-none [filter:drop-shadow(0_24px_40px_rgba(24,38,53,0.18))]"
                     eager
                 />
 

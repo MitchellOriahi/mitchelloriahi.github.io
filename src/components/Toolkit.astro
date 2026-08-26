@@ -23,7 +23,7 @@ import { TOOLKIT, EDUCATION } from '../data/site';
             {TOOLKIT.map((group, i) => (
                 <div class="card h-full p-6" data-reveal data-reveal-delay={String(i * 0.05)}>
                     <h3 class="mb-5 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-mute">
-                        <span class="h-1.5 w-1.5 rounded-full bg-marigold"></span>
+                        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
                         {group.name}
                     </h3>
                     <ul class="flex flex-wrap gap-2" role="list">
@@ -117,7 +117,7 @@ import { TOOLKIT, EDUCATION } from '../data/site';
 
                 <div aria-hidden="true" class="hidden w-px bg-rule-soft lg:block"></div>
 
-                <!-- coursework -->
+                <!-- coursework + certifications -->
                 <div>
                     <h4 class="mb-4 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-mute">
                         Relevant coursework
@@ -125,6 +125,18 @@ import { TOOLKIT, EDUCATION } from '../data/site';
                     <ul class="flex flex-wrap gap-2" role="list">
                         {EDUCATION.coursework.map((course) => (
                             <li class="chip">{course}</li>
+                        ))}
+                    </ul>
+
+                    <h4 class="mt-6 mb-3 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-mute">
+                        Certifications
+                    </h4>
+                    <ul class="flex flex-wrap gap-2" role="list">
+                        {EDUCATION.certs.map((cert) => (
+                            <li class="chip">
+                                <img src="/img/tech/matlab.svg" alt="" width="14" height="14" class="h-3.5 w-3.5" aria-hidden="true" loading="lazy" />
+                                {cert.name} · {cert.org} {cert.year}
+                            </li>
                         ))}
                     </ul>
                 </div>

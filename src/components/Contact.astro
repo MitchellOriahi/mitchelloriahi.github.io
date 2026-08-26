@@ -39,7 +39,7 @@ const paths: Record<string, string> = {
 <section id="contact" class="band-ink relative overflow-hidden pt-24 md:pt-36">
     <div
         aria-hidden="true"
-        class="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_50%_100%,rgba(217,131,36,0.2),transparent_65%)]"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_50%_100%,rgba(47,174,118,0.2),transparent_65%)]"
     ></div>
 
     <div class="shell relative">
@@ -50,7 +50,7 @@ const paths: Record<string, string> = {
                 <p class="eyebrow mb-6" data-reveal>Contact</p>
 
                 <h2 class="display-lg mb-7 text-bone" data-reveal-clip>
-                    Say <span class="text-marigold italic">hello</span>.
+                    Say <span class="text-accent italic">hello</span>.
                 </h2>
 
                 <p class="lede mb-10 text-bone/65" data-reveal data-reveal-delay="0.1">
@@ -63,7 +63,7 @@ const paths: Record<string, string> = {
                 <div class="flex flex-wrap items-center gap-3" data-reveal data-reveal-delay="0.15">
                     <a
                         href={`mailto:${SITE.email}`}
-                        class="btn btn-amber"
+                        class="btn btn-accent"
                         data-magnetic="0.22"
                     >
                         Email me
@@ -98,7 +98,7 @@ const paths: Record<string, string> = {
                             rel={link.href.startsWith('http') || link.href.endsWith('.pdf') ? 'noopener' : undefined}
                             class="group flex items-center gap-5 border-t border-bone/15 py-6 transition-colors duration-400 last:border-b hover:bg-bone/[0.04]"
                         >
-                            <span class="grid h-11 w-11 flex-none place-items-center rounded-full border border-bone/20 text-bone/70 transition-colors duration-400 group-hover:border-marigold group-hover:bg-marigold group-hover:text-ink">
+                            <span class="grid h-11 w-11 flex-none place-items-center rounded-full border border-bone/20 text-bone/70 transition-colors duration-400 group-hover:border-accent group-hover:bg-accent group-hover:text-ink">
                                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={paths[link.icon]} />
                             </span>
                             <span class="min-w-0">
@@ -107,7 +107,7 @@ const paths: Record<string, string> = {
                                 </span>
                                 <span class="block truncate text-[0.98rem] text-bone">{link.value}</span>
                             </span>
-                            <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-none text-bone/30 transition-all duration-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-marigold" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-none text-bone/30 transition-all duration-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" aria-hidden="true">
                                 <path d="M4 12 12 4M6 4h6v6" />
                             </svg>
                         </a>

@@ -3,30 +3,31 @@
 /* ============================================================================
    DESIGN SYSTEM
    ----------------------------------------------------------------------------
-   Warm editorial. Bone paper, deep ink, one marigold accent.
+   Warm editorial, navy ink. Warm white paper, deep navy text, emerald accent.
    Tailwind v4 reads @theme and generates utilities from it, so these tokens are
    available both as CSS variables and as classes like text-ink or bg-bone.
    ========================================================================== */
 
 @theme {
     /* -- colour ----------------------------------------------------------- */
-    --color-bone: #f6f2ea;
-    --color-bone-deep: #ece5d8;
-    --color-paper: #fffdf9;
+    --color-bone: #faf7f2;
+    --color-bone-deep: #f0ebe2;
+    --color-paper: #ffffff;
 
-    --color-ink: #1d1712;
-    --color-ink-soft: #423c33;
-    --color-ink-mute: #6f675b;
-    --color-ink-faint: #726b62;
+    --color-ink: #182635;
+    --color-ink-soft: #3c4c5e;
+    --color-ink-mute: #5f6e7d;
+    --color-ink-faint: #61707f;
 
-    --color-rule: #ddd5c6;
-    --color-rule-soft: #e8e1d4;
+    --color-rule: #dcd7cd;
+    --color-rule-soft: #eae6dd;
 
-    --color-marigold: #d98324;
-    --color-marigold-deep: #965c12;
-    --color-marigold-wash: #f9ecd4;
+    --color-accent: #2fae76;
+    --color-accent-deep: #157a52;
+    --color-accent-wash: #e3f2ea;
 
-    --color-clay: #b4522f;
+    /* legacy name; now the steel blue used by the second featured card */
+    --color-clay: #41729f;
     --color-moss: #4f6b4a;
 
     /* Texas Tech scarlet, used as an accent only (borders, washes, marks),
@@ -102,7 +103,7 @@
     }
 
     ::selection {
-        background: var(--color-marigold);
+        background: var(--color-accent);
         color: var(--color-ink);
     }
 
@@ -155,7 +156,7 @@
         width: 0.42rem;
         height: 0.42rem;
         border-radius: 50%;
-        background: var(--color-marigold);
+        background: var(--color-accent);
         flex: none;
     }
 
@@ -208,7 +209,7 @@
     /* Italic serif for the accented words inside display headings. */
     .accent-word {
         font-style: italic;
-        color: var(--color-marigold-deep);
+        color: var(--color-accent-deep);
     }
 
     /* -- buttons ---------------------------------------------------------- */
@@ -236,14 +237,14 @@
         color: var(--color-bone);
         border: 1px solid var(--color-ink);
     }
-    .btn-solid:hover { background: var(--color-marigold-deep); border-color: var(--color-marigold-deep); }
+    .btn-solid:hover { background: var(--color-accent-deep); border-color: var(--color-accent-deep); }
 
-    .btn-amber {
-        background: var(--color-marigold);
+    .btn-accent {
+        background: var(--color-accent);
         color: var(--color-ink);
-        border: 1px solid var(--color-marigold);
+        border: 1px solid var(--color-accent);
     }
-    .btn-amber:hover { background: var(--color-ink); color: var(--color-bone); border-color: var(--color-ink); }
+    .btn-accent:hover { background: var(--color-ink); color: var(--color-bone); border-color: var(--color-ink); }
 
     .btn-ghost {
         background: transparent;
@@ -270,10 +271,10 @@
     .btn-solid .btn-badge { background: var(--color-bone); }
     .btn-solid .btn-badge svg { color: var(--color-ink); }
 
-    .btn-amber .btn-badge { background: var(--color-ink); }
-    .btn-amber .btn-badge svg { color: var(--color-bone); }
-    .btn-amber:hover .btn-badge { background: var(--color-marigold); }
-    .btn-amber:hover .btn-badge svg { color: var(--color-ink); }
+    .btn-accent .btn-badge { background: var(--color-ink); }
+    .btn-accent .btn-badge svg { color: var(--color-bone); }
+    .btn-accent:hover .btn-badge { background: var(--color-accent); }
+    .btn-accent:hover .btn-badge svg { color: var(--color-ink); }
 
     .btn-ghost .btn-badge { background: var(--color-ink); }
     .btn-ghost .btn-badge svg { color: var(--color-bone); }
@@ -329,7 +330,7 @@
 
     /* -- organic blob behind the portrait --------------------------------- */
     .blob {
-        background: var(--color-marigold);
+        background: var(--color-accent);
         border-radius: 48% 52% 42% 58% / 55% 45% 55% 45%;
     }
 
@@ -383,7 +384,7 @@
         bottom: 0.15rem;
         height: 1.5px;
         border-radius: 2px;
-        background: var(--color-marigold);
+        background: var(--color-accent);
         transform: scaleX(0);
         transform-origin: left center;
         transition: transform 0.5s var(--ease-out-expo);
@@ -424,11 +425,11 @@
     /* Produced by src/lib/highlight.ts from **marked** content strings. */
     .hl {
         font-weight: 650;
-        color: var(--color-marigold-deep);
+        color: var(--color-accent-deep);
     }
 
     .band-ink .hl {
-        color: var(--color-marigold);
+        color: var(--color-accent);
         font-weight: 600;
     }
 
@@ -599,7 +600,7 @@
         cursor: pointer;
         transition: background-color 0.3s var(--ease-out-expo);
     }
-    .lightbox .lb-nav:hover { background: var(--color-marigold); color: var(--color-ink); }
+    .lightbox .lb-nav:hover { background: var(--color-accent); color: var(--color-ink); }
     .lightbox .lb-prev { left: 0.25rem; }
     .lightbox .lb-next { right: 0.25rem; }
     .lightbox .lb-nav[hidden] { display: none; }
@@ -620,7 +621,7 @@
         height: 2px;
         border-radius: 2px;
         margin: 0 auto 1.5rem;
-        background: var(--color-marigold);
+        background: var(--color-accent);
     }
 
     .scripture blockquote {
@@ -664,7 +665,7 @@
         border: 1px solid var(--color-rule-soft);
         border-radius: 6px;
         background: var(--color-paper);
-        box-shadow: 0 10px 24px -12px rgba(29, 23, 18, 0.35);
+        box-shadow: 0 10px 24px -12px rgba(24, 38, 53, 0.35);
         cursor: zoom-in;
         transition: transform 0.5s var(--ease-out-expo),
                     box-shadow 0.5s var(--ease-out-expo);
@@ -687,7 +688,7 @@
 
     .snap-print:hover {
         z-index: 3;
-        box-shadow: 0 18px 36px -14px rgba(29, 23, 18, 0.45);
+        box-shadow: 0 18px 36px -14px rgba(24, 38, 53, 0.45);
     }
 
     .snap-print:focus-visible {

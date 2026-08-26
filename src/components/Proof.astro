@@ -80,10 +80,22 @@ import { PROOF, TICKER } from '../data/site';
                 <ul class="marquee__track" role="list" aria-hidden={copy === 1 ? 'true' : undefined}>
                     {TICKER.map((tech) => (
                         <li class="flex flex-none items-center gap-12">
-                            <span class="font-mono text-[0.78rem] uppercase tracking-[0.14em] text-ink-mute">
-                                {tech}
+                            <span class="flex items-center gap-2.5">
+                                {tech.icon && (
+                                    <img
+                                        src={`/img/tech/${tech.icon}.svg`}
+                                        alt=""
+                                        width="18" height="18"
+                                        class="h-[18px] w-[18px] object-contain"
+                                        loading="lazy" decoding="async"
+                                        aria-hidden="true"
+                                    />
+                                )}
+                                <span class="font-mono text-[0.78rem] uppercase tracking-[0.14em] text-ink-mute">
+                                    {tech.label}
+                                </span>
                             </span>
-                            <span aria-hidden="true" class="h-1 w-1 rounded-full bg-marigold"></span>
+                            <span aria-hidden="true" class="h-1 w-1 rounded-full bg-accent"></span>
                         </li>
                     ))}
                 </ul>

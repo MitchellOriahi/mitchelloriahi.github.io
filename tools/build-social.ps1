@@ -32,12 +32,12 @@ New-Item -ItemType Directory -Force -Path $tmp | Out-Null
 $W = 1200; $H = 630
 
 # Mirrors the design tokens in src/styles/global.css
-$bone     = '#f6f2ea'
-$ink      = '#1d1712'
-$inkSoft  = '#423c33'
-$inkMute  = '#6f675b'
-$marigold = '#d98324'
-$rule     = '#ddd5c6'
+$bone     = '#faf7f2'
+$ink      = '#182635'
+$inkSoft  = '#3c4c5e'
+$inkMute  = '#5f6e7d'
+$marigold = '#2fae76'
+$rule     = '#dcd7cd'
 
 # Georgia stands in for Instrument Serif, which is only loaded in the browser.
 $fontSerif = 'C:/Windows/Fonts/georgiab.ttf'
@@ -66,7 +66,7 @@ Invoke-Magick $base -fill $marigold `
 Invoke-Magick $base `
     -fill $marigold -draw 'roundrectangle 80,92 176,99 4,4' `
     -font $fontMono -pointsize 22 -fill $inkMute `
-        -draw "text 80,152 'EMBEDDED AND SOFTWARE ENGINEER'" `
+        -draw "text 80,152 'COMPUTER ENGINEER'" `
     -font $fontSerif -pointsize 92 -fill $ink `
         -draw "text 76,266 'Mitchell'" `
         -draw "text 76,366 'Oriahi'" `

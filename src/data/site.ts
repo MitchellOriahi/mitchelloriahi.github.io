@@ -57,7 +57,7 @@ export interface FeaturedProject {
     gallery: ImageRef[];
     /** Shown inline at natural aspect, never cropped. */
     video?: VideoRef;
-    accent: 'marigold' | 'clay' | 'moss';
+    accent: 'accent' | 'clay' | 'moss';
 }
 
 export interface CompactProject {
@@ -93,8 +93,8 @@ export interface Role {
 export const SITE = {
     name: 'Mitchell Oriahi',
     shortName: 'Mitchell',
-    title: 'Mitchell Oriahi, Embedded and Software Engineer',
-    role: 'Embedded and Software Engineer',
+    title: 'Mitchell Oriahi, Computer Engineer',
+    role: 'Computer Engineer',
     description:
         'Mitchell Oriahi builds from the circuit board to the cloud: microcontrollers, custom hardware, and the software and pipelines around them. Computer Engineering at Texas Tech, graduating May 2027.',
     origin: 'https://mitchelloriahi.github.io',
@@ -135,7 +135,7 @@ const LOGO_TTU: ImageRef = {
    ------------------------------------------------------------------------ */
 export const HERO = {
     greeting: "Hi, I'm Mitchell.",
-    // `accent` renders in italic marigold inside the display heading.
+    // `accent` renders in italic accent inside the display heading.
     headlineBefore: 'From the circuit board ',
     headlineAccent: 'to the cloud',
     headlineAfter: '.',
@@ -200,12 +200,40 @@ export const PROOF: ProofCard[] = [
     },
 ];
 
-/** Scrolling technology ticker under the proof squares. */
-export const TICKER = [
-    'Microcontrollers', 'FreeRTOS', 'C', 'Python', 'Azure DevOps', 'CI/CD',
-    'PCB design', 'TouchGFX', 'Verilog', 'Cosmos DB', 'MySQL', 'Linux',
-    'Oscilloscope', 'AutoCAD', 'LTspice', 'Java', 'SPI', 'I2C', 'UART', 'DMA',
-] as const;
+/**
+ * Scrolling technology ticker under the proof squares.
+ * `icon` names an SVG in /public/img/tech (from devicon); plain concepts and
+ * tools without a recognizable mark stay text only.
+ */
+export interface TickerItem {
+    label: string;
+    icon?: string;
+}
+
+export const TICKER: TickerItem[] = [
+    { label: 'Microcontrollers' },
+    { label: 'C', icon: 'c' },
+    { label: 'Python', icon: 'python' },
+    { label: 'FreeRTOS' },
+    { label: 'Azure DevOps', icon: 'azuredevops' },
+    { label: 'Git', icon: 'git' },
+    { label: 'CI/CD' },
+    { label: 'PCB design' },
+    { label: 'Cosmos DB', icon: 'azure' },
+    { label: 'MySQL', icon: 'mysql' },
+    { label: 'Linux', icon: 'linux' },
+    { label: 'Java', icon: 'java' },
+    { label: 'MATLAB', icon: 'matlab' },
+    { label: 'TouchGFX' },
+    { label: 'Verilog' },
+    { label: 'Oscilloscope' },
+    { label: 'AutoCAD' },
+    { label: 'LTspice' },
+    { label: 'SPI' },
+    { label: 'I2C' },
+    { label: 'UART' },
+    { label: 'DMA' },
+];
 
 /* ---------------------------------------------------------------------------
    EXPERIENCE
@@ -268,7 +296,7 @@ export const FEATURED: FeaturedProject[] = [
         role: 'Team Lead',
         org: 'TTU ECE 3334',
         period: 'Jan 2026 to May 2026',
-        accent: 'marigold',
+        accent: 'accent',
         summary: `A GPS tracker that packetizes its own position and puts it on the
                   air over VHF and UHF radio, built on an STM32 NUCLEO board.`,
         detail: [
@@ -472,7 +500,7 @@ export const TOOLKIT = [
     },
     {
         name: 'Tools and lab',
-        items: ['Git', 'Azure DevOps', 'CI/CD', 'MySQL', 'Cosmos DB', 'REST APIs', 'Linux', 'Oscilloscope', 'LTspice', 'AutoCAD'],
+        items: ['Git', 'Azure DevOps', 'CI/CD', 'MySQL', 'Cosmos DB', 'REST APIs', 'Linux', 'MATLAB', 'Oscilloscope', 'LTspice', 'AutoCAD'],
     },
 ] as const;
 
@@ -488,6 +516,10 @@ export const EDUCATION = {
     gpa: '3.46',
     graduation: 'May 2027',
     honors: ["President's Honor List", "Dean's Honor List"],
+    certs: [
+        { name: 'MATLAB Onramp', org: 'MathWorks', year: '2025' },
+        { name: 'Machine Learning Onramp', org: 'MathWorks', year: '2025' },
+    ],
     coursework: [
         'Embedded Systems',
         'Microcontrollers with Assembly',
@@ -547,7 +579,7 @@ export interface Pastime {
 export const BEYOND: Pastime[] = [
     {
         title: 'Training',
-        body: 'The gym is a fixed part of my week, and I train Muay Thai and jiu jitsu. It is the fastest way I know to stay sharp.',
+        body: 'The gym is a regular part of my week, and I train Muay Thai and jiu jitsu. It keeps me disciplined and around good people.',
         images: [
             { slug: 'beyond-gym', widths: [400, 800], w: 800, h: 1399, alt: 'Training at the gym' },
             { slug: 'beyond-mma', widths: [400, 800, 1400], w: 1400, h: 1050, alt: 'With the Muay Thai and jiu jitsu team' },
@@ -555,7 +587,7 @@ export const BEYOND: Pastime[] = [
     },
     {
         title: 'Cooking',
-        body: 'I cook most days. It scratches the same itch as engineering: read the system, adjust one variable, taste the result.',
+        body: "I cook most days and I'm always trying a new recipe. Cooking for people you care about never gets old.",
         images: [
             { slug: 'beyond-cooking-a', widths: [400, 800, 1400], w: 1400, h: 1867, alt: 'Cooking at home' },
             { slug: 'beyond-cooking-b', widths: [400, 800, 1400], w: 1400, h: 1867, alt: 'A finished dish' },
@@ -563,7 +595,7 @@ export const BEYOND: Pastime[] = [
     },
     {
         title: 'Trails',
-        body: 'Good trails and long views. Getting away from a screen is how I reset between builds.',
+        body: 'Good trails and long views. A few hours outside clears my head better than anything else.',
         images: [
             { slug: 'beyond-hiking-a', widths: [400, 800, 1400], w: 1400, h: 1050, alt: 'Hiking a ridgeline' },
             { slug: 'beyond-hiking-b', widths: [400, 800, 1400], w: 1400, h: 1867, alt: 'Resting on a hike' },

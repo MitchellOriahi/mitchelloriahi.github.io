@@ -38,8 +38,24 @@ const personSchema = {
         addressCountry: 'US',
     },
     knowsAbout: [
-        'Embedded Systems', 'Firmware', 'STM32', 'FreeRTOS', 'C',
-        'Python', 'Azure DevOps', 'CI/CD', 'PCB Design',
+        'Embedded Systems', 'Firmware', 'STM32', 'MSP430', 'FreeRTOS', 'C',
+        'Python', 'Java', 'Azure DevOps', 'CI/CD', 'Test Automation',
+        'PCB Design', 'MATLAB', 'Signal Processing', 'Data Engineering',
+        'MySQL', 'Azure Cosmos DB', 'Semiconductor Fabrication',
+    ],
+    hasCredential: [
+        {
+            '@type': 'EducationalOccupationalCredential',
+            name: 'MATLAB Onramp',
+            credentialCategory: 'certificate',
+            recognizedBy: { '@type': 'Organization', name: 'MathWorks' },
+        },
+        {
+            '@type': 'EducationalOccupationalCredential',
+            name: 'Machine Learning Onramp',
+            credentialCategory: 'certificate',
+            recognizedBy: { '@type': 'Organization', name: 'MathWorks' },
+        },
     ],
 };
 ---
@@ -54,7 +70,7 @@ const personSchema = {
 <link rel="canonical" href={canonical} />
 {noindex && <meta name="robots" content="noindex" />}
 
-<meta name="theme-color" content="#f6f2ea" />
+<meta name="theme-color" content="#faf7f2" />
 <meta name="author" content={SITE.name} />
 
 <meta property="og:type" content="profile" />
