@@ -1,0 +1,115 @@
+---
+import { ABOUT, HOW_I_WORK, BEYOND, SITE } from '../data/site';
+import Picture from './Picture.astro';
+import type { ImageRef } from '../data/site';
+
+const full = (img: ImageRef) =>
+    `/img/${img.slug}-${img.widths[img.widths.length - 1]}.${img.ext ?? 'jpg'}`;
+
+const expandIcon = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>`;
+---
+
+<section id="about" class="py-24 md:py-32">
+    <div class="shell">
+
+        <div class="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+
+            <!-- ---------- the story ---------- -->
+            <div>
+                <p class="eyebrow mb-5" data-reveal>About</p>
+
+                <h2 class="display-lg mb-8" data-reveal-clip>
+                    More than a <span class="accent-word">résumé</span>.
+                </h2>
+
+                <div class="flex flex-col gap-5 text-ink-soft" data-reveal data-reveal-delay="0.1">
+                    {ABOUT.paragraphs.map((para) => <p>{para}</p>)}
+                </div>
+
+                <div class="mt-9 flex flex-wrap gap-3" data-reveal data-reveal-delay="0.15">
+                    <a href="#contact" class="btn btn-solid" data-magnetic="0.2">
+                        Get in touch
+                        <span class="btn-badge" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 12 12 4M6 4h6v6" />
+                            </svg>
+                        </span>
+                    </a>
+                    <a href={SITE.linkedin} target="_blank" rel="noopener" class="btn btn-ghost">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10.5V17M8 7.5v.01M12 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- ---------- beyond the bench, every photo clickable ---------- -->
+            <div data-parallax-scope>
+                <p class="eyebrow mb-6" data-reveal>Beyond the bench</p>
+
+                <div class="flex flex-col gap-4">
+                    {BEYOND.map((item, i) => (
+                        <article
+                            class="card group overflow-hidden p-4 transition-colors duration-500 hover:border-rule sm:p-5"
+                            data-reveal
+                            data-reveal-delay={String(i * 0.06)}
+                        >
+                            <div class="flex items-center gap-5 sm:gap-6">
+                                <div class="grid w-40 flex-none grid-cols-2 gap-2 sm:w-48">
+                                    {item.images.map((img) => (
+                                        <button
+                                            type="button"
+                                            class="lb-trigger rounded-xl"
+                                            data-lb-group={`beyond-${i}`}
+                                            data-lb-type="image"
+                                            data-lb-full={full(img)}
+                                            data-lb-caption={img.alt}
+                                            aria-label={`View larger: ${img.alt}`}
+                                        >
+                                            <Picture
+                                                slug={img.slug}
+                                                widths={img.widths}
+                                                width={img.w}
+                                                height={img.h}
+                                                ext={img.ext}
+                                                alt={img.alt}
+                                                sizes="96px"
+                                                class="aspect-square w-full rounded-xl object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                                            />
+                                            <span class="lb-hint" set:html={expandIcon} />
+                                        </button>
+                                    ))}
+                                </div>
+                                <div>
+                                    <h3 class="mb-1.5 font-display text-2xl leading-none">{item.title}</h3>
+                                    <p class="text-sm leading-relaxed text-ink-mute">{item.body}</p>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <!-- ---------- how I work: small, human, zero jargon ---------- -->
+        <div class="mt-16 md:mt-20">
+            <p class="eyebrow mb-6" data-reveal>How I work</p>
+            <ul class="grid gap-4 sm:grid-cols-3" role="list">
+                {HOW_I_WORK.map((item, i) => (
+                    <li
+                        class="card flex flex-col gap-2 p-5 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-rule"
+                        data-reveal
+                        data-reveal-delay={String(i * 0.06)}
+                    >
+                        <p class="font-display text-xl leading-tight">
+                            <span class="mr-2 font-mono text-[0.68rem] tracking-[0.14em] text-marigold-deep">0{i + 1}</span>
+                            {item.title}
+                        </p>
+                        <p class="text-sm leading-relaxed text-ink-mute">{item.body}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>

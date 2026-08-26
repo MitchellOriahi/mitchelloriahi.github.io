@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+
+<Base title="Page not found · Mitchell Oriahi" description="That page does not exist." noindex>
+    <main class="grid min-h-screen place-items-center px-[var(--gutter)] py-24">
+        <div class="w-full max-w-[46rem]">
+            <p class="eyebrow mb-8">Error 404</p>
+
+            <p class="display-xl mb-8 leading-[0.82]">
+                Nothing <span class="accent-word">here</span>.
+            </p>
+
+            <p class="lede mb-10">
+                The link is probably out of date, or the address has a typo in it.
+                Nothing is broken on your end.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+                <a href="/" class="btn btn-solid" data-magnetic="0.2">
+                    Back to the homepage
+                    <span class="btn-badge" aria-hidden="true">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12 12 4M6 4h6v6" />
+                        </svg>
+                    </span>
+                </a>
+                <a href="/#work" class="btn btn-ghost">See the work</a>
+                <a href={`mailto:${SITE.email}`} class="btn btn-ghost">Email me</a>
+            </div>
+        </div>
+    </main>
+</Base>

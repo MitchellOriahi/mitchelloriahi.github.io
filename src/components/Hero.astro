@@ -1,0 +1,151 @@
+---
+import { HERO, SITE } from '../data/site';
+import Picture from './Picture.astro';
+---
+
+<section id="top" class="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+    <!-- Soft wash behind the whole hero -->
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(70%_60%_at_78%_18%,var(--color-marigold-wash),transparent_70%)]"
+    ></div>
+
+    <div class="shell">
+        <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+
+            <!-- ============ copy ============ -->
+            <div>
+                <p class="eyebrow mb-6" data-reveal data-reveal-delay="0.05">
+                    {SITE.role}
+                </p>
+
+                <p
+                    class="mb-4 text-lg font-medium text-ink-soft"
+                    data-reveal
+                    data-reveal-delay="0.1"
+                >
+                    <span class="inline-block origin-[70%_70%] animate-[wave_2.6s_ease-in-out_1.2s_2]">👋</span>
+                    {HERO.greeting}
+                </p>
+
+                <h1 class="display-hero mb-7" data-reveal-clip>
+                    {HERO.headlineBefore}<span class="accent-word">{HERO.headlineAccent}</span>{HERO.headlineAfter}
+                </h1>
+
+                <p class="lede mb-8" data-reveal data-reveal-delay="0.15">
+                    {HERO.lede}
+                </p>
+
+                <div class="mb-10 flex flex-wrap items-center gap-3" data-reveal data-reveal-delay="0.2">
+                    <a href="#contact" class="btn btn-solid" data-magnetic="0.22">
+                        Let's talk
+                        <span class="btn-badge" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 12 12 4M6 4h6v6" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href={SITE.resume} target="_blank" rel="noopener" class="btn btn-ghost">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3v12m0 0 4-4m-4 4-4-4" /><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                        </svg>
+                        Résumé
+                    </a>
+
+                    <span class="chip chip-live ml-1">
+                        <i aria-hidden="true"></i>
+                        {SITE.availability}
+                    </span>
+                </div>
+
+                <!-- quick facts -->
+                <dl class="flex flex-wrap gap-x-10 gap-y-6" data-reveal data-reveal-delay="0.25">
+                    {HERO.facts.map((fact) => (
+                        <div>
+                            <dd class="display-md leading-none">
+                                {fact.value === '3.46' ? (
+                                    <span data-count="3.46" data-decimals="2">3.46</span>
+                                ) : fact.value === '9' ? (
+                                    <span data-count="9">9</span>
+                                ) : (
+                                    fact.value
+                                )}
+                            </dd>
+                            <dt class="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-mute">
+                                {fact.label}
+                            </dt>
+                        </div>
+                    ))}
+                </dl>
+            </div>
+
+            <!-- ============ portrait ============ -->
+            <div class="relative mx-auto w-full max-w-[26rem] lg:max-w-[30rem]" data-parallax-scope>
+                <!-- Organic marigold shape the cutout sits in front of. Slightly
+                     narrower than the portrait so his shoulders overlap its
+                     edges and the composition reads as one piece. -->
+                <div
+                    aria-hidden="true"
+                    class="blob absolute inset-x-[6%] top-[9%] bottom-[2%]"
+                    data-parallax="8"
+                ></div>
+
+                <!-- thin ring detail -->
+                <div
+                    aria-hidden="true"
+                    class="absolute -right-6 top-[14%] hidden h-36 w-36 rounded-full border border-ink/12 lg:block"
+                ></div>
+                <div
+                    aria-hidden="true"
+                    class="absolute -left-4 top-[55%] hidden h-3 w-3 rounded-full bg-marigold-deep/60 lg:block"
+                ></div>
+
+                <Picture
+                    slug={HERO.portrait.slug}
+                    widths={HERO.portrait.widths}
+                    width={HERO.portrait.w}
+                    height={HERO.portrait.h}
+                    ext={HERO.portrait.ext}
+                    alt={HERO.portrait.alt}
+                    sizes="(min-width: 1024px) 30rem, 26rem"
+                    class="relative w-full select-none [filter:drop-shadow(0_24px_40px_rgba(23,20,16,0.18))]"
+                    eager
+                />
+
+                <!-- rotating badge -->
+                <a
+                    href="#contact"
+                    aria-label="Get in touch"
+                    class="group absolute bottom-4 left-0 grid h-24 w-24 place-items-center rounded-full bg-ink text-bone transition-transform duration-500 hover:scale-105 md:h-28 md:w-28 lg:-left-8"
+                >
+                    <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full animate-[spin_18s_linear_infinite] motion-reduce:animate-none" aria-hidden="true">
+                        <defs>
+                            <path id="badge-arc" d="M50,50 m-33,0 a33,33 0 1,1 66,0 a33,33 0 1,1 -66,0" />
+                        </defs>
+                        <text class="fill-current font-mono text-[10.5px] uppercase tracking-[0.24em]">
+                            <textPath href="#badge-arc">Let's talk • Let's talk • </textPath>
+                        </text>
+                    </svg>
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="relative transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                        <path d="M4 12 12 4M6 4h6v6" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes wave {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(18deg); }
+        50% { transform: rotate(-8deg); }
+        75% { transform: rotate(14deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-\[wave_2\.6s_ease-in-out_1\.2s_2\] { animation: none !important; }
+    }
+</style>

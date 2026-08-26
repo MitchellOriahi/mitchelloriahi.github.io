@@ -1,0 +1,128 @@
+---
+import { TOOLKIT, EDUCATION } from '../data/site';
+---
+
+<section id="toolkit" class="py-24 md:py-32">
+    <div class="shell">
+
+        <header class="mb-14 md:mb-16">
+            <p class="eyebrow mb-5" data-reveal>Toolkit</p>
+            <div class="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+                <h2 class="display-lg" data-reveal-clip>
+                    What I <span class="accent-word">work with</span>.
+                </h2>
+                <p class="text-ink-mute md:pb-2" data-reveal data-reveal-delay="0.1">
+                    The languages, hardware, and tools I reach for, and the
+                    degree behind them.
+                </p>
+            </div>
+        </header>
+
+        <div class="grid gap-6 lg:grid-cols-[1.35fr_0.65fr] lg:gap-8">
+
+            <!-- ---------- skills ---------- -->
+            <div class="grid items-start gap-6 sm:grid-cols-2">
+                {TOOLKIT.map((group, i) => (
+                    <div class="card p-6 md:p-7" data-reveal data-reveal-delay={String(i * 0.05)}>
+                        <h3 class="mb-5 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-mute">
+                            <span class="h-1.5 w-1.5 rounded-full bg-marigold"></span>
+                            {group.name}
+                        </h3>
+                        <ul class="flex flex-wrap gap-2" role="list">
+                            {group.items.map((item) => (
+                                <li class="chip">{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+
+            <!-- ---------- education, in Texas Tech colors ---------- -->
+            <aside
+                class="card relative flex flex-col overflow-hidden p-6 md:p-8"
+                data-reveal
+                data-reveal-delay="0.1"
+            >
+                <!-- scarlet identity: top rule + soft wash + Double T watermark -->
+                <span aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-ttured"></span>
+                <div
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_50%_at_100%_0%,rgba(204,0,0,0.07),transparent_60%)]"
+                ></div>
+                <img
+                    src="/img/logo-ttu-192.png"
+                    alt=""
+                    width="192" height="225"
+                    class="pointer-events-none absolute -bottom-8 -right-8 w-40 opacity-[0.06] grayscale"
+                    loading="lazy" decoding="async"
+                    aria-hidden="true"
+                />
+
+                <div class="relative">
+                    <h3 class="mb-6 flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-mute">
+                        <span class="h-1.5 w-1.5 rounded-full bg-ttured"></span>
+                        Education
+                    </h3>
+
+                    <div class="mb-1 flex items-center gap-3">
+                        <img
+                            src="/img/logo-ttu-192.png"
+                            srcset="/img/logo-ttu-96.png 96w, /img/logo-ttu-192.png 192w"
+                            sizes="34px"
+                            width="192" height="225"
+                            alt="Texas Tech University Double T"
+                            class="h-9 w-auto object-contain"
+                            loading="lazy" decoding="async"
+                        />
+                        <p class="display-md">{EDUCATION.school}</p>
+                    </div>
+                    <p class="mb-6 text-sm text-ink-mute">
+                        {EDUCATION.college} · {EDUCATION.location}
+                    </p>
+
+                    <dl class="mb-6 flex flex-col gap-4 border-y border-rule-soft py-6">
+                        <div class="flex items-baseline justify-between gap-4">
+                            <dt class="text-sm text-ink-mute">Degree</dt>
+                            <dd class="text-right text-sm font-semibold">{EDUCATION.degree}</dd>
+                        </div>
+                        <div class="flex items-baseline justify-between gap-4">
+                            <dt class="text-sm text-ink-mute">Track</dt>
+                            <dd class="text-right text-sm font-semibold">{EDUCATION.track}</dd>
+                        </div>
+                        <div class="flex items-baseline justify-between gap-4">
+                            <dt class="text-sm text-ink-mute">GPA</dt>
+                            <dd class="text-right font-display text-2xl leading-none">
+                                <span data-count={EDUCATION.gpa} data-decimals="2">{EDUCATION.gpa}</span>
+                                <span class="text-base text-ink-faint"> / 4.00</span>
+                            </dd>
+                        </div>
+                        <div class="flex items-baseline justify-between gap-4">
+                            <dt class="text-sm text-ink-mute">Graduating</dt>
+                            <dd class="text-right text-sm font-semibold">{EDUCATION.graduation}</dd>
+                        </div>
+                    </dl>
+
+                    <div class="mb-6 flex flex-wrap gap-2">
+                        {EDUCATION.honors.map((honor) => (
+                            <span class="chip border-ttured/30 bg-ttured/[0.06] font-semibold text-ink">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#cc0000" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m12 3 2.6 5.6 6 .8-4.4 4.2 1.1 6L12 16.8 6.7 19.6l1.1-6L3.4 9.4l6-.8Z" />
+                                </svg>
+                                {honor}
+                            </span>
+                        ))}
+                    </div>
+
+                    <h4 class="mb-3 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-faint">
+                        Relevant coursework
+                    </h4>
+                    <ul class="flex flex-wrap gap-2" role="list">
+                        {EDUCATION.coursework.map((course) => (
+                            <li class="chip">{course}</li>
+                        ))}
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
