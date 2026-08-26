@@ -149,7 +149,7 @@ export const HERO = {
         { value: 'May 2027', label: 'Graduating' },
     ],
     portrait: {
-        slug: 'portrait-cutout', widths: [600, 900, 1200], w: 1200, h: 1423,
+        slug: 'portrait-cutout', widths: [600, 900, 1200], w: 1200, h: 1433,
         ext: 'png' as const,
         alt: 'Mitchell Oriahi',
     },

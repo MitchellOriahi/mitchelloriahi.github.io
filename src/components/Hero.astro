@@ -63,7 +63,7 @@ import Picture from './Picture.astro';
                 <dl class="flex flex-wrap gap-x-10 gap-y-6" data-reveal data-reveal-delay="0.25">
                     {HERO.facts.map((fact) => (
                         <div>
-                            <dd class="display-md leading-none">
+                            <dd class="font-mono text-3xl font-semibold leading-none tracking-tight md:text-4xl">
                                 {fact.value === '3.46' ? (
                                     <span data-count="3.46" data-decimals="2">3.46</span>
                                 ) : (
@@ -107,7 +107,7 @@ import Picture from './Picture.astro';
                     ext={HERO.portrait.ext}
                     alt={HERO.portrait.alt}
                     sizes="(min-width: 1024px) 30rem, 26rem"
-                    class="relative w-full select-none [filter:drop-shadow(0_24px_40px_rgba(24,38,53,0.18))]"
+                    class="relative w-full select-none [filter:drop-shadow(0_14px_24px_rgba(24,38,53,0.10))]"
                     eager
                 />
 

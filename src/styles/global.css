@@ -329,8 +329,10 @@
     }
 
     /* -- organic blob behind the portrait --------------------------------- */
+    /* A step deeper than the accent so it reads as a backdrop, not a button;
+       the brighter accent is reserved for interactive and highlighted things. */
     .blob {
-        background: var(--color-accent);
+        background: color-mix(in oklab, var(--color-accent) 82%, var(--color-ink) 18%);
         border-radius: 48% 52% 42% 58% / 55% 45% 55% 45%;
     }
 
@@ -740,6 +742,53 @@
     }
 
     .will-animate { will-change: transform, opacity; }
+}
+
+/* ----------------------------------------------------------------------------
+   Print
+   ----------------------------------------------------------------------------
+   Recruiters save pages as PDFs. Strip the chrome and interactivity, keep the
+   content, and let cards break cleanly across pages.
+   -------------------------------------------------------------------------- */
+@media print {
+    body { background: #fff; }
+
+    .grain::before,
+    header:has(#site-nav),
+    #menu-panel,
+    .marquee,
+    video,
+    .lb-hint,
+    .filter-chip,
+    .btn,
+    [data-magnetic],
+    .lightbox {
+        display: none !important;
+    }
+
+    .band-ink {
+        background: #fff !important;
+        color: var(--color-ink) !important;
+    }
+
+    .card,
+    article,
+    li {
+        break-inside: avoid;
+    }
+
+    section {
+        padding-block: 1.5rem !important;
+    }
+
+    /* Surface the destination of the important links. */
+    a[href^='http']::after,
+    a[href^='mailto']::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.75em;
+        color: var(--color-ink-mute);
+        word-break: break-all;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
