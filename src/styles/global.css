@@ -604,48 +604,47 @@
     .lightbox .lb-next { right: 0.25rem; }
     .lightbox .lb-nav[hidden] { display: none; }
 
-    /* -- scripture band ----------------------------------------------------- */
+    /* -- scripture ---------------------------------------------------------- */
+    /* A quiet interlude, not a billboard: no background band, modest type, a
+       single short accent rule above the line. */
     .scripture {
         position: relative;
-        padding-block: clamp(4.5rem, 9vw, 8rem);
+        padding-block: clamp(3rem, 5.5vw, 4.5rem);
         text-align: center;
-        background: var(--color-marigold-wash);
-        border-block: 1px solid var(--color-rule-soft);
-        overflow: hidden;
+    }
+
+    .scripture::before {
+        content: '';
+        display: block;
+        width: 2.5rem;
+        height: 2px;
+        border-radius: 2px;
+        margin: 0 auto 1.5rem;
+        background: var(--color-marigold);
     }
 
     .scripture blockquote {
         font-family: var(--font-display);
         font-style: italic;
-        font-size: clamp(1.7rem, 3.6vw, 3rem);
-        line-height: 1.25;
-        letter-spacing: -0.02em;
-        max-width: 24ch;
+        font-weight: 450;
+        font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+        line-height: 1.35;
+        letter-spacing: -0.015em;
+        max-width: 34ch;
         margin-inline: auto;
         text-wrap: balance;
-        color: var(--color-ink);
+        color: var(--color-ink-soft);
     }
 
     .scripture cite {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-block-start: 1.75rem;
+        display: block;
+        margin-block-start: 0.9rem;
         font-family: var(--font-mono);
         font-style: normal;
-        font-size: 0.72rem;
-        letter-spacing: 0.2em;
+        font-size: 0.66rem;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: var(--color-marigold-deep);
-    }
-
-    .scripture cite::before,
-    .scripture cite::after {
-        content: '';
-        width: 2.25rem;
-        height: 1px;
-        background: var(--color-marigold-deep);
-        opacity: 0.45;
+        color: var(--color-ink-faint);
     }
 
     /* -- paper grain ------------------------------------------------------ */
