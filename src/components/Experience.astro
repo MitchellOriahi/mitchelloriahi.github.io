@@ -4,7 +4,7 @@ import Picture from './Picture.astro';
 import { highlight } from '../lib/highlight';
 ---
 
-<section id="experience" class="band-ink relative overflow-hidden py-24 md:py-32">
+<section id="experience" class="band-ink relative overflow-hidden pt-24 pb-14 md:pt-32 md:pb-16">
     <!-- warm glow so the dark band is not a flat rectangle -->
     <div
         aria-hidden="true"
@@ -75,16 +75,6 @@ import { highlight } from '../lib/highlight';
                         <p class="mb-5 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-bone/50">
                             {role.org} · {role.location} · {role.period}
                         </p>
-
-                        {role.metrics && (
-                            <ul class="mb-6 flex flex-wrap gap-2.5" role="list">
-                                {role.metrics.map((metric) => (
-                                    <li class="rounded-lg border border-marigold/30 bg-marigold/[0.08] px-3.5 py-2 font-mono text-[0.72rem] tracking-[0.06em] text-marigold">
-                                        {metric}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
 
                         <ul class="mb-6 flex max-w-[70ch] flex-col gap-3.5" role="list">
                             {role.points.map((point) => (

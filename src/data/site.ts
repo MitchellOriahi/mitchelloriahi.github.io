@@ -224,7 +224,6 @@ export const ROLES: Role[] = [
             'Migrated **4 production services** from Python 3.10 to 3.13 ahead of an Azure runtime deprecation.',
             'Built a **self updating documentation site** covering **46 Azure DevOps projects**, refreshed daily from each repository.',
         ],
-        metrics: ['7 services on canary', '48 endpoints tested', 'Verify in under 5 min'],
         stack: ['Azure DevOps', 'Python', 'CI/CD', 'Azure Functions', 'Slack API'],
     },
     {
@@ -239,7 +238,6 @@ export const ROLES: Role[] = [
             'Pattern and deposit **gold contacts** through photoresist lithography, etching, and development across **15+ documented fabrication runs**, improving repeatability for the lab.',
             'Deliver **surface topography data** to 5+ faculty and student researchers through Profilm3D optical profilometry.',
         ],
-        metrics: ['15+ fabrication runs', '5+ researchers supported'],
         stack: ['AutoCAD', 'Photolithography', 'Thin film deposition', 'Profilometry'],
     },
     {
@@ -254,7 +252,6 @@ export const ROLES: Role[] = [
             'Built the transform layer as a **modular, production ready application** that filters and shapes records before insertion, with Cosmos DB tracking every change for **traceability across environments**.',
             'Integrated Cosmos DB, MySQL, and Storage Queues into one **message based architecture** carrying data reliably across dev, staging, and production.',
         ],
-        metrics: ['10+ records weekly', '90% fewer redundant writes', '3 environments'],
         stack: ['Python', 'Azure Functions', 'MySQL', 'Cosmos DB', 'Storage Queues', 'REST APIs'],
     },
 ];
@@ -393,10 +390,10 @@ export const PROJECTS_MORE: CompactProject[] = [
                authentication, a browsable catalog, cart, and complete order
                processing. Multi class OOP design documented in UML, delivered as
                both a console and a GUI app.`,
-        stack: ['Java', 'OOP', 'Swing GUI', 'UML'],
+        stack: ['Java', 'OOP', 'JavaFX', 'UML'],
         gallery: [{
-            slug: 'proj-cos-uml', widths: [400, 800], w: 800, h: 1067, ext: 'png',
-            alt: 'UML class diagram for the customer order system',
+            slug: 'proj-cos-ui', widths: [400, 600], w: 600, h: 509, ext: 'png',
+            alt: 'The Customer Order System GUI: product catalog, cart, and order tabs',
         }],
     },
     {
