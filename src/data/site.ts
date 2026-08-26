@@ -284,7 +284,16 @@ export const FEATURED: FeaturedProject[] = [
             { value: 'End to end', label: 'TX and RX path' },
         ],
         stack: ['STM32', 'C', 'DMA', 'DAC / ADC', 'APRS', 'RF'],
-        gallery: [],
+        gallery: [
+            {
+                slug: 'proj-aprs-board', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'The APRS presentation board with the tracker hardware and handheld radios',
+            },
+            {
+                slug: 'proj-aprs-team', widths: [400, 800, 1400], w: 1400, h: 1511,
+                alt: 'The team presenting the APRS tracking system',
+            },
+        ],
     },
     {
         slug: 'wav-player',
@@ -307,7 +316,12 @@ export const FEATURED: FeaturedProject[] = [
             { value: '0', label: 'Audio dropouts' },
         ],
         stack: ['FreeRTOS', 'TouchGFX', 'FatFS', 'SDIO', 'DMA', 'C'],
-        gallery: [],
+        gallery: [
+            {
+                slug: 'proj-wav-player', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'The Discovery board running the player, mid song on the touchscreen',
+            },
+        ],
     },
     {
         slug: 'battlebot',

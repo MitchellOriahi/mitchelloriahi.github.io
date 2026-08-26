@@ -648,40 +648,6 @@
         opacity: 0.45;
     }
 
-    /* -- Whitacre College text lockup -------------------------------------- */
-    /* Used in the degree proof square until a real logo file is provided. */
-    .coe-lockup {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-    }
-
-    .coe-lockup .coe-text {
-        display: grid;
-        gap: 0.1rem;
-        border-left: 1px solid var(--color-rule);
-        padding-left: 0.7rem;
-    }
-
-    .coe-lockup .coe-top {
-        font-family: var(--font-mono);
-        font-size: 0.5rem;
-        letter-spacing: 0.14em;
-        color: var(--color-ink-mute);
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
-
-    .coe-lockup .coe-main {
-        font-weight: 800;
-        font-size: 0.78rem;
-        line-height: 1.05;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        color: var(--color-ink);
-        white-space: nowrap;
-    }
-
     /* -- paper grain ------------------------------------------------------ */
     /* A very light fibre texture so the bone background reads as paper rather
        than flat beige. Inlined SVG turbulence: no image request. */

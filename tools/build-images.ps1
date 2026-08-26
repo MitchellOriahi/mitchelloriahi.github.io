@@ -34,11 +34,8 @@ New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 # alpha    : $true  -> keep transparency, fallback is PNG
 # flat     : $true  -> line art / diagram, use higher quality to keep text crisp
 $manifest = @(
-    # --- portraits -------------------------------------------------------
-    @{ src = 'profile.jpg';            slug = 'portrait-hero';     widths = @(400,600,900) }
-    @{ src = 'profile2.jpg';           slug = 'portrait-a';        widths = @(400,600,900) }
-    @{ src = 'Profile3.JPG';           slug = 'portrait-b';        widths = @(400,600,900) }
-    @{ src = 'FullBodySuitPhoto.JPG';  slug = 'portrait-c';        widths = @(400,600,900) }
+    # --- portraits ---------------------------------------------------------
+    # (the hero cutout is generated separately; no other portraits are used)
 
     # --- beyond engineering ----------------------------------------------
     @{ src = 'GymPhoto.PNG';           slug = 'beyond-gym';        widths = @(400,800,1400) }
@@ -58,7 +55,7 @@ $manifest = @(
     @{ src = 'projects\cos-uml.png';           slug = 'proj-cos-uml';           widths = @(400,800,1400); flat = $true; alpha = $true }
     @{ src = 'projects\led-sprite-thumb.jpg';  slug = 'proj-led-sprite';        widths = @(400,800) }
 
-    # Awaiting files from Mitchell; the script warns and skips until they land.
+    # APRS presentation and WAV player photos
     @{ src = 'projects\aprs-board.jpg';        slug = 'proj-aprs-board';        widths = @(400,800,1400) }
     @{ src = 'projects\aprs-team.jpg';         slug = 'proj-aprs-team';         widths = @(400,800,1400) }
     @{ src = 'projects\wav-player.jpg';        slug = 'proj-wav-player';        widths = @(400,800,1400) }
@@ -66,8 +63,8 @@ $manifest = @(
     # --- logos ------------------------------------------------------------
     @{ src = 'Hero Logo@12x-80.jpg';               slug = 'logo-cba';   widths = @(96,192) }
     @{ src = 'Texas_Tech_Athletics_logo.svg.png';  slug = 'logo-ttu';   widths = @(96,192); alpha = $true }
-    # Whitacre College of Engineering mark, awaiting the file from Mitchell.
-    @{ src = 'coe-logo.png';                       slug = 'logo-coe';   widths = @(192,384); alpha = $true }
+    # Whitacre College of Engineering mark
+    @{ src = 'coe-logo.png';                       slug = 'logo-coe';   widths = @(96,180); alpha = $true }
 )
 
 $totalIn = 0; $totalOut = 0; $rows = @()

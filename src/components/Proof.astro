@@ -2,12 +2,8 @@
 import { PROOF, TICKER } from '../data/site';
 
 /*
-    Four proof squares: both internships, the research post, and the degree.
-
-    The degree card wants the Edward E. Whitacre Jr. College of Engineering
-    logo. Until that file lands at assets/images/coe-logo.png (and is run
-    through tools/build-images.ps1), the card renders a faithful text lockup
-    beside the Double T so nothing ships looking unfinished.
+    Four proof squares: both internships, the research post, and the degree,
+    each with its own mark.
 */
 ---
 
@@ -23,7 +19,7 @@ import { PROOF, TICKER } from '../data/site';
                     data-reveal
                     data-reveal-delay={String(i * 0.06)}
                 >
-                    <div class="flex h-11 items-center">
+                    <div class="flex h-14 items-center">
                         {item.logo === 'cba' && (
                             <img
                                 src="/img/logo-cba-192.jpg"
@@ -47,21 +43,15 @@ import { PROOF, TICKER } from '../data/site';
                             />
                         )}
                         {item.logo === 'coe' && (
-                            <span class="coe-lockup">
-                                <img
-                                    src="/img/logo-ttu-192.png"
-                                    srcset="/img/logo-ttu-96.png 96w, /img/logo-ttu-192.png 192w"
-                                    sizes="36px"
-                                    width="192" height="225"
-                                    alt=""
-                                    class="h-9 w-auto object-contain"
-                                    loading="lazy" decoding="async"
-                                />
-                                <span class="coe-text" aria-hidden="true">
-                                    <span class="coe-top">Edward E. Whitacre Jr.</span>
-                                    <span class="coe-main">College of<br />Engineering</span>
-                                </span>
-                            </span>
+                            <img
+                                src="/img/logo-coe-180.png"
+                                srcset="/img/logo-coe-96.png 96w, /img/logo-coe-180.png 180w"
+                                sizes="44px"
+                                width="180" height="180"
+                                alt="Edward E. Whitacre Jr. College of Engineering"
+                                class="h-14 w-auto object-contain object-left"
+                                loading="lazy" decoding="async"
+                            />
                         )}
                     </div>
 
