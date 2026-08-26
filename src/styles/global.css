@@ -519,6 +519,29 @@
         .lb-trigger .lb-hint { opacity: 0.85; transform: none; }
     }
 
+    /* Always-visible media count on a card cover, so a visitor knows there is
+       more behind the click than the one photo they can see. */
+    .lb-count {
+        position: absolute;
+        left: 0.6rem;
+        bottom: 0.6rem;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.65rem;
+        border-radius: 99px;
+        background: color-mix(in oklab, var(--color-ink) 72%, transparent);
+        color: var(--color-bone);
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+
+    .lb-count svg { width: 0.8rem; height: 0.8rem; }
+
     /* -- lightbox overlay --------------------------------------------------- */
     /* Markup is created once by src/scripts/interact.ts and appended to body. */
     .lightbox {
@@ -579,8 +602,13 @@
 
     .lightbox .lb-stage img,
     .lightbox .lb-stage video {
-        max-width: min(100%, 1100px);
-        max-height: 100%;
+        /* Viewport units, not percentages: a percentage max-height against the
+           centered grid area resolved unreliably and let tall photos render at
+           natural size, showing only their top half. The 10rem allowance covers
+           the top bar, paddings, and breathing room. */
+        max-width: min(92vw, 1100px);
+        max-height: calc(100vh - 10rem);
+        max-height: calc(100dvh - 10rem);
         width: auto;
         height: auto;
         object-fit: contain;

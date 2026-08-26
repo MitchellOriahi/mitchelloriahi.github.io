@@ -53,6 +53,7 @@ $manifest = @(
     @{ src = 'projects\amplifier.jpg';         slug = 'proj-amplifier';         widths = @(400,800,1400) }
     @{ src = 'projects\power-analysis.jpg';    slug = 'proj-power-analysis';    widths = @(400,800,1400); flat = $true }
     @{ src = 'projects\cos-ui.png';            slug = 'proj-cos-ui';            widths = @(400,600); flat = $true; alpha = $true }
+    @{ src = 'projects\cos-uml.png';           slug = 'proj-cos-uml';           widths = @(400,800); flat = $true; alpha = $true }
     @{ src = 'projects\led-sprite-thumb.jpg';  slug = 'proj-led-sprite';        widths = @(400,800) }
 
     # APRS presentation and WAV player photos

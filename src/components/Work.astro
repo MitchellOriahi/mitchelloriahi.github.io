@@ -255,6 +255,15 @@ const expandIcon = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" 
                                     class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                                 />
                                 <span class="lb-hint" set:html={expandIcon} />
+                                {(project.gallery.length + (project.video ? 1 : 0)) > 1 && (
+                                    <span class="lb-count">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="3" y="7" width="14" height="14" rx="2" />
+                                            <path d="M7 3h12a2 2 0 0 1 2 2v12" />
+                                        </svg>
+                                        {project.gallery.length > 1 ? `${project.gallery.length} photos` : 'photo'}{project.video ? ' + video' : ''}
+                                    </span>
+                                )}
                             </button>
                         ) : (
                             <div class="relative grid aspect-[4/3] w-full place-items-center overflow-hidden bg-accent-wash" aria-hidden="true">

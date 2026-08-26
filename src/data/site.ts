@@ -419,10 +419,16 @@ export const PROJECTS_MORE: CompactProject[] = [
                processing. Multi class OOP design documented in UML, delivered as
                both a console and a GUI app.`,
         stack: ['Java', 'OOP', 'JavaFX', 'UML'],
-        gallery: [{
-            slug: 'proj-cos-ui', widths: [400, 600], w: 600, h: 509, ext: 'png',
-            alt: 'The Customer Order System GUI: product catalog, cart, and order tabs',
-        }],
+        gallery: [
+            {
+                slug: 'proj-cos-ui', widths: [400, 600], w: 600, h: 509, ext: 'png',
+                alt: 'The Customer Order System GUI: product catalog, cart, and order tabs',
+            },
+            {
+                slug: 'proj-cos-uml', widths: [400, 800], w: 800, h: 1067, ext: 'png',
+                alt: 'UML class diagram for the Customer Order System',
+            },
+        ],
     },
     {
         slug: 'ledsprite',
