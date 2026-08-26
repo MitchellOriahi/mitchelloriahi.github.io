@@ -1,0 +1,15 @@
+---
+import { SCRIPTURE } from '../data/site';
+---
+
+<!--
+    A quiet full width moment between About and Contact. Deliberately the
+    calmest thing on the page: one verse, generous air, nothing else asking
+    for attention.
+-->
+<section class="scripture" aria-label="A verse I work by">
+    <div class="shell">
+        <blockquote data-reveal>{SCRIPTURE.text}</blockquote>
+        <cite data-reveal data-reveal-delay="0.1">{SCRIPTURE.cite}</cite>
+    </div>
+</section>

@@ -1,0 +1,840 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   DESIGN SYSTEM
+   ----------------------------------------------------------------------------
+   Warm editorial, navy ink. Warm white paper, deep navy text, emerald accent.
+   Tailwind v4 reads @theme and generates utilities from it, so these tokens are
+   available both as CSS variables and as classes like text-ink or bg-bone.
+   ========================================================================== */
+
+@theme {
+    /* -- colour ----------------------------------------------------------- */
+    --color-bone: #faf7f2;
+    --color-bone-deep: #f0ebe2;
+    --color-paper: #ffffff;
+
+    --color-ink: #182635;
+    --color-ink-soft: #3c4c5e;
+    --color-ink-mute: #5f6e7d;
+    --color-ink-faint: #61707f;
+
+    --color-rule: #dcd7cd;
+    --color-rule-soft: #eae6dd;
+
+    --color-accent: #2fae76;
+    --color-accent-deep: #157a52;
+    --color-accent-wash: #e3f2ea;
+
+    /* legacy name; now the steel blue used by the second featured card */
+    --color-clay: #41729f;
+    --color-moss: #4f6b4a;
+
+    /* Texas Tech scarlet, used as an accent only (borders, washes, marks),
+       never as small body text on bone. */
+    --color-ttured: #cc0000;
+
+    /* -- type ------------------------------------------------------------- */
+    --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+
+    /* -- motion ----------------------------------------------------------- */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ----------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+    :root {
+        color-scheme: light;
+        --gutter: clamp(1.25rem, 5vw, 4.5rem);
+        --shell: 1320px;
+    }
+
+    * {
+        min-width: 0;
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        scroll-padding-block-start: 6rem;
+    }
+
+    /* Lenis drives scrolling, so native smooth behaviour must stay off or the
+       two fight each other. Re-enabled in the reduced-motion block below, where
+       Lenis is never started. */
+    html.lenis,
+    html.lenis body {
+        height: auto;
+    }
+
+    .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+    }
+
+    body {
+        background-color: var(--color-bone);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        line-height: 1.6;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: clip;
+    }
+
+    /* Fraunces carries more ink than Instrument Serif did, so headings sit at
+       a medium weight rather than relying on sheer size. */
+    h1, h2, h3, h4 {
+        font-family: var(--font-display);
+        font-weight: 520;
+        font-optical-sizing: auto;
+        line-height: 0.98;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    ::selection {
+        background: var(--color-accent);
+        color: var(--color-ink);
+    }
+
+    :where(a, button, input, textarea, [tabindex]):focus-visible {
+        outline: 2px solid var(--color-ink);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--color-bone-deep); }
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-ink-faint);
+        border-radius: 99px;
+        border: 2px solid var(--color-bone-deep);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-ink-mute); }
+}
+
+/* ----------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
+@layer components {
+
+    .shell {
+        width: min(100% - (var(--gutter) * 2), var(--shell));
+        margin-inline: auto;
+    }
+
+    .shell-wide {
+        width: min(100% - (var(--gutter) * 2), 1560px);
+        margin-inline: auto;
+    }
+
+    /* -- eyebrow label ---------------------------------------------------- */
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-ink-mute);
+    }
+
+    .eyebrow::before {
+        content: '';
+        width: 0.42rem;
+        height: 0.42rem;
+        border-radius: 50%;
+        background: var(--color-accent);
+        flex: none;
+    }
+
+    .eyebrow-plain::before { display: none; }
+
+    /* -- display type ----------------------------------------------------- */
+    /* Reserved for one or two word statements: the 404 and the footer
+       signature. Far too large for a sentence. */
+    .display-xl {
+        font-family: var(--font-display);
+        font-weight: 520;
+        font-size: clamp(3.2rem, 11vw, 9.5rem);
+        line-height: 0.88;
+        letter-spacing: -0.035em;
+    }
+
+    /* The hero headline is a full sentence, so it is sized to sit inside one
+       screen alongside the lede, buttons and stats. */
+    .display-hero {
+        font-family: var(--font-display);
+        font-weight: 520;
+        font-size: clamp(2.35rem, 4.9vw, 4.3rem);
+        line-height: 1.02;
+        letter-spacing: -0.028em;
+    }
+
+    .display-lg {
+        font-family: var(--font-display);
+        font-weight: 520;
+        font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+    }
+
+    .display-md {
+        font-family: var(--font-display);
+        font-weight: 520;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+    }
+
+    .lede {
+        font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+        line-height: 1.55;
+        color: var(--color-ink-soft);
+        max-width: 54ch;
+    }
+
+    /* Italic serif for the accented words inside display headings. */
+    .accent-word {
+        font-style: italic;
+        color: var(--color-accent-deep);
+    }
+
+    /* -- buttons ---------------------------------------------------------- */
+    .btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.95rem 1.6rem;
+        border-radius: 99px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: transform 0.35s var(--ease-out-expo),
+                    background-color 0.35s var(--ease-out-expo),
+                    color 0.35s var(--ease-out-expo),
+                    border-color 0.35s var(--ease-out-expo);
+    }
+
+    .btn-solid {
+        background: var(--color-ink);
+        color: var(--color-bone);
+        border: 1px solid var(--color-ink);
+    }
+    .btn-solid:hover { background: var(--color-accent-deep); border-color: var(--color-accent-deep); }
+
+    .btn-accent {
+        background: var(--color-accent);
+        color: var(--color-ink);
+        border: 1px solid var(--color-accent);
+    }
+    .btn-accent:hover { background: var(--color-ink); color: var(--color-bone); border-color: var(--color-ink); }
+
+    .btn-ghost {
+        background: transparent;
+        color: var(--color-ink);
+        border: 1px solid var(--color-rule);
+    }
+    .btn-ghost:hover { border-color: var(--color-ink); background: var(--color-paper); }
+
+    /* Circular arrow badge that sits inside a pill button. */
+    .btn-badge {
+        display: grid;
+        place-items: center;
+        width: 1.9rem;
+        height: 1.9rem;
+        margin-inline-end: -0.7rem;
+        border-radius: 50%;
+        background: currentColor;
+        flex: none;
+    }
+    .btn-badge svg { width: 0.85rem; height: 0.85rem; }
+
+    /* The badge disc and the arrow inside it must always be opposites, or the
+       arrow disappears into its own background. */
+    .btn-solid .btn-badge { background: var(--color-bone); }
+    .btn-solid .btn-badge svg { color: var(--color-ink); }
+
+    .btn-accent .btn-badge { background: var(--color-ink); }
+    .btn-accent .btn-badge svg { color: var(--color-bone); }
+    .btn-accent:hover .btn-badge { background: var(--color-accent); }
+    .btn-accent:hover .btn-badge svg { color: var(--color-ink); }
+
+    .btn-ghost .btn-badge { background: var(--color-ink); }
+    .btn-ghost .btn-badge svg { color: var(--color-bone); }
+
+    /* -- surfaces --------------------------------------------------------- */
+    .card {
+        background: var(--color-paper);
+        border: 1px solid var(--color-rule-soft);
+        border-radius: 1.5rem;
+    }
+
+    .band-ink {
+        background: var(--color-ink);
+        color: var(--color-bone);
+    }
+
+    .band-ink .eyebrow { color: var(--color-bone-deep); }
+
+    /* -- chips ------------------------------------------------------------ */
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 99px;
+        border: 1px solid var(--color-rule);
+        background: var(--color-paper);
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--color-ink-soft);
+        white-space: nowrap;
+    }
+
+    .chip-live {
+        border-color: color-mix(in oklab, var(--color-moss) 40%, transparent);
+        background: color-mix(in oklab, var(--color-moss) 10%, transparent);
+        color: var(--color-moss);
+        font-weight: 600;
+    }
+
+    .chip-live i {
+        width: 0.42rem;
+        height: 0.42rem;
+        border-radius: 50%;
+        background: currentColor;
+        animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+    }
+
+    /* -- organic blob behind the portrait --------------------------------- */
+    /* A step deeper than the accent so it reads as a backdrop, not a button;
+       the brighter accent is reserved for interactive and highlighted things. */
+    .blob {
+        background: color-mix(in oklab, var(--color-accent) 82%, var(--color-ink) 18%);
+        border-radius: 48% 52% 42% 58% / 55% 45% 55% 45%;
+    }
+
+    /* -- rules ------------------------------------------------------------ */
+    .hairline {
+        height: 1px;
+        background: var(--color-rule);
+        border: 0;
+    }
+
+    /* -- marquee ---------------------------------------------------------- */
+    .marquee {
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        gap: var(--marquee-gap, 4rem);
+        mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .marquee__track {
+        flex: none;
+        display: flex;
+        align-items: center;
+        gap: var(--marquee-gap, 4rem);
+        min-width: 100%;
+        animation: marquee-scroll var(--marquee-duration, 38s) linear infinite;
+    }
+
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+
+    @keyframes marquee-scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(calc(-100% - var(--marquee-gap, 4rem))); }
+    }
+
+    /* -- primary nav link ------------------------------------------------- */
+    .nav-link {
+        position: relative;
+        color: var(--color-ink-soft);
+        transition: color 0.3s var(--ease-out-expo);
+    }
+
+    .nav-link:hover,
+    .nav-link[data-active='true'] { color: var(--color-ink); }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        bottom: 0.15rem;
+        height: 1.5px;
+        border-radius: 2px;
+        background: var(--color-accent);
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.5s var(--ease-out-expo);
+    }
+
+    .nav-link[data-active='true']::after { transform: scaleX(1); }
+
+    /* -- link with an animated underline ---------------------------------- */
+    /* The vertical padding is not decorative: it lifts these small footer links
+       to a 24px touch target (WCAG 2.5.8). */
+    .link-line {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        min-height: 1.5rem;
+        padding-block: 0.15rem;
+    }
+
+    .link-line::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: right center;
+        transition: transform 0.45s var(--ease-out-expo);
+    }
+
+    .link-line:hover::after {
+        transform: scaleX(1);
+        transform-origin: left center;
+    }
+
+    /* -- inline keyword highlights ---------------------------------------- */
+    /* Produced by src/lib/highlight.ts from **marked** content strings. */
+    .hl {
+        font-weight: 650;
+        color: var(--color-accent-deep);
+    }
+
+    .band-ink .hl {
+        color: var(--color-accent);
+        font-weight: 600;
+    }
+
+    /* -- project filter chips --------------------------------------------- */
+    .filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 99px;
+        border: 1px solid var(--color-rule);
+        background: var(--color-paper);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-ink-soft);
+        cursor: pointer;
+        transition: background-color 0.3s var(--ease-out-expo),
+                    border-color 0.3s var(--ease-out-expo),
+                    color 0.3s var(--ease-out-expo);
+    }
+
+    .filter-chip:hover { border-color: var(--color-ink); }
+
+    .filter-chip[aria-pressed='true'] {
+        background: var(--color-ink);
+        border-color: var(--color-ink);
+        color: var(--color-bone);
+    }
+
+    .filter-chip .count {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        opacity: 0.6;
+    }
+
+    /* -- clickable media (lightbox triggers) ------------------------------- */
+    .lb-trigger {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: zoom-in;
+        overflow: hidden;
+    }
+
+    .lb-trigger::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: color-mix(in oklab, var(--color-ink) 0%, transparent);
+        transition: background-color 0.35s var(--ease-out-expo);
+    }
+
+    .lb-trigger:hover::after {
+        background: color-mix(in oklab, var(--color-ink) 14%, transparent);
+    }
+
+    /* Small expand glyph so it is obvious the photo opens. */
+    .lb-trigger .lb-hint {
+        position: absolute;
+        right: 0.6rem;
+        bottom: 0.6rem;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: 99px;
+        background: color-mix(in oklab, var(--color-ink) 62%, transparent);
+        color: var(--color-bone);
+        opacity: 0;
+        transform: translateY(4px);
+        transition: opacity 0.3s var(--ease-out-expo),
+                    transform 0.3s var(--ease-out-expo);
+        pointer-events: none;
+    }
+
+    .lb-trigger:hover .lb-hint,
+    .lb-trigger:focus-visible .lb-hint { opacity: 1; transform: none; }
+
+    @media (pointer: coarse) {
+        /* On touch there is no hover; keep the affordance visible. */
+        .lb-trigger .lb-hint { opacity: 0.85; transform: none; }
+    }
+
+    /* Always-visible media count on a card cover, so a visitor knows there is
+       more behind the click than the one photo they can see. */
+    .lb-count {
+        position: absolute;
+        left: 0.6rem;
+        bottom: 0.6rem;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.65rem;
+        border-radius: 99px;
+        background: color-mix(in oklab, var(--color-ink) 72%, transparent);
+        color: var(--color-bone);
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+
+    .lb-count svg { width: 0.8rem; height: 0.8rem; }
+
+    /* -- lightbox overlay --------------------------------------------------- */
+    /* Markup is created once by src/scripts/interact.ts and appended to body. */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        grid-template-rows: auto 1fr auto;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: color-mix(in oklab, var(--color-ink) 92%, transparent);
+        color: var(--color-bone);
+    }
+
+    .lightbox[data-open='true'] { display: grid; }
+
+    .lightbox .lb-bar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-height: 2.5rem;
+    }
+
+    .lightbox .lb-caption {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: color-mix(in oklab, var(--color-bone) 70%, transparent);
+    }
+
+    .lightbox .lb-counter {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: color-mix(in oklab, var(--color-bone) 50%, transparent);
+    }
+
+    .lightbox .lb-close {
+        margin-left: auto;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 99px;
+        border: 1px solid color-mix(in oklab, var(--color-bone) 25%, transparent);
+        color: var(--color-bone);
+        cursor: pointer;
+        transition: background-color 0.3s var(--ease-out-expo);
+    }
+    .lightbox .lb-close:hover { background: color-mix(in oklab, var(--color-bone) 14%, transparent); }
+
+    .lightbox .lb-stage {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 0;
+    }
+
+    .lightbox .lb-stage img,
+    .lightbox .lb-stage video {
+        /* Viewport units, not percentages: a percentage max-height against the
+           centered grid area resolved unreliably and let tall photos render at
+           natural size, showing only their top half. The 10rem allowance covers
+           the top bar, paddings, and breathing room. */
+        max-width: min(92vw, 1100px);
+        max-height: calc(100vh - 10rem);
+        max-height: calc(100dvh - 10rem);
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.75rem;
+    }
+
+    .lightbox .lb-nav {
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        display: grid;
+        place-items: center;
+        width: 2.9rem;
+        height: 2.9rem;
+        border-radius: 99px;
+        border: 1px solid color-mix(in oklab, var(--color-bone) 25%, transparent);
+        background: color-mix(in oklab, var(--color-ink) 55%, transparent);
+        color: var(--color-bone);
+        cursor: pointer;
+        transition: background-color 0.3s var(--ease-out-expo);
+    }
+    .lightbox .lb-nav:hover { background: var(--color-accent); color: var(--color-ink); }
+    .lightbox .lb-prev { left: 0.25rem; }
+    .lightbox .lb-next { right: 0.25rem; }
+    .lightbox .lb-nav[hidden] { display: none; }
+
+    /* -- scripture ---------------------------------------------------------- */
+    /* A quiet interlude, not a billboard: no background band, modest type, a
+       single short accent rule above the line. */
+    .scripture {
+        position: relative;
+        padding-block: clamp(2rem, 3.5vw, 2.75rem);
+        text-align: center;
+    }
+
+    .scripture::before {
+        content: '';
+        display: block;
+        width: 2.5rem;
+        height: 2px;
+        border-radius: 2px;
+        margin: 0 auto 1.5rem;
+        background: var(--color-accent);
+    }
+
+    .scripture blockquote {
+        font-family: var(--font-display);
+        font-style: italic;
+        font-weight: 450;
+        font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+        line-height: 1.35;
+        letter-spacing: -0.015em;
+        max-width: 34ch;
+        margin-inline: auto;
+        text-wrap: balance;
+        color: var(--color-ink-soft);
+    }
+
+    .scripture cite {
+        display: block;
+        margin-block-start: 0.9rem;
+        font-family: var(--font-mono);
+        font-style: normal;
+        font-size: 0.66rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--color-ink-faint);
+    }
+
+    /* -- snapshot piles (Beyond the bench) --------------------------------- */
+    /* Two photo prints tossed on the desk: white borders, opposing tilts, a
+       slight overlap. Hover straightens the pile. */
+    .snap-pile {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .snap-print {
+        display: block;
+        width: 118%;
+        padding: 0.4rem 0.4rem 1.5rem;
+        border: 1px solid var(--color-rule-soft);
+        border-radius: 6px;
+        background: var(--color-paper);
+        box-shadow: 0 10px 24px -12px rgba(24, 38, 53, 0.35);
+        cursor: zoom-in;
+        transition: transform 0.5s var(--ease-out-expo),
+                    box-shadow 0.5s var(--ease-out-expo);
+    }
+
+    .snap-a {
+        transform: rotate(-4.5deg);
+        z-index: 1;
+    }
+
+    .snap-b {
+        justify-self: end;
+        margin-top: 1.6rem;
+        transform: rotate(3.5deg);
+        z-index: 2;
+    }
+
+    .snap-pile:hover .snap-a { transform: rotate(-1deg) translateY(-4px); }
+    .snap-pile:hover .snap-b { transform: rotate(0.5deg) translateY(-4px); }
+
+    .snap-print:hover {
+        z-index: 3;
+        box-shadow: 0 18px 36px -14px rgba(24, 38, 53, 0.45);
+    }
+
+    .snap-print:focus-visible {
+        z-index: 3;
+        outline: 2px solid var(--color-ink);
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .snap-print { transition: none; }
+        .snap-pile:hover .snap-a,
+        .snap-pile:hover .snap-b { transform: none; }
+        .snap-a { transform: rotate(-4.5deg) !important; }
+        .snap-b { transform: rotate(3.5deg) !important; }
+    }
+
+    /* -- paper grain ------------------------------------------------------ */
+    /* A very light fibre texture so the bone background reads as paper rather
+       than flat beige. Inlined SVG turbulence: no image request. */
+    .grain::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.28;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    }
+}
+
+/* ----------------------------------------------------------------------------
+   Motion
+   ----------------------------------------------------------------------------
+   Elements marked data-reveal start hidden ONLY once the motion script has
+   confirmed it will animate them (it sets data-motion="on" on <html>). Without
+   that flag everything is visible by default, so a script failure or a blocked
+   CDN can never leave the page blank.
+   -------------------------------------------------------------------------- */
+@layer utilities {
+
+    html[data-motion='on'] [data-reveal] {
+        opacity: 0;
+        will-change: transform, opacity;
+    }
+
+    html[data-motion='on'] [data-reveal-clip] {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    .will-animate { will-change: transform, opacity; }
+}
+
+/* ----------------------------------------------------------------------------
+   Print
+   ----------------------------------------------------------------------------
+   Recruiters save pages as PDFs. Strip the chrome and interactivity, keep the
+   content, and let cards break cleanly across pages.
+   -------------------------------------------------------------------------- */
+@media print {
+    body { background: #fff; }
+
+    .grain::before,
+    header:has(#site-nav),
+    #menu-panel,
+    .marquee,
+    video,
+    .lb-hint,
+    .filter-chip,
+    .btn,
+    [data-magnetic],
+    .lightbox {
+        display: none !important;
+    }
+
+    .band-ink {
+        background: #fff !important;
+        color: var(--color-ink) !important;
+    }
+
+    .card,
+    article,
+    li {
+        break-inside: avoid;
+    }
+
+    section {
+        padding-block: 1.5rem !important;
+    }
+
+    /* Surface the destination of the important links. */
+    a[href^='http']::after,
+    a[href^='mailto']::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.75em;
+        color: var(--color-ink-mute);
+        word-break: break-all;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html[data-motion='on'] [data-reveal],
+    html[data-motion='on'] [data-reveal-clip] {
+        opacity: 1 !important;
+        clip-path: none !important;
+        transform: none !important;
+    }
+
+    .marquee__track { animation: none !important; }
+    .chip-live i { animation: none !important; }
+}

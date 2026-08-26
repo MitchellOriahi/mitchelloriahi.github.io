@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+# The site is no longer plain files at the repo root, so Pages cannot serve the
+# branch directly. This builds the Astro output and publishes dist/ instead.
+#
+# ONE TIME SETUP: in the repository, open Settings > Pages and set
+# "Build and deployment > Source" to "GitHub Actions". Without that the old
+# branch based deployment keeps serving and this workflow's output is ignored.
+
+on:
+  push:
+    branches: [main]
+  # Allows a manual run from the Actions tab.
+  workflow_dispatch:
+
+# Least privilege: read the repo, write a Pages deployment, and mint the OIDC
+# token that deploy-pages exchanges for permission to publish.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deployments race. Queue instead of cancelling so a push that
+# lands mid deploy still gets published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # `npm ci` installs exactly what package-lock.json pins, which is what
+      # makes a CI build reproducible.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
