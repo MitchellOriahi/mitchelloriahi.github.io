@@ -455,18 +455,6 @@ export const PROJECTS_MORE: CompactProject[] = [
             alt: 'Charts of power consumption across three urban zones',
         }],
     },
-    {
-        slug: 'website',
-        title: 'This Website',
-        kind: 'software',
-        context: 'Personal',
-        when: '2026',
-        desc: `Designed and built from scratch: Astro, TypeScript, Tailwind, and
-               GSAP, with a media pipeline that turns phone photos into responsive
-               WebP. You are looking at it.`,
-        stack: ['Astro', 'TypeScript', 'Tailwind', 'GSAP'],
-        gallery: [],
-    },
 ];
 
 /* ---------------------------------------------------------------------------
