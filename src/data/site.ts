@@ -141,11 +141,11 @@ export const HERO = {
     headlineAfter: '.',
     lede: `I'm a Computer Engineering senior at Texas Tech, equally at home
            programming microcontrollers, designing custom hardware, and building
-           the cloud software that ships around them. From first sketch to final
-           product, I like owning the whole build.`,
+           the cloud software that ships around them. I enjoy every stage of a
+           build, from first sketch to finished product.`,
     facts: [
         { value: '3.46', label: 'GPA / 4.00' },
-        { value: '9', label: 'Projects built' },
+        { value: 'B.S. + M.S.', label: 'Accelerated track' },
         { value: 'May 2027', label: 'Graduating' },
     ],
     portrait: {
@@ -256,17 +256,6 @@ export const ROLES: Role[] = [
         ],
         metrics: ['10+ records weekly', '90% fewer redundant writes', '3 environments'],
         stack: ['Python', 'Azure Functions', 'MySQL', 'Cosmos DB', 'Storage Queues', 'REST APIs'],
-    },
-    {
-        title: 'Retail Sales Associate',
-        org: "Men's Wearhouse",
-        location: 'Lubbock, TX',
-        period: 'Oct 2024 to May 2025',
-        compact: true,
-        points: [
-            'Sold suits on nights and weekends through sophomore year, on top of a full engineering course load.',
-            'Reading people, listening first, and earning trust fast: the skills no lab section teaches.',
-        ],
     },
 ];
 
@@ -527,9 +516,8 @@ export const ABOUT = {
          never stopped asking.`,
         `Texas Tech gave that curiosity somewhere to go. Since then I've led
          project teams, spent summers building software that real businesses run
-         on, done research in a cleanroom, and worked a sales floor through the
-         school year. Every one of those rooms taught me something a classroom
-         could not.`,
+         on, and done research in a cleanroom. Every one of those rooms taught me
+         something a classroom could not.`,
         `The throughline is simple: I like people, I like hard problems, and I do
          my best work when both are in the room.`,
     ],

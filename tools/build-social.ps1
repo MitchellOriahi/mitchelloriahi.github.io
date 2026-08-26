@@ -33,10 +33,10 @@ $W = 1200; $H = 630
 
 # Mirrors the design tokens in src/styles/global.css
 $bone     = '#f6f2ea'
-$ink      = '#171410'
+$ink      = '#1d1712'
 $inkSoft  = '#423c33'
 $inkMute  = '#6f675b'
-$marigold = '#e0912a'
+$marigold = '#d98324'
 $rule     = '#ddd5c6'
 
 # Georgia stands in for Instrument Serif, which is only loaded in the browser.
