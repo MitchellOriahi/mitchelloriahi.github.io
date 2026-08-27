@@ -36,24 +36,23 @@ import { SITE } from '../data/site';
                     <span class="sticker st-yellow" style="font-family: var(--font-hand); font-size: 1.05rem; letter-spacing: 0; text-transform: none; font-weight: 700;">
                         {SITE.role}
                     </span>
-                    <span class="label-mono flex items-center gap-2 text-ink">
-                        <span class="inline-block h-2 w-2 rounded-full border border-ink" style="background: var(--color-st-blue)" aria-hidden="true"></span>
-                        Open to full time roles
-                    </span>
+                    <span class="label-mono text-ink">Open to full time roles</span>
                 </div>
             </div>
 
             <!-- big portrait sticker card -->
             <div class="relative mx-auto w-[min(21rem,80vw)] lg:row-span-2 lg:w-full lg:max-w-[26rem]" data-reveal data-reveal-delay="0.08">
-                <div class="relative mt-16">
-                    <div class="absolute inset-x-0 bottom-0 top-0 rounded-[18px] border-2 border-ink shadow-[6px_6px_0_var(--color-ink)]" style="background: var(--color-st-mint)" aria-hidden="true"></div>
+                <div class="relative">
+                    <!-- The mint card starts below the top of the photo, so the
+                         cutout visibly pokes out of its own background. -->
+                    <div class="absolute inset-x-0 bottom-0 top-20 rounded-[18px] border-2 border-ink shadow-[6px_6px_0_var(--color-ink)]" style="background: var(--color-st-mint)" aria-hidden="true"></div>
                     <img
                         src="/img/portrait-cutout-600.webp"
                         srcset="/img/portrait-cutout-600.webp 600w, /img/portrait-cutout-900.webp 900w"
                         sizes="(min-width: 1024px) 416px, 336px"
                         alt={SITE.name}
                         width="1200" height="1433"
-                        class="relative z-[1] mx-auto -mt-24 w-[94%] object-contain [filter:drop-shadow(0_10px_16px_rgba(22,21,19,0.18))]"
+                        class="relative z-[1] mx-auto w-[94%] object-contain [filter:drop-shadow(0_10px_16px_rgba(22,21,19,0.18))]"
                         loading="eager" fetchpriority="high" decoding="async"
                     />
                 </div>

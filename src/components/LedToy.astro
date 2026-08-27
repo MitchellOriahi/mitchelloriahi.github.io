@@ -1,0 +1,130 @@
+---
+/*
+    A drawable 8x8 LED matrix: the LED Sprite Matrix project, but live in the
+    browser. Plain DOM, no libraries; the page is complete without it and the
+    card degrades to a static grid if JS never runs.
+*/
+const cells = Array.from({ length: 64 }, (_, i) => i);
+---
+
+<article class="card flex flex-col overflow-visible" data-reveal>
+    <div class="relative p-3 pb-0">
+        <span class="tape tape-yellow -top-2.5 left-1/2 -translate-x-1/2 rotate-2" aria-hidden="true"></span>
+        <div class="rounded-md border-2 border-ink p-4" style="background: var(--color-slab)">
+            <div id="led-grid" class="led-grid mx-auto" role="group" aria-label="Drawable LED matrix. Toggle cells to draw a sprite.">
+                {cells.map((i) => (
+                    <button type="button" class="led" data-led={i} aria-pressed="false" aria-label={`LED ${Math.floor(i / 8) + 1},${(i % 8) + 1}`}></button>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-2 p-5">
+        <p class="label-mono text-ink-mute">Bonus · No microcontroller needed</p>
+        <h4 class="text-xl font-extrabold leading-tight tracking-tight">Draw on the matrix</h4>
+        <p class="text-sm leading-relaxed text-ink-soft">
+            The LED Sprite Matrix from the card next door, running in your
+            browser. Click or drag across the dots to draw your own sprite.
+        </p>
+        <div class="mt-auto flex flex-wrap items-center gap-2 pt-3">
+            <button type="button" id="led-stamp" class="chip cursor-pointer font-semibold" style="background: var(--color-st-yellow)">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg>
+                Stamp a sprite
+            </button>
+            <button type="button" id="led-clear" class="chip cursor-pointer">Clear</button>
+        </div>
+    </div>
+</article>
+
+<style>
+    .led-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+        width: min(100%, 15rem);
+        touch-action: none;
+    }
+    .led {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        background: #4a1a16;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.55);
+        transition: background 80ms linear, box-shadow 80ms linear;
+    }
+    .led[aria-pressed='true'] {
+        background: #ff4b3e;
+        box-shadow:
+            0 0 10px 2px rgba(255, 75, 62, 0.65),
+            inset 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+    .led:focus-visible {
+        outline: 2px solid var(--color-st-yellow);
+        outline-offset: 2px;
+    }
+</style>
+
+<script>
+    const grid = document.getElementById('led-grid');
+    const stampBtn = document.getElementById('led-stamp');
+    const clearBtn = document.getElementById('led-clear');
+
+    if (grid && stampBtn && clearBtn) {
+        const leds = Array.from(grid.querySelectorAll<HTMLButtonElement>('.led'));
+
+        const set = (led: HTMLButtonElement, on: boolean) =>
+            led.setAttribute('aria-pressed', String(on));
+        const isOn = (led: HTMLButtonElement) =>
+            led.getAttribute('aria-pressed') === 'true';
+
+        /* click-or-drag painting; the first cell decides draw vs erase */
+        let painting = false;
+        let paintOn = true;
+
+        const paintAt = (x: number, y: number) => {
+            const el = document.elementFromPoint(x, y)?.closest<HTMLButtonElement>('.led');
+            if (el && grid.contains(el)) set(el, paintOn);
+        };
+
+        grid.addEventListener('pointerdown', (e) => {
+            const led = (e.target as Element).closest<HTMLButtonElement>('.led');
+            if (!led) return;
+            painting = true;
+            paintOn = !isOn(led);
+            set(led, paintOn);
+            e.preventDefault();
+        });
+        grid.addEventListener('pointermove', (e) => {
+            if (painting) paintAt(e.clientX, e.clientY);
+        });
+        window.addEventListener('pointerup', () => { painting = false; });
+
+        /* keyboard: buttons toggle natively through click */
+        grid.addEventListener('click', (e) => {
+            if (e.detail === 0) {
+                const led = (e.target as Element).closest<HTMLButtonElement>('.led');
+                if (led) set(led, !isOn(led));
+            }
+        });
+
+        /* preset sprites, one byte per row */
+        const sprites = [
+            [0x66, 0xff, 0xff, 0xff, 0x7e, 0x3c, 0x18, 0x00], /* heart */
+            [0x18, 0x3c, 0x7e, 0xdb, 0xff, 0x24, 0x5a, 0xa5], /* invader */
+            [0x3c, 0x42, 0xa5, 0x81, 0xa5, 0x99, 0x42, 0x3c], /* smiley */
+        ];
+        let next = 0;
+        stampBtn.addEventListener('click', () => {
+            const sprite = sprites[next++ % sprites.length];
+            leds.forEach((led, i) => {
+                const row = Math.floor(i / 8);
+                const col = i % 8;
+                set(led, ((sprite[row] >> (7 - col)) & 1) === 1);
+            });
+        });
+
+        clearBtn.addEventListener('click', () => leds.forEach((led) => set(led, false)));
+    }
+</script>

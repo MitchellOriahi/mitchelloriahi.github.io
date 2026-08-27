@@ -1,6 +1,7 @@
 ---
 import { FEATURED, PROJECTS_MORE } from '../data/site';
 import Picture from './Picture.astro';
+import LedToy from './LedToy.astro';
 import { highlight } from '../lib/highlight';
 import type { ImageRef } from '../data/site';
 
@@ -69,7 +70,7 @@ const grounds = [
                                 <!-- text -->
                                 <div class="flex flex-col">
                                     <p class:list={['label-mono mb-3', g.meta]}>
-                                        ● {project.period} · {project.org} · {project.role}
+                                        {project.period} · {project.org} · {project.role}
                                     </p>
 
                                     <h3 class:list={['mb-3 text-3xl font-extrabold tracking-tight md:text-4xl', g.title]}>
@@ -312,6 +313,8 @@ const grounds = [
                     </div>
                 </article>
             ))}
+
+            <LedToy />
         </div>
     </div>
 </section>
