@@ -27,10 +27,6 @@ const cells = Array.from({ length: 64 }, (_, i) => i);
             browser. Click or drag across the dots to draw your own sprite.
         </p>
         <div class="mt-auto flex flex-wrap items-center gap-2 pt-3">
-            <button type="button" id="led-stamp" class="chip cursor-pointer font-semibold" style="background: var(--color-st-yellow)">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg>
-                Stamp a sprite
-            </button>
             <button type="button" id="led-clear" class="chip cursor-pointer">Clear</button>
         </div>
     </div>
@@ -68,10 +64,9 @@ const cells = Array.from({ length: 64 }, (_, i) => i);
 
 <script>
     const grid = document.getElementById('led-grid');
-    const stampBtn = document.getElementById('led-stamp');
     const clearBtn = document.getElementById('led-clear');
 
-    if (grid && stampBtn && clearBtn) {
+    if (grid && clearBtn) {
         const leds = Array.from(grid.querySelectorAll<HTMLButtonElement>('.led'));
 
         const set = (led: HTMLButtonElement, on: boolean) =>
@@ -107,22 +102,6 @@ const cells = Array.from({ length: 64 }, (_, i) => i);
                 const led = (e.target as Element).closest<HTMLButtonElement>('.led');
                 if (led) set(led, !isOn(led));
             }
-        });
-
-        /* preset sprites, one byte per row */
-        const sprites = [
-            [0x66, 0xff, 0xff, 0xff, 0x7e, 0x3c, 0x18, 0x00], /* heart */
-            [0x18, 0x3c, 0x7e, 0xdb, 0xff, 0x24, 0x5a, 0xa5], /* invader */
-            [0x3c, 0x42, 0xa5, 0x81, 0xa5, 0x99, 0x42, 0x3c], /* smiley */
-        ];
-        let next = 0;
-        stampBtn.addEventListener('click', () => {
-            const sprite = sprites[next++ % sprites.length];
-            leds.forEach((led, i) => {
-                const row = Math.floor(i / 8);
-                const col = i % 8;
-                set(led, ((sprite[row] >> (7 - col)) & 1) === 1);
-            });
         });
 
         clearBtn.addEventListener('click', () => leds.forEach((led) => set(led, false)));
