@@ -2,116 +2,105 @@
 import { SITE } from '../data/site';
 
 /*
-    Scrapbook hero: handwriting, a pixel-type name in a hand-sketched frame,
-    sticker facts, and the headline with inline sticker doodads. The portrait
-    appears as a round photo sticker beside the headline; the full photo lives
-    in About as a polaroid.
+    Scrapbook hero, take two: the full name in a hand-sketched frame, and the
+    big background-removed portrait on a giant sticker card so you know whose
+    site this is the second it opens. Facts sit in one tidy upright row.
 */
 ---
 
-<section id="top" class="relative overflow-hidden px-4 pt-14 pb-12 text-center md:pt-20 md:pb-16">
+<section id="top" class="relative overflow-hidden px-4 pt-12 pb-12 md:pt-16 md:pb-16">
+    <div class="shell">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
 
-    <!-- top flanking fact stickers -->
-    <div class="pointer-events-none absolute inset-x-0 top-14 hidden justify-between px-[8%] md:flex" aria-hidden="true">
-        <span class="sticker st-mint tilt-l">3.46 GPA</span>
-        <span class="sticker st-butter tilt-r">Graduating May 2027</span>
-    </div>
+            <!-- name block -->
+            <div class="text-center lg:text-left" data-reveal>
+                <p class="hand text-2xl text-ink-soft">my name is</p>
 
-    <p class="hand text-2xl text-ink-soft" data-reveal>my name is</p>
+                <span class="sketch-frame mt-2 inline-block">
+                    <svg class="frame" viewBox="0 0 400 160" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                        <path
+                            d="M14 18 C 120 10, 300 12, 388 16 C 392 62, 390 104, 386 144 C 280 152, 90 150, 12 146 C 8 100, 10 58, 14 18 Z"
+                            stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+                        />
+                        <path d="M382 12 L 396 8" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                        <path d="M10 150 L 2 156" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                    <h1 class="pixel px-6 py-5 text-[clamp(1.45rem,5vw,2.9rem)] uppercase leading-[1.5]">
+                        <span class="block">Mitchell</span>
+                        <span class="block">Oriahi</span>
+                    </h1>
+                </span>
 
-    <!-- the name, framed in a hand-drawn rectangle with arrows pointing in -->
-    <div class="relative mt-2 mb-5 inline-block" data-reveal data-reveal-delay="0.05">
-        <span class="sketch-frame">
-            <svg class="frame" viewBox="0 0 400 120" fill="none" preserveAspectRatio="none" aria-hidden="true">
-                <path
-                    d="M14 18 C 120 10, 300 12, 388 16 C 392 48, 390 78, 386 104 C 280 112, 90 110, 12 106 C 8 74, 10 44, 14 18 Z"
-                    stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
-                />
-                <path d="M382 12 L 396 8" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                <path d="M10 110 L 2 116" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-            </svg>
-            <h1 class="pixel px-6 py-4 text-[clamp(1.7rem,6.5vw,4.2rem)] uppercase">
-                Mitchell
-            </h1>
-        </span>
+                <!-- identity row -->
+                <div class="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                    <span class="sticker st-yellow" style="font-family: var(--font-hand); font-size: 1.05rem; letter-spacing: 0; text-transform: none; font-weight: 700;">
+                        {SITE.role}
+                    </span>
+                    <span class="label-mono flex items-center gap-2 text-ink">
+                        <span class="inline-block h-2 w-2 rounded-full border border-ink" style="background: var(--color-st-blue)" aria-hidden="true"></span>
+                        Open to full time roles
+                    </span>
+                </div>
+            </div>
 
-        <!-- hand-drawn arrows pointing at the name -->
-        <svg class="absolute -left-24 top-1/2 hidden w-20 -translate-y-1/2 text-ink md:block" viewBox="0 0 80 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 8 C 30 6, 52 14, 72 26" />
-            <path d="M62 28 l 10 -2 -4 -9" />
-        </svg>
-        <svg class="absolute -right-24 top-1/2 hidden w-20 -translate-y-1/2 text-ink md:block" viewBox="0 0 80 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M76 10 C 52 8, 30 16, 8 28" />
-            <path d="M18 30 l -10 -2 4 -9" />
-        </svg>
-    </div>
+            <!-- big portrait sticker card -->
+            <div class="relative mx-auto w-[min(21rem,80vw)] lg:row-span-2 lg:w-full lg:max-w-[26rem]" data-reveal data-reveal-delay="0.08">
+                <div class="relative mt-16">
+                    <div class="absolute inset-x-0 bottom-0 top-0 rounded-[18px] border-2 border-ink shadow-[6px_6px_0_var(--color-ink)]" style="background: var(--color-st-mint)" aria-hidden="true"></div>
+                    <img
+                        src="/img/portrait-cutout-600.webp"
+                        srcset="/img/portrait-cutout-600.webp 600w, /img/portrait-cutout-900.webp 900w"
+                        sizes="(min-width: 1024px) 416px, 336px"
+                        alt={SITE.name}
+                        width="1200" height="1433"
+                        class="relative z-[1] mx-auto -mt-24 w-[94%] object-contain [filter:drop-shadow(0_10px_16px_rgba(22,21,19,0.18))]"
+                        loading="eager" fetchpriority="high" decoding="async"
+                    />
+                </div>
+                <p class="hand mt-3 text-center text-xl text-ink-soft" aria-hidden="true">that's me!</p>
+            </div>
 
-    <!-- identity row -->
-    <div class="mb-9 flex flex-wrap items-center justify-center gap-3" data-reveal data-reveal-delay="0.1">
-        <span class="sticker st-yellow tilt-l" style="font-family: var(--font-hand); font-size: 1.05rem; letter-spacing: 0; text-transform: none; font-weight: 700;">
-            {SITE.role}
-        </span>
-        <span class="label-mono flex items-center gap-2 text-ink">
-            <span class="inline-block h-2 w-2 rounded-full border border-ink" style="background: var(--color-st-blue)" aria-hidden="true"></span>
-            Open to full time roles
-        </span>
-        <span class="sticker st-mint tilt-r">{SITE.baseLocation}</span>
-    </div>
+            <!-- headline, lede, facts, actions -->
+            <div class="text-center lg:text-left" data-reveal data-reveal-delay="0.12">
+                <h2 class="text-[clamp(1.7rem,4.2vw,2.7rem)] font-extrabold leading-[1.15] tracking-tight">
+                    From the circuit board
+                    <span class="mx-1 inline-grid h-[1em] w-[1em] translate-y-[0.12em] place-items-center rounded-md border-2 border-ink align-baseline shadow-[2px_2px_0_var(--color-ink)]" style="background: var(--color-st-green)" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>
+                    </span>
+                    <span class="hl">to the cloud</span>.
+                    <span class="mx-1 inline-grid h-[1em] w-[1em] translate-y-[0.12em] place-items-center rounded-full border-2 border-ink align-baseline shadow-[2px_2px_0_var(--color-ink)]" style="background: var(--color-st-sky)" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="62%" height="62%" fill="none" stroke="var(--color-ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 18a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.3 9.3 3.5 3.5 0 0 0 7 18Z"/></svg>
+                    </span>
+                </h2>
 
-    <!-- headline with sticker doodads, photo stickers flanking -->
-    <div class="relative mx-auto max-w-3xl" data-reveal data-reveal-delay="0.15">
-        <img
-            src="/img/portrait-cutout-600.webp"
-            alt={SITE.name}
-            width="120" height="120"
-            class="absolute -left-6 -top-10 hidden h-20 w-20 rotate-[-6deg] rounded-full border-[3px] border-ink object-cover object-top shadow-[3px_3px_0_var(--color-ink)] lg:block"
-            style="outline: 3px solid var(--color-st-orange); outline-offset: -6px;"
-            loading="eager" fetchpriority="high" decoding="async"
-        />
-        <img
-            src="/img/proj-wav-player-400.webp"
-            alt="The STM32 audio player build"
-            width="120" height="120"
-            class="absolute -right-6 top-2 hidden h-20 w-20 rotate-[5deg] rounded-full border-[3px] border-ink object-cover shadow-[3px_3px_0_var(--color-ink)] lg:block"
-            style="outline: 3px solid var(--color-st-green); outline-offset: -6px;"
-            loading="lazy" decoding="async"
-        />
+                <p class="mx-auto mt-5 max-w-[54ch] text-[1.02rem] leading-relaxed text-ink-soft lg:mx-0">
+                    I'm a Computer Engineering senior at Texas Tech, equally at
+                    home programming microcontrollers, designing custom
+                    hardware, and building the cloud software that ships around
+                    them. I enjoy every stage of a build, from first sketch to
+                    finished product.
+                </p>
 
-        <h2 class="text-[clamp(1.7rem,4.6vw,3rem)] font-extrabold leading-[1.15] tracking-tight">
-            From the circuit board
-            <span class="mx-1 inline-grid h-[1em] w-[1em] translate-y-[0.12em] place-items-center rounded-md border-2 border-ink align-baseline shadow-[2px_2px_0_var(--color-ink)]" style="background: var(--color-st-green)" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>
-            </span>
-            <span class="hl">to the cloud</span>.
-            <span class="mx-1 inline-grid h-[1em] w-[1em] translate-y-[0.12em] place-items-center rounded-full border-2 border-ink align-baseline shadow-[2px_2px_0_var(--color-ink)]" style="background: var(--color-st-sky)" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="62%" height="62%" fill="none" stroke="var(--color-ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 18a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.3 9.3 3.5 3.5 0 0 0 7 18Z"/></svg>
-            </span>
-        </h2>
-    </div>
+                <!-- fact row: one tidy line, standing upright -->
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                    <span class="sticker st-mint">3.46 GPA</span>
+                    <span class="sticker st-butter">Graduating May 2027</span>
+                    <span class="sticker st-sky">{SITE.baseLocation}</span>
+                </div>
 
-    <p class="mx-auto mt-6 max-w-[54ch] text-[1.02rem] leading-relaxed text-ink-soft" data-reveal data-reveal-delay="0.2">
-        I'm a Computer Engineering senior at Texas Tech, equally at home
-        programming microcontrollers, designing custom hardware, and building
-        the cloud software that ships around them. I enjoy every stage of a
-        build, from first sketch to finished product.
-    </p>
-
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-3" data-reveal data-reveal-delay="0.25">
-        <a href="#contact" class="btn btn-solid" data-magnetic="0.18">
-            <span class="btn-badge" aria-hidden="true">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
-            </span>
-            Contact me
-        </a>
-        <a href={SITE.resume} target="_blank" rel="noopener" class="btn">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-            Resume
-        </a>
-    </div>
-
-    <!-- mobile fact stickers (the absolute pair is hidden below md) -->
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-3 md:hidden" data-reveal>
-        <span class="sticker st-mint tilt-l">3.46 GPA</span>
-        <span class="sticker st-butter tilt-r">May 2027</span>
+                <div class="mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                    <a href="#contact" class="btn btn-solid" data-magnetic="0.18">
+                        <span class="btn-badge" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
+                        </span>
+                        Contact me
+                    </a>
+                    <a href={SITE.resume} target="_blank" rel="noopener" class="btn">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                        Resume
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

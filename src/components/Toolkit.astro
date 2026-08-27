@@ -23,8 +23,8 @@ const groupColors = ['st-yellow', 'st-mint', 'st-sky', 'st-pink'];
         <!-- skills: four cards with sticker headers -->
         <div class="mb-10 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {TOOLKIT.map((group, i) => (
-                <div class:list={['card relative p-5 pt-7', i % 2 ? 'tilt-r2' : 'tilt-l2']} data-reveal data-reveal-delay={String(i * 0.05)}>
-                    <span class:list={['sticker absolute -top-3 left-4', groupColors[i % 4], i % 2 ? 'tilt-r' : 'tilt-l']}>
+                <div class="card relative p-5 pt-7" data-reveal data-reveal-delay={String(i * 0.05)}>
+                    <span class:list={['sticker absolute -top-3 left-4', groupColors[i % 4]]}>
                         {group.name}
                     </span>
                     <ul class="flex flex-wrap gap-2 pt-2" role="list">
@@ -85,7 +85,7 @@ const groupColors = ['st-yellow', 'st-mint', 'st-sky', 'st-pink'];
 
                     <div class="mt-5 flex flex-wrap gap-2.5">
                         {EDUCATION.honors.map((honor, i) => (
-                            <span class:list={['sticker', i % 2 ? 'tilt-r' : 'tilt-l']} style="background: #ffe3e3;">
+                            <span class="sticker" style="background: #ffe3e3;">
                                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#cc0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="m12 3 2.6 5.6 6 .8-4.4 4.2 1.1 6L12 16.8 6.7 19.6l1.1-6L3.4 9.4l6-.8Z" />
                                 </svg>

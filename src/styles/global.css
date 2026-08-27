@@ -35,8 +35,10 @@
     /* hand-drawn sketch strokes */
     --color-sketch: #e8590c;
 
-    /* dark project-card ground */
-    --color-slab: #191919;
+    /* project-card grounds, muted so the big slabs read calm, not loud */
+    --color-slab: #35332e;
+    --color-slab-blue: #4c5a9c;
+    --color-slab-butter: #f3d980;
 
     /* Texas Tech scarlet, education card only */
     --color-ttured: #cc0000;
@@ -419,10 +421,18 @@
     }
 
     .slab-dark   { background: var(--color-slab); color: var(--color-paper); }
-    .slab-blue   { background: var(--color-st-blue); color: #fff; }
-    .slab-yellow { background: var(--color-st-yellow); color: var(--color-ink); }
+    .slab-blue   { background: var(--color-slab-blue); color: #fff; }
+    .slab-yellow { background: var(--color-slab-butter); color: var(--color-ink); }
 
     /* Marker highlights need to stay readable on each slab ground. */
+    .slab-yellow .hl {
+        background: linear-gradient(105deg,
+            transparent 0.5%,
+            #fffdf4 3%,
+            #fffdf4 97%,
+            transparent 99.5%);
+        color: var(--color-ink);
+    }
     .slab-dark .hl, .slab-blue .hl {
         background: linear-gradient(105deg,
             transparent 0.5%,

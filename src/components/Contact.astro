@@ -50,7 +50,7 @@ const links = [
                             href={link.href}
                             target={link.href.startsWith('http') || link.href.endsWith('.pdf') ? '_blank' : undefined}
                             rel={link.href.startsWith('http') || link.href.endsWith('.pdf') ? 'noopener' : undefined}
-                            class:list={['card group flex items-center gap-4 p-4 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1', i % 2 ? 'tilt-r2' : 'tilt-l2']}
+                            class="card group flex items-center gap-4 p-4 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1"
                         >
                             <span class:list={['sticker !p-2', link.color]} aria-hidden="true">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={link.icon} />
