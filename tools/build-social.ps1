@@ -5,6 +5,10 @@
     The OG card is what LinkedIn, Slack, iMessage and X render when the link is
     shared. 1200x630 is the size every major platform crops from.
 
+    Scrapbook design: a ruled-paper sheet with a hard offset shadow sitting on
+    the gray desk grid, sticker chips, and a marker highlight on the tagline.
+    Mirrors the tokens in src/styles/global.css.
+
     Style notes:
       * Keep this file pure ASCII. Windows PowerShell 5.1 reads a BOM-less .ps1
         as CP1252, where a UTF-8 em dash decodes to a curly quote that the parser
@@ -32,15 +36,20 @@ New-Item -ItemType Directory -Force -Path $tmp | Out-Null
 $W = 1200; $H = 630
 
 # Mirrors the design tokens in src/styles/global.css
-$bone     = '#faf7f2'
-$ink      = '#182635'
-$inkSoft  = '#3c4c5e'
-$inkMute  = '#5f6e7d'
-$marigold = '#2fae76'
-$rule     = '#dcd7cd'
+$desk     = '#a8abaf'
+$deskLine = '#909396'
+$paper    = '#f9f8f3'
+$ruled    = '#dfe3ec'
+$ink      = '#161513'
+$inkSoft  = '#3e3d3a'
+$inkMute  = '#66655f'
+$yellow   = '#ffd43b'
+$mint     = '#b2f2bb'
 
-# Georgia stands in for Instrument Serif, which is only loaded in the browser.
-$fontSerif = 'C:/Windows/Fonts/georgiab.ttf'
+# System stand-ins for the web fonts, which only load in the browser:
+# Arial Black for the big name, Ink Free for handwriting, Consolas for mono.
+$fontBlack = 'C:/Windows/Fonts/ariblk.ttf'
+$fontHand  = 'C:/Windows/Fonts/Inkfree.ttf'
 $fontMono  = 'C:/Windows/Fonts/consola.ttf'
 
 $base = Join-Path $tmp 'base.png'
@@ -54,36 +63,64 @@ function Invoke-Magick {
 
 Write-Host 'building og-image.jpg'
 
-# --- 1. bone ground -----------------------------------------------------------
-Invoke-Magick -size "${W}x${H}" "xc:$bone" $base
+# --- 1. desk grid ground ------------------------------------------------------
+Invoke-Magick -size "${W}x${H}" "xc:$desk" $base
+$gridDraws = @()
+for ($x = 0; $x -le $W; $x += 40) { $gridDraws += "line $x,0 $x,$H" }
+for ($y = 0; $y -le $H; $y += 40) { $gridDraws += "line 0,$y $W,$y" }
+Invoke-Magick $base -stroke $deskLine -strokewidth 1 -draw ($gridDraws -join ' ') $base
 
-# --- 2. marigold organic shape, bled off the right edge ----------------------
-Invoke-Magick $base -fill $marigold `
-    -draw "translate 1010,300 rotate -12 ellipse 0,0 300,335 0,360" `
+# --- 2. paper sheet with hard offset shadow ----------------------------------
+Invoke-Magick $base `
+    -fill $ink -draw 'roundrectangle 68,48 1148,598 12,12' `
+    -fill $paper -stroke $ink -strokewidth 3 -draw 'roundrectangle 58,38 1138,588 12,12' `
     $base
+
+# ruled lines on the paper
+$ruleDraws = @()
+for ($y = 120; $y -lt 580; $y += 46) { $ruleDraws += "line 62,$y 1134,$y" }
+Invoke-Magick $base -stroke $ruled -strokewidth 2 -draw ($ruleDraws -join ' ') $base
 
 # --- 3. typography ------------------------------------------------------------
 Invoke-Magick $base `
-    -fill $marigold -draw 'roundrectangle 80,92 176,99 4,4' `
-    -font $fontMono -pointsize 22 -fill $inkMute `
-        -draw "text 80,152 'COMPUTER ENGINEER'" `
-    -font $fontSerif -pointsize 92 -fill $ink `
-        -draw "text 76,266 'Mitchell'" `
-        -draw "text 76,366 'Oriahi'" `
-    -font $fontMono -pointsize 22 -fill $inkSoft `
-        -draw "text 80,436 'From the circuit board to the cloud.'" `
-    -fill $rule -draw 'rectangle 80,482 660,483' `
-    -font $fontMono -pointsize 20 -fill $inkMute `
-        -draw "text 80,530 'Texas Tech  |  B.S. Computer Engineering  |  May 2027'" `
-        -draw "text 80,570 'mitchelloriahi.github.io'" `
+    -font $fontHand -pointsize 40 -fill $inkSoft `
+        -draw "text 112,132 'my name is'" `
+    -font $fontBlack -pointsize 84 -fill $ink `
+        -draw "text 106,236 'MITCHELL ORIAHI'" `
+    $base
+
+# marker highlight behind the tagline, then the tagline over it
+Invoke-Magick $base `
+    -fill $yellow -draw 'rectangle 476,272 838,318' `
+    -font $fontMono -pointsize 30 -fill $ink `
+        -draw "text 112,304 'From the circuit board to the cloud.'" `
+    $base
+
+# --- 4. sticker chips ---------------------------------------------------------
+Invoke-Magick $base `
+    -fill $ink -draw 'roundrectangle 116,360 452,416 12,12' `
+    -fill $yellow -stroke $ink -strokewidth 3 -draw 'roundrectangle 110,354 446,410 12,12' `
+    -stroke none -font $fontMono -pointsize 26 -fill $ink `
+        -draw "text 140,390 'COMPUTER ENGINEER'" `
+    -fill $ink -draw 'roundrectangle 486,360 886,416 12,12' `
+    -fill $mint -stroke $ink -strokewidth 3 -draw 'roundrectangle 480,354 880,410 12,12' `
+    -stroke none -font $fontMono -pointsize 26 -fill $ink `
+        -draw "text 510,390 'GRADUATING MAY 2027'" `
+    $base
+
+# --- 5. footer line -----------------------------------------------------------
+Invoke-Magick $base `
+    -font $fontMono -pointsize 24 -fill $inkMute `
+        -draw "text 112,506 'Texas Tech  |  B.S. Computer Engineering  |  3.46 GPA'" `
+        -draw "text 112,548 'mitchelloriahi.github.io'" `
     -quality 92 -strip $card
 
-# --- 4. icons ----------------------------------------------------------------
+# --- 6. icons ----------------------------------------------------------------
 Write-Host 'building icons'
 $svg = Join-Path $out 'favicon.svg'
-Invoke-Magick -background none $svg -resize 180x180 -background $ink -flatten (Join-Path $out 'apple-touch-icon.png')
-Invoke-Magick -background none $svg -resize 512x512 -background $ink -flatten (Join-Path $out 'icon-512.png')
-Invoke-Magick -background none $svg -resize 192x192 -background $ink -flatten (Join-Path $out 'icon-192.png')
+Invoke-Magick -background none $svg -resize 180x180 -background $paper -flatten (Join-Path $out 'apple-touch-icon.png')
+Invoke-Magick -background none $svg -resize 512x512 -background none (Join-Path $out 'icon-512.png')
+Invoke-Magick -background none $svg -resize 192x192 -background none (Join-Path $out 'icon-192.png')
 
 Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
 
