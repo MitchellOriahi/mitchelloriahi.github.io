@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mitchell Oriahi">
     <title>Mitchell Oriahi</title>
-    <rect width="64" height="64" rx="15" fill="#182635"/>
-    <!-- A bold M drawn as a single stroked path so it stays legible at 16px,
-         where any real letterform would turn to mush. -->
-    <path d="M15 45 V19 l17 19 17-19 v26"
-          fill="none" stroke="#2fae76" stroke-width="7"
+    <!-- Yellow sticker with an ink border, matching the site's sticker chips.
+         The M is a single stroked path so it stays legible at 16px. -->
+    <rect x="2" y="2" width="60" height="60" rx="14" fill="#ffd43b" stroke="#161513" stroke-width="4"/>
+    <path d="M17 45 V20 l15 17 15-17 v25"
+          fill="none" stroke="#161513" stroke-width="7"
           stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -4,31 +4,24 @@ import { SITE } from '../data/site';
 ---
 
 <Base title="Page not found · Mitchell Oriahi" description="That page does not exist." noindex>
-    <main class="grid min-h-screen place-items-center px-[var(--gutter)] py-24">
-        <div class="w-full max-w-[46rem]">
-            <p class="eyebrow mb-8">Error 404</p>
+    <div class="sheet">
+        <main class="grid min-h-[80vh] place-items-center px-6 py-24 text-center">
+            <div>
+                <p class="hand text-2xl text-ink-soft">uh oh...</p>
+                <p class="pixel my-4 text-[clamp(3.5rem,14vw,8rem)]">404</p>
+                <span class="sticker st-yellow tilt-l mb-6">This page does not exist</span>
 
-            <p class="display-xl mb-8 leading-[0.82]">
-                Nothing <span class="accent-word">here</span>.
-            </p>
+                <p class="mx-auto mt-5 max-w-[40ch] text-ink-soft">
+                    The link is probably out of date, or the address has a typo
+                    in it. Nothing is broken on your end.
+                </p>
 
-            <p class="lede mb-10">
-                The link is probably out of date, or the address has a typo in it.
-                Nothing is broken on your end.
-            </p>
-
-            <div class="flex flex-wrap gap-3">
-                <a href="/" class="btn btn-solid" data-magnetic="0.2">
-                    Back to the homepage
-                    <span class="btn-badge" aria-hidden="true">
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 12 12 4M6 4h6v6" />
-                        </svg>
-                    </span>
-                </a>
-                <a href="/#work" class="btn btn-ghost">See the work</a>
-                <a href={`mailto:${SITE.email}`} class="btn btn-ghost">Email me</a>
+                <div class="mt-8 flex flex-wrap justify-center gap-3">
+                    <a href="/" class="btn btn-solid">Back to the homepage</a>
+                    <a href="/#work" class="btn">See the projects</a>
+                    <a href={`mailto:${SITE.email}`} class="btn">Email me</a>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </Base>

@@ -4,23 +4,26 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Proof from '../components/Proof.astro';
 import Experience from '../components/Experience.astro';
+import Scripture from '../components/Scripture.astro';
 import Work from '../components/Work.astro';
 import Toolkit from '../components/Toolkit.astro';
 import About from '../components/About.astro';
-import Scripture from '../components/Scripture.astro';
 import Contact from '../components/Contact.astro';
 ---
 
 <Base>
-    <Nav />
-    <main id="main">
-        <Hero />
-        <Proof />
-        <Experience />
-        <Scripture />
-        <Work />
-        <Toolkit />
-        <About />
-        <Contact />
-    </main>
+    <!-- One sheet of ruled paper on the desk; everything lives on it. -->
+    <div class="sheet">
+        <Nav />
+        <main id="main">
+            <Hero />
+            <Proof />
+            <Experience />
+            <Scripture />
+            <Work />
+            <Toolkit />
+            <About />
+            <Contact />
+        </main>
+    </div>
 </Base>

@@ -2,14 +2,16 @@
 import { SCRIPTURE } from '../data/site';
 ---
 
-<!--
-    A quiet full width moment between About and Contact. Deliberately the
-    calmest thing on the page: one verse, generous air, nothing else asking
-    for attention.
--->
-<section class="scripture" aria-label="A verse I work by">
+<!-- A handwritten note in the margin between sections. -->
+<section class="py-10 text-center md:py-12" aria-label="A verse I work by">
     <div class="shell">
-        <blockquote data-reveal>{SCRIPTURE.text}</blockquote>
-        <cite data-reveal data-reveal-delay="0.1">{SCRIPTURE.cite}</cite>
+        <blockquote class="hand mx-auto max-w-[26ch] text-[clamp(1.5rem,3vw,2.2rem)] leading-snug text-ink" data-reveal>
+            "{SCRIPTURE.text}"
+        </blockquote>
+        <cite class="label-mono mt-3 inline-flex items-center gap-3 not-italic text-ink-mute" data-reveal data-reveal-delay="0.08">
+            <svg class="w-8 text-ink" viewBox="0 0 40 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 6 C 12 2, 28 9, 38 4" /></svg>
+            {SCRIPTURE.cite}
+            <svg class="w-8 -scale-x-100 text-ink" viewBox="0 0 40 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 6 C 12 2, 28 9, 38 4" /></svg>
+        </cite>
     </div>
 </section>
