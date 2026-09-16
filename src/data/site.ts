@@ -97,7 +97,7 @@ export const SITE = {
     role: 'Computer Engineer',
     description:
         'Mitchell Oriahi builds from the circuit board to the cloud: microcontrollers, custom hardware, and the software and pipelines around them. Computer Engineering at Texas Tech, graduating May 2027.',
-    origin: 'https://mitchelloriahi.github.io',
+    origin: 'https://mitchelloriahi.com',
     email: 'MitchelOkuezeOriahi@gmail.com',
     linkedin: 'https://www.linkedin.com/in/mitchell-oriahi-ce',
     github: 'https://github.com/MitchellOriahi',

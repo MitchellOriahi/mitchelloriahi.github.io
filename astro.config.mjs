@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://mitchelloriahi.github.io',
+    site: 'https://mitchelloriahi.com',
 
     // Everything is prerendered to plain HTML at build time. There is no server
     // and no client-side router: each page ships as a real file, which is what

@@ -1,5 +1,5 @@
-# https://mitchelloriahi.github.io/
+# https://mitchelloriahi.com/
 User-agent: *
 Allow: /
 
-Sitemap: https://mitchelloriahi.github.io/sitemap-index.xml
+Sitemap: https://mitchelloriahi.com/sitemap-index.xml
