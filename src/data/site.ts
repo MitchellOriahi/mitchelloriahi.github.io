@@ -298,17 +298,18 @@ export const FEATURED: FeaturedProject[] = [
         period: 'Jan 2026 to May 2026',
         accent: 'accent',
         summary: `A GPS tracker that packetizes its own position and puts it on the
-                  air over VHF and UHF radio, built on an STM32 NUCLEO board.`,
+                  air over VHF and UHF radio, with a Bell 202 modem written from
+                  scratch across two STM32 NUCLEO boards.`,
         detail: [
-            'Designed a **GPS tracking system** that transmits packetized position data over **VHF and UHF radio**.',
-            'Wrote the **Bell 202 software modem** that pushes APRS frames out through the DAC over DMA and decodes them back, carrying frames **end to end** with accurate positioning.',
-            'Validated framing, timing, and serial data handling with an **oscilloscope** and UART debugging before touching the RF stage.',
+            'Led the design of a **GPS tracker** on two STM32 NUCLEO-G431RB boards in **bare metal C**, parsing GPS sentences over UART and packing position data into APRS frames with **HDLC framing, bit stuffing, NRZI, and CRC-16**.',
+            'Implemented a **Bell 202 AFSK modem** in firmware: a timer ISR steps a **256 entry sine table** into the DAC for **1200 baud** transmit, and the receiver samples the ADC and recovers bits with a **Goertzel filter** and a **32 phase timing bank**.',
+            'Diagnosed inconsistent frame decoding with **oscilloscope captures** and bit level UART logs, isolated **receive path noise** and a failed transceiver, and identified input filtering and staged loopback tests as the next revision fixes.',
         ],
         metrics: [
-            { value: '1200', label: 'Baud link' },
-            { value: 'End to end', label: 'TX and RX path' },
+            { value: '1200', label: 'Baud AFSK link' },
+            { value: '2', label: 'STM32 boards' },
         ],
-        stack: ['STM32', 'C', 'DMA', 'DAC / ADC', 'APRS', 'RF'],
+        stack: ['STM32', 'Bare metal C', 'UART', 'DAC / ADC', 'AFSK', 'RF'],
         gallery: [
             {
                 slug: 'proj-aprs-board', widths: [400, 800, 1400], w: 1400, h: 1867,
