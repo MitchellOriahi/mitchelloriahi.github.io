@@ -1,7 +1,7 @@
 ---
 import { TOOLKIT, EDUCATION } from '../data/site';
 
-const groupColors = ['st-yellow', 'st-mint', 'st-sky', 'st-pink'];
+const groupColors = ['st-yellow', 'st-mint', 'st-sky', 'st-pink', 'st-butter'];
 ---
 
 <section id="toolkit" class="py-16 md:py-20">
@@ -21,10 +21,10 @@ const groupColors = ['st-yellow', 'st-mint', 'st-sky', 'st-pink'];
         </header>
 
         <!-- skills: four cards with sticker headers -->
-        <div class="mb-10 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div class="mb-10 grid items-start gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {TOOLKIT.map((group, i) => (
                 <div class="card relative p-5 pt-7" data-reveal data-reveal-delay={String(i * 0.05)}>
-                    <span class:list={['sticker absolute -top-3 left-4', groupColors[i % 4]]}>
+                    <span class:list={['sticker absolute -top-3 left-4', groupColors[i % groupColors.length]]}>
                         {group.name}
                     </span>
                     <ul class="flex flex-wrap gap-2 pt-2" role="list">

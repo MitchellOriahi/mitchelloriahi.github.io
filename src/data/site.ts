@@ -226,6 +226,8 @@ export const TICKER: TickerItem[] = [
     { label: 'MATLAB', icon: 'matlab' },
     { label: 'TouchGFX' },
     { label: 'Verilog' },
+    { label: 'Vivado' },
+    { label: 'Photolithography' },
     { label: 'Oscilloscope' },
     { label: 'AutoCAD' },
     { label: 'LTspice' },
@@ -246,8 +248,8 @@ export const ROLES: Role[] = [
         period: 'May 2026 to Aug 2026',
         logo: LOGO_CBA,
         points: [
-            'Built a **canary release system** on Azure deployment slots that ramps live production traffic from **0 to 25 percent** and alerts the deploying engineer. Now standard across **7 major services**.',
-            'Automated **cross service regression testing**: publishing a shared Python library triggers pipelines that deploy 5 consuming services and test **48 endpoints** against the new version.',
+            'Built a **canary release system** in Python and the Azure CLI that deploys to an **App Service deployment slot**, ramps live production traffic from **0 to 25 percent** with slot traffic routing, and alerts the deploying engineer. Now standard across **7 major services**.',
+            'Automated **cross service regression testing** in Azure DevOps: publishing a shared library **wheel to Azure Artifacts** triggers pipelines that deploy 5 consuming services with it pinned, wait for healthy startup, and test all **48 endpoints**.',
             'Cut release verification to **under 5 minutes** with an Azure Function that turns pipeline results into per service pass, fail, and trace reports delivered to **Slack**.',
             'Migrated **4 production services** from Python 3.10 to 3.13 ahead of an Azure runtime deprecation.',
             'Built a **self updating documentation site** covering **46 Azure DevOps projects**, refreshed daily from each repository.',
@@ -258,15 +260,17 @@ export const ROLES: Role[] = [
         title: 'Undergraduate Research Assistant',
         org: 'Texas Tech Nano Tech Center',
         location: 'Lubbock, TX',
-        period: 'Jan 2026 to Present',
+        period: 'Jan 2026 to May 2026, Aug 2026 to Present',
         current: true,
         logo: LOGO_TTU,
         points: [
             'Design **photolithography masks** in AutoCAD for test structures that measure how semiconductor sample resistance shifts with **voltage and temperature**.',
             'Pattern and deposit **gold contacts** through photoresist lithography, etching, and development across **15+ documented fabrication runs**, improving repeatability for the lab.',
+            'Characterize **aluminum nitride films** grown on silicon with **X-ray diffraction** alongside a graduate researcher, reading diffraction peaks to confirm film presence and orientation before the lab decides whether to repeat a growth.',
+            'Brought up an **SP-150 potentiostat** for **impedance spectroscopy** on known test circuits, writing a **Python script** that overlays the measured impedance on the theoretical response of the circuit.',
             'Deliver **surface topography data** to 5+ faculty and student researchers through Profilm3D optical profilometry.',
         ],
-        stack: ['AutoCAD', 'Photolithography', 'Thin film deposition', 'Profilometry'],
+        stack: ['AutoCAD', 'Photolithography', 'Thin film deposition', 'X-ray diffraction', 'Profilometry', 'Potentiostat (EIS)', 'Python'],
     },
     {
         title: 'Data Engineering Intern',
@@ -275,12 +279,12 @@ export const ROLES: Role[] = [
         period: 'May 2025 to Aug 2025',
         logo: LOGO_CBA,
         points: [
-            'Replaced a manual ingestion process with a **Python and Azure Functions pipeline** that pulls **10+ new vehicle records weekly** from external REST APIs into MySQL and **Azure Cosmos DB** for the appointment scheduler behind every CBA shop.',
-            'Engineered **change detection logic** with an approval workflow through **Azure Queues and Slack**, so only new or modified records are processed, cutting redundant database writes by **90 percent**.',
+            'Replaced a manual ingestion process with a **Python and Azure Functions pipeline**, scheduled by a **Logic App**, that pulls **10+ new vehicle records a week** from external REST APIs into MySQL and **Azure Cosmos DB** for the appointment scheduler behind every CBA shop.',
+            'Engineered **change detection logic** with an approval workflow through **Azure Queues and Slack** so only new or modified records are processed, cutting redundant database writes by **90 percent**, and validated API responses before insert so **incomplete data never reached the scheduler**.',
             'Built the transform layer as a **modular, production ready application** that filters and shapes records before insertion, with Cosmos DB tracking every change for **traceability across environments**.',
-            'Integrated Cosmos DB, MySQL, and Storage Queues into one **message based architecture** carrying data reliably across dev, staging, and production.',
+            'Decoupled fetching from writing with **Storage Queues**, one message per record with failed writes routed to a **poison queue** for retry, deployed through dev, staging, and production and monitored in **Application Insights**.',
         ],
-        stack: ['Python', 'Azure Functions', 'MySQL', 'Cosmos DB', 'Storage Queues', 'REST APIs'],
+        stack: ['Python', 'Azure Functions', 'Logic Apps', 'MySQL', 'Cosmos DB', 'Storage Queues', 'App Insights'],
     },
 ];
 
@@ -326,16 +330,16 @@ export const FEATURED: FeaturedProject[] = [
         index: '02',
         title: 'STM32 WAV Audio Player',
         kind: 'hardware',
-        role: 'Solo design and build',
-        org: 'Personal project',
+        role: 'Final project, solo build',
+        org: 'TTU ECE 4380',
         period: 'Jan 2026 to May 2026',
         accent: 'clay',
         summary: `A touchscreen music player running FreeRTOS on bare hardware,
                   with gap free playback and an SD card library you can browse.`,
         detail: [
-            'Built a **FreeRTOS music player** with a TouchGFX touchscreen interface: browse an SD card, then play, pause, skip, seek, and shuffle with elapsed time on screen.',
-            'Kept playback **gap free** with a double buffered DMA pipeline that refills one half of the audio buffer while the DAC plays the other, clocked by a hardware timer.',
-            'Split the firmware into **four FreeRTOS tasks** with a mutex guarding the SD card, so the screen stays responsive and the player **recovers automatically** when a card is pulled mid song.',
+            'Built a **FreeRTOS music player** on an STM32F429I Discovery board with a TouchGFX touchscreen interface: browse WAV files on an SD card over **SDIO with FatFS**, then play, pause, skip, seek, and shuffle with elapsed time on screen.',
+            'Kept playback **gap free** with a double buffered DMA pipeline: a hardware timer paces the DAC at the **file sample rate** while DMA **half and full transfer interrupts** signal the audio task to refill the idle half.',
+            'Split the firmware into **four FreeRTOS tasks** with a mutex guarding FatFS, so the screen stays responsive during playback and the player **recovers from a card pulled mid song** by force resetting the SDIO peripheral and remounting.',
         ],
         metrics: [
             { value: '4', label: 'FreeRTOS tasks' },
@@ -499,15 +503,19 @@ export const TOOLKIT = [
     },
     {
         name: 'Embedded',
-        items: ['FreeRTOS', 'Register programming', 'DMA', 'Interrupts', 'Device drivers', 'STM32 HAL', 'CubeMX', 'TouchGFX', 'FatFS'],
+        items: ['FreeRTOS', 'Bare metal register programming', 'DMA', 'Interrupts', 'Device drivers', 'STM32 HAL', 'CubeMX', 'TouchGFX', 'FatFS'],
     },
     {
         name: 'Hardware and protocols',
-        items: ['STM32', 'MSP430', 'ATmega328P', 'UART', 'SPI', 'I2C', 'SDIO', 'AFSK', 'PWM', 'PCB design'],
+        items: ['STM32', 'MSP430', 'ATmega328P', 'UART', 'SPI', 'I2C', 'SDIO', 'AFSK', 'PWM', 'PCB design', 'Oscilloscope', 'LTspice', 'Vivado'],
     },
     {
-        name: 'Tools and lab',
-        items: ['Git', 'Azure DevOps', 'CI/CD', 'MySQL', 'Cosmos DB', 'REST APIs', 'Linux', 'MATLAB', 'Oscilloscope', 'LTspice', 'AutoCAD'],
+        name: 'Cloud and tools',
+        items: ['Azure Functions', 'Azure CLI', 'Logic Apps', 'Azure DevOps', 'Azure Artifacts', 'App Insights', 'CI/CD', 'Git', 'pytest', 'MySQL', 'Cosmos DB', 'REST APIs', 'Linux', 'MATLAB'],
+    },
+    {
+        name: 'Lab',
+        items: ['AutoCAD mask design', 'Photolithography', 'Thin film deposition', 'X-ray diffraction', 'Profilm3D profilometry', 'SP-150 potentiostat (EIS)'],
     },
 ] as const;
 
