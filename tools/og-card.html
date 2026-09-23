@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>og card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@700;800&family=IBM+Plex+Mono:wght@500;600&display=block" rel="stylesheet">
+<style>
+    /* Rendered to public/og-image.jpg by tools/build-social.ps1 (1200x630, the
+       size every share preview crops from). Colors mirror src/styles/global.css. */
+    :root {
+        --desk: #a8abaf; --desk-line: #909396;
+        --paper: #f9f8f3; --rule: #dfe3ec;
+        --ink: #161513; --ink-soft: #3e3d3a; --ink-mute: #66655f;
+        --yellow: #ffd43b; --mint: #b2f2bb;
+        --row: 54px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        width: 1200px; height: 630px; overflow: hidden;
+        background-color: var(--desk);
+        background-image:
+            linear-gradient(var(--desk-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--desk-line) 1px, transparent 1px);
+        background-size: 40px 40px;
+        color: var(--ink);
+    }
+    .paper {
+        position: absolute; left: 60px; top: 42px;
+        width: 1080px; height: 546px;
+        background: var(--paper);
+        border: 3px solid var(--ink); border-radius: 14px;
+        box-shadow: 10px 10px 0 var(--ink);
+        overflow: hidden;
+    }
+    .row {
+        height: var(--row);
+        border-bottom: 2px solid var(--rule);
+        padding-left: 64px;
+        display: flex; align-items: flex-end; gap: 22px;
+    }
+    .row.double { height: calc(var(--row) * 2); }
+    .row.sticker-row { align-items: center; }
+
+    .t { display: inline-block; line-height: 1; white-space: nowrap; }
+    .hand { font-family: 'Caveat', cursive; font-weight: 600; font-size: 44px; color: var(--ink-soft); }
+    .name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 86px; letter-spacing: -1.5px; text-transform: uppercase; }
+    .tag  { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 38px; letter-spacing: -0.5px; }
+    .mono { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 24px; color: var(--ink-mute); letter-spacing: 0.5px; }
+
+    /* A marker stroke: it covers the lower two thirds of the letters instead of
+       boxing the whole line, and hugs the words so the period stays attached. */
+    .hl {
+        background: linear-gradient(100deg, transparent 0.8%, var(--yellow) 2.5%, var(--yellow) 97.5%, transparent 99.2%) no-repeat;
+        background-size: 100% 68%;
+        background-position: 0 88%;
+        padding: 0 0.1em; margin: 0 -0.04em 0 -0.02em;
+    }
+    .sticker {
+        display: inline-flex; align-items: center;
+        height: 48px; padding: 0 22px;
+        border: 3px solid var(--ink); border-radius: 12px;
+        box-shadow: 5px 5px 0 var(--ink);
+        line-height: 1; white-space: nowrap;
+    }
+    .sticker.role { background: var(--yellow); font-family: 'Caveat', cursive; font-weight: 700; font-size: 34px; }
+    .sticker.grad { background: var(--mint); font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 20px; letter-spacing: 2px; }
+</style></head>
+<body>
+    <div class="paper">
+        <div class="row"></div>
+        <div class="row"><span class="t hand" data-gap="5">my name is</span></div>
+        <div class="row double"><span class="t name" data-gap="10">Mitchell Oriahi</span></div>
+        <div class="row"><span class="t tag" data-gap="8">From the circuit board <span class="hl">to the cloud</span>.</span></div>
+        <div class="row"></div>
+        <div class="row sticker-row">
+            <span class="sticker role">Computer Engineer</span>
+            <span class="sticker grad">GRADUATING MAY 2027</span>
+        </div>
+        <div class="row"><span class="t mono" data-gap="8">Texas Tech &nbsp;|&nbsp; B.S. Computer Engineering &nbsp;|&nbsp; 3.46 GPA</span></div>
+        <div class="row"><span class="t mono" data-gap="8">mitchelloriahi.com</span></div>
+        <div class="row"></div>
+    </div>
+    <script>
+        // Sit every line of text on its ruled line: measure the real baseline with a
+        // zero-size probe and shift the text so the baseline lands data-gap px above
+        // the rule. Runs after web fonts load so the metrics are the final ones.
+        document.fonts.ready.then(() => {
+            document.querySelectorAll('.t').forEach(el => {
+                const probe = document.createElement('span');
+                probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+                el.prepend(probe);
+                const baseline = probe.getBoundingClientRect().bottom;
+                const rule = el.closest('.row').getBoundingClientRect().bottom - 2;
+                const gap = Number(el.dataset.gap || 6);
+                el.style.transform = `translateY(${(rule - gap) - baseline}px)`;
+                probe.remove();
+            });
+            document.body.dataset.ready = '1';
+        });
+    </script>
+</body></html>
