@@ -3,7 +3,7 @@
 Portfolio for **Mitchell Oriahi**, embedded and software engineer.
 Firmware on STM32, release tooling on Azure.
 
-Live at **<https://mitchelloriahi.github.io>**
+Live at **<https://mitchelloriahi.com>**
 
 Built with [Astro](https://astro.build) and Tailwind v4, prerendered to static
 HTML, deployed to GitHub Pages by Actions.

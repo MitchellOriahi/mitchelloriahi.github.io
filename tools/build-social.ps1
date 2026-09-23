@@ -112,7 +112,7 @@ Invoke-Magick $base `
 Invoke-Magick $base `
     -font $fontMono -pointsize 24 -fill $inkMute `
         -draw "text 112,506 'Texas Tech  |  B.S. Computer Engineering  |  3.46 GPA'" `
-        -draw "text 112,548 'mitchelloriahi.github.io'" `
+        -draw "text 112,548 'mitchelloriahi.com'" `
     -quality 92 -strip $card
 
 # --- 6. icons ----------------------------------------------------------------
