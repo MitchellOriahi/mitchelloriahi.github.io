@@ -15,7 +15,8 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.origin).href;
-const ogImage = new URL('/og-image.jpg', Astro.site ?? SITE.origin).href;
+// Bump the version when og-image.jpg changes: LinkedIn caches share images by URL.
+const ogImage = new URL('/og-image.jpg?v=2', Astro.site ?? SITE.origin).href;
 
 const personSchema = {
     '@context': 'https://schema.org',
