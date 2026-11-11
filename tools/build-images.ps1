@@ -60,6 +60,10 @@ $manifest = @(
     @{ src = 'projects\aprs-board.jpg';        slug = 'proj-aprs-board';        widths = @(400,800,1400) }
     @{ src = 'projects\aprs-team.jpg';         slug = 'proj-aprs-team';         widths = @(400,800,1400) }
     @{ src = 'projects\wav-player.jpg';        slug = 'proj-wav-player';        widths = @(400,800,1400) }
+    @{ src = 'projects\rover-build.jpg';        slug = 'proj-rover-build';       widths = @(400,800,1400) }
+    @{ src = 'projects\rover-bench.jpg';        slug = 'proj-rover-bench';       widths = @(400,800,1400) }
+    @{ src = 'projects\rover-stock.jpg';        slug = 'proj-rover-stock';       widths = @(400,800); flat = $true }
+    @{ src = 'projects\rover-chassis.jpg';      slug = 'proj-rover-chassis';     widths = @(400,800,1400) }
 
     # --- logos ------------------------------------------------------------
     @{ src = 'Hero Logo@12x-80.jpg';               slug = 'logo-cba';   widths = @(96,192) }

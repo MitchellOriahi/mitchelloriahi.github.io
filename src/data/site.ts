@@ -293,8 +293,53 @@ export const ROLES: Role[] = [
    ------------------------------------------------------------------------ */
 export const FEATURED: FeaturedProject[] = [
     {
-        slug: 'aprs',
+        slug: 'rover',
         index: '01',
+        title: 'AI Rover on an FPGA',
+        kind: 'software',
+        role: 'Software and ML Lead',
+        org: 'TTU ECE 3337',
+        period: 'Aug 2026 to present',
+        accent: 'accent',
+        summary: `A $24 RC drift car rebuilt into a rover that drives itself,
+                  with the neural network running directly on an FPGA: no CPU,
+                  no GPU, no Linux. A camera and a sweeping LiDAR feed the
+                  model, which picks a steering direction every 125
+                  microseconds. Three person team, and I own the software, the
+                  model and the FPGA integration.`,
+        detail: [
+            'Built the **machine learning pipeline end to end**: a Python driving simulator with a physically modeled LiDAR, training, **integer quantization** with separate scales per sensor, and automatic export of the trained weights into Verilog, so a retrained model reaches the board in one command.',
+            'Wrote the **neural network inference engine in Verilog** after a Donkey Car style CNN proved far too large for the **225 KB of on chip memory** on the board: a small fused sensor network instead, **bit exact against the Python model** and using about **8 percent of the chip**.',
+            'Wrapped the learned model in a **rule based safety layer** and verified every layer with golden model tests and **hardware in the loop** runs. In simulation, fusing camera and LiDAR cut dangerous decisions from **30.5 to 22.9 percent**, and the safety layer cut crashes about **4x**.',
+        ],
+        metrics: [
+            { value: '8,000', label: 'Decisions a second' },
+            { value: '8%', label: 'Of the FPGA used' },
+            { value: 'Bit exact', label: 'Python to Verilog' },
+        ],
+        stack: ['Python', 'Verilog', 'Embedded C', 'Neural networks', 'Quantization', 'Sensor fusion', 'FPGA'],
+        gallery: [
+            {
+                slug: 'proj-rover-build', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'The rover with its camera, sweeping LiDAR and Basys 3 FPGA wired up on the bench',
+            },
+            {
+                slug: 'proj-rover-stock', widths: [400, 800], w: 800, h: 642,
+                alt: 'The stock RC drift car the rover was built from',
+            },
+            {
+                slug: 'proj-rover-bench', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'Bench testing the FPGA with the LiDAR servo sweep and seven segment readout',
+            },
+            {
+                slug: 'proj-rover-chassis', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'The RC car chassis opened up, showing the drive motor and steering servo',
+            },
+        ],
+    },
+    {
+        slug: 'aprs',
+        index: '02',
         title: 'APRS GPS Tracking System',
         kind: 'hardware',
         role: 'Team Lead',
@@ -327,7 +372,7 @@ export const FEATURED: FeaturedProject[] = [
     },
     {
         slug: 'wav-player',
-        index: '02',
+        index: '03',
         title: 'STM32 WAV Audio Player',
         kind: 'hardware',
         role: 'Final project, solo build',
@@ -355,7 +400,7 @@ export const FEATURED: FeaturedProject[] = [
     },
     {
         slug: 'battlebot',
-        index: '03',
+        index: '04',
         title: 'Red Raider Battle Bot',
         kind: 'hardware',
         role: 'Team Lead',
@@ -500,6 +545,10 @@ export const TOOLKIT = [
     {
         name: 'Languages',
         items: ['C', 'Python', 'Java', 'AVR Assembly', 'Verilog', 'JavaScript', 'HTML', 'CSS'],
+    },
+    {
+        name: 'Machine learning',
+        items: ['Neural networks', 'Edge AI and TinyML', 'Quantization', 'Fixed point inference', 'Behavioral cloning', 'Sensor fusion', 'Closed loop evaluation', 'NumPy'],
     },
     {
         name: 'Embedded',
