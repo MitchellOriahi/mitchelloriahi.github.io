@@ -295,29 +295,27 @@ export const FEATURED: FeaturedProject[] = [
     {
         slug: 'rover',
         index: '01',
-        title: 'AI Rover on an FPGA',
+        title: 'AI Powered Rover on an FPGA',
         kind: 'software',
         role: 'Software and ML Lead',
         org: 'TTU ECE 3337',
         period: 'Aug 2026 to present',
         accent: 'accent',
-        summary: `A $24 RC drift car rebuilt into a rover that drives itself,
-                  with the neural network running directly on an FPGA: no CPU,
-                  no GPU, no Linux. A camera and a sweeping LiDAR feed the
-                  model, which picks a steering direction every 125
-                  microseconds. Three person team, and I own the software, the
-                  model and the FPGA integration.`,
+        summary: `A $24 RC toy car rebuilt into a self driving rover. The
+                  neural network runs on the FPGA itself, with no CPU, GPU or
+                  cloud behind it: camera and LiDAR in, a steering decision
+                  out, thousands of times a second. Three person team, and I
+                  own the software, the model and the integration.`,
         detail: [
-            'Built the **machine learning pipeline end to end**: a Python driving simulator with a physically modeled LiDAR, training, **integer quantization** with separate scales per sensor, and automatic export of the trained weights into Verilog, so a retrained model reaches the board in one command.',
-            'Wrote the **neural network inference engine in Verilog** after a Donkey Car style CNN proved far too large for the **225 KB of on chip memory** on the board: a small fused sensor network instead, **bit exact against the Python model** and using about **8 percent of the chip**.',
-            'Wrapped the learned model in a **rule based safety layer** and verified every layer with golden model tests and **hardware in the loop** runs. In simulation, fusing camera and LiDAR cut dangerous decisions from **30.5 to 22.9 percent**, and the safety layer cut crashes about **4x**.',
+            'Built the **machine learning pipeline** end to end: driving simulator, training, **model quantization**, and an automatic export that drops new weights into the hardware design.',
+            'An off the shelf vision model needed far more than the 225 KB on the chip, so I shrank it and wrote the **inference engine in Verilog**, matching the Python version bit for bit.',
+            'Wrapped the model in a **safety layer** that overrides it near obstacles. In simulation that cut crashes about **4x**, and **sensor fusion** cut dangerous decisions by about a quarter.',
         ],
         metrics: [
             { value: '8,000', label: 'Decisions a second' },
             { value: '8%', label: 'Of the FPGA used' },
-            { value: 'Bit exact', label: 'Python to Verilog' },
         ],
-        stack: ['Python', 'Verilog', 'Embedded C', 'Neural networks', 'Quantization', 'Sensor fusion', 'FPGA'],
+        stack: ['Python', 'Verilog', 'Embedded C', 'Edge AI', 'Computer vision', 'Neural networks', 'Quantization', 'Sensor fusion'],
         gallery: [
             {
                 slug: 'proj-rover-build', widths: [400, 800, 1400], w: 1400, h: 1867,
