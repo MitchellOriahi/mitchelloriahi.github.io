@@ -301,21 +301,21 @@ export const FEATURED: FeaturedProject[] = [
         org: 'TTU ECE 3337',
         period: 'Aug 2026 to present',
         accent: 'accent',
-        summary: `A $24 RC toy car rebuilt into a self driving rover. The
-                  neural network runs on the FPGA itself, with no CPU, GPU or
-                  cloud behind it: camera and LiDAR in, a steering decision
-                  out, thousands of times a second. Three person team, and I
-                  own the software, the model and the integration.`,
+        summary: `A $24 RC toy car rebuilt into a self driving rover. The AI
+                  model runs on the FPGA itself, with no CPU, GPU or cloud
+                  behind it: camera and LiDAR in, a steering decision out,
+                  thousands of times a second. Three person team, and I own
+                  the software, the model training and the integration.`,
         detail: [
-            'Built the **machine learning pipeline** end to end: driving simulator, training, **model quantization**, and an automatic export that drops new weights into the hardware design.',
-            'An off the shelf vision model needed far more than the 225 KB on the chip, so I shrank it and wrote the **inference engine in Verilog**, matching the Python version bit for bit.',
-            'Wrapped the model in a **safety layer** that overrides it near obstacles. In simulation that cut crashes about **4x**, and **sensor fusion** cut dangerous decisions by about a quarter.',
+            'Built the **AI training pipeline** end to end: a simulator that generates **training data**, model training in Python, **quantization**, and an automatic export onto the chip.',
+            'An off the shelf **computer vision** model needed far more than the 225 KB on the chip, so I trained a smaller one and wrote its **inference engine in Verilog**, matching Python exactly.',
+            'Wrapped it in a **safety layer** that overrides the AI near obstacles. In simulation that cut crashes about **4x**, and **sensor fusion** cut dangerous decisions by about a quarter.',
         ],
         metrics: [
             { value: '8,000', label: 'Decisions a second' },
             { value: '8%', label: 'Of the FPGA used' },
         ],
-        stack: ['Python', 'Verilog', 'Embedded C', 'Edge AI', 'Computer vision', 'Neural networks', 'Quantization', 'Sensor fusion'],
+        stack: ['Edge AI', 'Neural networks', 'Computer vision', 'Model training', 'Quantization', 'Sensor fusion', 'Python', 'Verilog'],
         gallery: [
             {
                 slug: 'proj-rover-build', widths: [400, 800, 1400], w: 1400, h: 1867,
@@ -336,41 +336,8 @@ export const FEATURED: FeaturedProject[] = [
         ],
     },
     {
-        slug: 'aprs',
-        index: '02',
-        title: 'APRS GPS Tracking System',
-        kind: 'hardware',
-        role: 'Team Lead',
-        org: 'TTU ECE 3334',
-        period: 'Jan 2026 to May 2026',
-        accent: 'accent',
-        summary: `A GPS tracker that packetizes its own position and puts it on the
-                  air over VHF and UHF radio, with a Bell 202 modem written from
-                  scratch across two STM32 NUCLEO boards.`,
-        detail: [
-            'Led the design of a **GPS tracker** on two STM32 NUCLEO-G431RB boards in **bare metal C**, parsing GPS sentences over UART and packing position data into APRS frames with **HDLC framing, bit stuffing, NRZI, and CRC-16**.',
-            'Implemented a **Bell 202 AFSK modem** in firmware: a timer ISR steps a **256 entry sine table** into the DAC for **1200 baud** transmit, and the receiver samples the ADC and recovers bits with a **Goertzel filter** and a **32 phase timing bank**.',
-            'Diagnosed inconsistent frame decoding with **oscilloscope captures** and bit level UART logs, isolated **receive path noise** and a failed transceiver, and identified input filtering and staged loopback tests as the next revision fixes.',
-        ],
-        metrics: [
-            { value: '1200', label: 'Baud AFSK link' },
-            { value: '2', label: 'STM32 boards' },
-        ],
-        stack: ['STM32', 'Bare metal C', 'UART', 'DAC / ADC', 'AFSK', 'RF'],
-        gallery: [
-            {
-                slug: 'proj-aprs-board', widths: [400, 800, 1400], w: 1400, h: 1867,
-                alt: 'The APRS presentation board with the tracker hardware and handheld radios',
-            },
-            {
-                slug: 'proj-aprs-team', widths: [400, 800, 1400], w: 1400, h: 1511,
-                alt: 'The team presenting the APRS tracking system',
-            },
-        ],
-    },
-    {
         slug: 'wav-player',
-        index: '03',
+        index: '02',
         title: 'STM32 WAV Audio Player',
         kind: 'hardware',
         role: 'Final project, solo build',
@@ -398,7 +365,7 @@ export const FEATURED: FeaturedProject[] = [
     },
     {
         slug: 'battlebot',
-        index: '04',
+        index: '03',
         title: 'Red Raider Battle Bot',
         kind: 'hardware',
         role: 'Team Lead',
@@ -441,6 +408,27 @@ export const FEATURED: FeaturedProject[] = [
    MORE PROJECTS
    ------------------------------------------------------------------------ */
 export const PROJECTS_MORE: CompactProject[] = [
+    {
+        slug: 'aprs',
+        title: 'APRS GPS Tracking System',
+        kind: 'hardware',
+        context: 'ECE 3334, team lead',
+        when: 'May 2026',
+        desc: `A GPS tracker that packetizes its own position and puts it on the
+               air over VHF and UHF radio, with a Bell 202 AFSK modem written
+               from scratch in bare metal C across two STM32 NUCLEO boards.`,
+        stack: ['STM32', 'Bare metal C', 'AFSK', 'DAC / ADC', 'RF'],
+        gallery: [
+            {
+                slug: 'proj-aprs-board', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'The APRS presentation board with the tracker hardware and handheld radios',
+            },
+            {
+                slug: 'proj-aprs-team', widths: [400, 800, 1400], w: 1400, h: 1511,
+                alt: 'The team presenting the APRS tracking system',
+            },
+        ],
+    },
     {
         slug: 'amplifier',
         title: 'Audio Power Amplifier',
