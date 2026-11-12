@@ -410,27 +410,6 @@ export const FEATURED: FeaturedProject[] = [
    ------------------------------------------------------------------------ */
 export const PROJECTS_MORE: CompactProject[] = [
     {
-        slug: 'aprs',
-        title: 'APRS GPS Tracking System',
-        kind: 'hardware',
-        context: 'ECE 3334, team lead',
-        when: 'May 2026',
-        desc: `A GPS tracker that packetizes its own position and puts it on the
-               air over VHF and UHF radio, with a Bell 202 AFSK modem written
-               from scratch in bare metal C across two STM32 NUCLEO boards.`,
-        stack: ['STM32', 'Bare metal C', 'AFSK', 'DAC / ADC', 'RF'],
-        gallery: [
-            {
-                slug: 'proj-aprs-board', widths: [400, 800, 1400], w: 1400, h: 1867,
-                alt: 'The APRS presentation board with the tracker hardware and handheld radios',
-            },
-            {
-                slug: 'proj-aprs-team', widths: [400, 800, 1400], w: 1400, h: 1511,
-                alt: 'The team presenting the APRS tracking system',
-            },
-        ],
-    },
-    {
         slug: 'retention',
         title: 'Retention Engine',
         kind: 'software',
@@ -461,19 +440,25 @@ export const PROJECTS_MORE: CompactProject[] = [
         ],
     },
     {
-        slug: 'amplifier',
-        title: 'Audio Power Amplifier',
+        slug: 'aprs',
+        title: 'APRS GPS Tracking System',
         kind: 'hardware',
-        context: 'ECE 3311, circuit design',
-        when: 'Nov 2025',
-        desc: `A 3 stage discrete BJT amplifier designed and simulated in LTspice:
-               5 mV in, over 10 W out across a 4 ohm speaker, through a Darlington
-               Class AB push pull output stage with audio band filtering.`,
-        stack: ['LTspice', 'BJT', 'Class AB', 'Filter design'],
-        gallery: [{
-            slug: 'proj-amplifier', widths: [400, 800, 1400], w: 1400, h: 648,
-            alt: 'LTspice schematic of the three stage amplifier',
-        }],
+        context: 'ECE 3334, team lead',
+        when: 'May 2026',
+        desc: `A GPS tracker that packetizes its own position and puts it on the
+               air over VHF and UHF radio, with a Bell 202 AFSK modem written
+               from scratch in bare metal C across two STM32 NUCLEO boards.`,
+        stack: ['STM32', 'Bare metal C', 'AFSK', 'DAC / ADC', 'RF'],
+        gallery: [
+            {
+                slug: 'proj-aprs-board', widths: [400, 800, 1400], w: 1400, h: 1867,
+                alt: 'The APRS presentation board with the tracker hardware and handheld radios',
+            },
+            {
+                slug: 'proj-aprs-team', widths: [400, 800, 1400], w: 1400, h: 1511,
+                alt: 'The team presenting the APRS tracking system',
+            },
+        ],
     },
     {
         slug: 'cos',
@@ -496,6 +481,21 @@ export const PROJECTS_MORE: CompactProject[] = [
                 alt: 'UML class diagram for the Customer Order System',
             },
         ],
+    },
+    {
+        slug: 'amplifier',
+        title: 'Audio Power Amplifier',
+        kind: 'hardware',
+        context: 'ECE 3311, circuit design',
+        when: 'Nov 2025',
+        desc: `A 3 stage discrete BJT amplifier designed and simulated in LTspice:
+               5 mV in, over 10 W out across a 4 ohm speaker, through a Darlington
+               Class AB push pull output stage with audio band filtering.`,
+        stack: ['LTspice', 'BJT', 'Class AB', 'Filter design'],
+        gallery: [{
+            slug: 'proj-amplifier', widths: [400, 800, 1400], w: 1400, h: 648,
+            alt: 'LTspice schematic of the three stage amplifier',
+        }],
     },
     {
         slug: 'ledsprite',
@@ -553,6 +553,7 @@ export const PROJECTS_MORE: CompactProject[] = [
             alt: 'Charts of power consumption across three urban zones',
         }],
     },
+
 ];
 
 /* ---------------------------------------------------------------------------
