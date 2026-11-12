@@ -301,11 +301,13 @@ export const FEATURED: FeaturedProject[] = [
         org: 'TTU ECE 3337',
         period: 'Aug 2026 to present',
         accent: 'accent',
-        summary: `A $24 RC toy car rebuilt into a self driving rover. The AI
-                  model runs on the FPGA itself, with no CPU, GPU or cloud
-                  behind it: camera and LiDAR in, a steering decision out,
-                  thousands of times a second. Three person team, and I own
-                  the software, the model training and the integration.`,
+        summary: `A $24 RC toy car rebuilt into a rover that drives itself.
+                  It watches the room with a camera and a LiDAR sensor that
+                  sweeps side to side, picks left, straight or right, and
+                  steers around obstacles with no driver and no remote. The
+                  AI making those calls runs on the FPGA chip itself: no CPU,
+                  no GPU, no internet. Three person team, and I own the
+                  software, the model training and the integration.`,
         detail: [
             'Built the **AI training pipeline** end to end: a simulator that generates **training data**, model training in Python, **quantization**, and an automatic export onto the chip.',
             'An off the shelf **computer vision** model needed far more than the 225 KB on the chip, so I trained a smaller one and wrote its **inference engine in Verilog**, matching Python exactly.',
@@ -319,7 +321,7 @@ export const FEATURED: FeaturedProject[] = [
         gallery: [
             {
                 slug: 'proj-rover-build', widths: [400, 800, 1400], w: 1400, h: 1867,
-                alt: 'The rover with its camera, sweeping LiDAR and Basys 3 FPGA wired up on the bench',
+                alt: 'The rover with its camera, sweeping LiDAR sensor and Basys 3 FPGA wired up on the bench',
             },
             {
                 slug: 'proj-rover-stock', widths: [400, 800], w: 800, h: 642,
@@ -327,7 +329,7 @@ export const FEATURED: FeaturedProject[] = [
             },
             {
                 slug: 'proj-rover-bench', widths: [400, 800, 1400], w: 1400, h: 1867,
-                alt: 'Bench testing the FPGA with the LiDAR servo sweep and seven segment readout',
+                alt: 'Bench testing the FPGA with the LiDAR sensor sweeping on its servo and a seven segment readout',
             },
             {
                 slug: 'proj-rover-chassis', widths: [400, 800, 1400], w: 1400, h: 1867,
