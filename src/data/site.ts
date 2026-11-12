@@ -441,7 +441,24 @@ export const PROJECTS_MORE: CompactProject[] = [
                every answer against the stored source text rather than its own
                memory, and a gap log tracks what keeps getting missed.`,
         stack: ['Python', 'FastAPI', 'Claude API', 'SQLite', 'JavaScript', 'Docker'],
-        gallery: [],
+        gallery: [
+            {
+                slug: 'proj-retention-today', widths: [400, 800, 1400], w: 1400, h: 1050,
+                alt: 'The daily dashboard: cards due today, a study streak, and recall for the week',
+            },
+            {
+                slug: 'proj-retention-review', widths: [400, 800, 1400], w: 1400, h: 1050,
+                alt: 'A review in progress, with the scheduler memory state for that card beside it',
+            },
+            {
+                slug: 'proj-retention-gaps', widths: [400, 800, 1400], w: 1400, h: 1050,
+                alt: 'The gap log, ranking what gets missed most often and recall by week',
+            },
+            {
+                slug: 'proj-retention-library', widths: [400, 800, 1400], w: 1400, h: 1050,
+                alt: 'Every stored record, filterable by type, source and topic',
+            },
+        ],
     },
     {
         slug: 'amplifier',

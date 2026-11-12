@@ -64,6 +64,10 @@ $manifest = @(
     @{ src = 'projects\rover-bench.jpg';        slug = 'proj-rover-bench';       widths = @(400,800,1400) }
     @{ src = 'projects\rover-stock.jpg';        slug = 'proj-rover-stock';       widths = @(400,800); flat = $true }
     @{ src = 'projects\rover-chassis.jpg';      slug = 'proj-rover-chassis';     widths = @(400,800,1400) }
+    @{ src = 'projects\retention-today.jpg';    slug = 'proj-retention-today';   widths = @(400,800,1400) }
+    @{ src = 'projects\retention-review.jpg';   slug = 'proj-retention-review';  widths = @(400,800,1400) }
+    @{ src = 'projects\retention-gaps.jpg';     slug = 'proj-retention-gaps';    widths = @(400,800,1400) }
+    @{ src = 'projects\retention-library.jpg';  slug = 'proj-retention-library'; widths = @(400,800,1400) }
 
     # --- logos ------------------------------------------------------------
     @{ src = 'Hero Logo@12x-80.jpg';               slug = 'logo-cba';   widths = @(96,192) }
