@@ -297,7 +297,7 @@ export const FEATURED: FeaturedProject[] = [
         index: '01',
         title: 'AI Powered Rover on an FPGA',
         kind: 'software',
-        role: 'Software and ML Lead',
+        role: 'Software and ML lead, team of 3',
         org: 'TTU ECE 3337',
         period: 'Aug 2026 to present',
         accent: 'accent',
@@ -306,8 +306,7 @@ export const FEATURED: FeaturedProject[] = [
                   sweeps side to side, picks left, straight or right, and
                   steers around obstacles with no driver and no remote. The
                   AI making those calls runs on the FPGA chip itself: no CPU,
-                  no GPU, no internet. Three person team, and I own the
-                  software, the model training and the integration.`,
+                  no GPU, no internet.`,
         detail: [
             'Built the **AI training pipeline** end to end: a simulator that generates **training data**, model training in Python, **quantization**, and an automatic export onto the chip.',
             'An off the shelf **computer vision** model needed far more than the 225 KB on the chip, so I trained a smaller one and wrote its **inference engine in Verilog**, matching Python exactly.',
@@ -430,6 +429,19 @@ export const PROJECTS_MORE: CompactProject[] = [
                 alt: 'The team presenting the APRS tracking system',
             },
         ],
+    },
+    {
+        slug: 'retention',
+        title: 'Retention Engine',
+        kind: 'software',
+        context: 'Personal project',
+        when: 'Sept 2026',
+        desc: `A spaced repetition study app that decides what to review each
+               day and grades how well you explain it back. The AI tutor marks
+               every answer against the stored source text rather than its own
+               memory, and a gap log tracks what keeps getting missed.`,
+        stack: ['Python', 'FastAPI', 'Claude API', 'SQLite', 'JavaScript', 'Docker'],
+        gallery: [],
     },
     {
         slug: 'amplifier',
